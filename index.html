@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>DM Luxe Voyages - Luxury Travel Experiences</title>
+    <meta name="description" content="DM Luxe Voyages offers bespoke luxury travel experiences to South Africa's finest destinations and international flight packages.">
+    <meta name="keywords" content="luxury travel, South Africa tours, Cape Town, Johannesburg, Mpumalanga, flight packages">
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet">
+
+    <style>
+        /* Quick Action Buttons */
+        .quick-action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        @media (max-width: 768px) {
+            .quick-action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Hero buttons redesign */
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+            .hero-buttons .btn {
+                padding: 12px 28px;
+                border-radius: 8px;
+                font-weight: 600;
+                font-size: 1.1rem;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 180px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            }
+
+            .hero-buttons .btn-primary {
+                background: linear-gradient(135deg, #d4af37, #b8941f);
+                border: none;
+                color: #fff;
+            }
+
+                .hero-buttons .btn-primary:hover {
+                    background: linear-gradient(135deg, #b8941f, #9c7c17);
+                    transform: translateY(-3px);
+                    box-shadow: 0 6px 20px rgba(180, 149, 31, 0.4);
+                }
+
+            .hero-buttons .btn-outline {
+                background: transparent;
+                border: 2px solid #fff;
+                color: #fff;
+            }
+
+                .hero-buttons .btn-outline:hover {
+                    background: rgba(255, 255, 255, 0.1);
+                    transform: translateY(-3px);
+                    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+                }
+
+        @media (max-width: 768px) {
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+                .hero-buttons .btn {
+                    width: 100%;
+                    max-width: 280px;
+                }
+        }
+
+        /* Newsletter styling */
+        .footer-newsletter {
+            background: #000;
+            padding: 60px 0;
+            color: white;
+        }
+
+            .footer-newsletter h4 {
+                font-size: 1.8rem;
+                margin-bottom: 15px;
+                color: #d4af37;
+            }
+
+            .footer-newsletter p {
+                margin-bottom: 25px;
+                opacity: 0.9;
+            }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+            .newsletter-form input[type="email"] {
+                flex: 1;
+                padding: 12px 20px;
+                border: none;
+                border-radius: 6px;
+                font-size: 1rem;
+            }
+
+            .newsletter-form input[type="submit"] {
+                background: #d4af37;
+                color: #000;
+                border: none;
+                padding: 12px 25px;
+                border-radius: 6px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: background 0.3s ease;
+            }
+
+                .newsletter-form input[type="submit"]:hover {
+                    background: #b8941f;
+                }
+
+        @media (max-width: 576px) {
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body class="index-page">
+
+    <header id="header" class="header d-flex align-items-center fixed-top">
+        <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+            <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+                <h1 class="sitename">DM Luxe Voyages</h1>
+            </a>
+
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="destinations.html">Destinations</a></li>
+                    <li><a href="tours.html">Tour Types</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+
+            <a class="btn-getstarted" href="booking.html">Book Now</a>
+
+        </div>
+    </header>
+
+    <main class="main">
+
+        <!-- Travel Hero Section -->
+        <section id="travel-hero" class="travel-hero section dark-background">
+
+            <div class="hero-background">
+                <video autoplay="" muted="" loop="">
+                    <source src="assets/img/travel/video-2.mp4" type="video/mp4">
+                </video>
+                <div class="hero-overlay"></div>
+            </div>
+
+            <div class="container position-relative">
+                <div class="row align-items-center">
+                    <div class="col-lg-7">
+                        <div class="hero-text" data-aos="fade-up" data-aos-delay="100">
+                            <h1 class="hero-title">Experience Luxury Travel with DM Luxe Voyages</h1>
+                            <p class="hero-subtitle">We turn every trip into a seamless blend of comfort, style, and unforgettable experiences. From stress-free planning to luxury escapes, we bring the human touch that makes every journey truly yours.</p>
+                            <div class="hero-buttons">
+                                <a href="destinations.html" class="btn btn-outline">Explore Destinations</a>
+                                <a href="tours.html" class="btn btn-outline">View Tour Types</a>
+                                <a href="booking.html" class="btn btn-outline">Book Our Services Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section><!-- /Travel Hero Section -->
+        <!-- Rest of the content remains exactly the same -->
+        <!-- Why Us Section -->
+        <section id="why-us" class="why-us section">
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+                <!-- About Us Content -->
+                <div class="row align-items-center mb-5">
+                    <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
+                        <div class="content">
+                            <h3>Redefining Luxury Travel in South Africa and Beyond</h3>
+                            <p>At DM Luxe Voyages, we believe travel should be effortless, exclusive, and extraordinary. Our team of passionate travel experts has spent years cultivating relationships with the finest hotels, private guides, and exclusive experiences across South Africa and international destinations.</p>
+                            <p>We specialize in creating tailor-made itineraries that go beyond the ordinary, offering access to hidden gems and VIP experiences unavailable to the average traveler. Whether you're seeking a romantic getaway, family adventure, or solo exploration, we design journeys that speak to your personal style and interests.</p>
+                            <div class="stats-row">
+                                <div class="stat-item">
+                                    <span data-purecounter-start="0" data-purecounter-end="2500" data-purecounter-duration="2" class="purecounter">0</span>
+                                    <div class="stat-label">Satisfied Clients</div>
+                                </div>
+                                <div class="stat-item">
+                                    <span data-purecounter-start="0" data-purecounter-end="120" data-purecounter-duration="2" class="purecounter">0</span>
+                                    <div class="stat-label">Exclusive Partners</div>
+                                </div>
+                                <div class="stat-item">
+                                    <span data-purecounter-start="0" data-purecounter-end="10" data-purecounter-duration="2" class="purecounter">0</span>
+                                    <div class="stat-label">Years of Excellence</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
+                        <div class="about-image">
+                            <img src="assets/img/travel/showcase-8.webp" alt="Luxury Travel Experience" class="img-fluid rounded-4">
+                            <div class="experience-badge">
+                                <div class="experience-number">10+</div>
+                                <div class="experience-text">Years of Excellence</div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- End About Us Content -->
+                <!-- Services Section -->
+                <div class="services-section mt-5">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10 text-center mb-5" data-aos="fade-up" data-aos-delay="100">
+                            <h3>Our Comprehensive Services</h3>
+                            <p>We provide a comprehensive range of services designed to meet every travel need</p>
+                        </div>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="bi bi-airplane"></i>
+                                </div>
+                                <h4>Flight Reservations</h4>
+                                <p>From booking flights and selecting preferred seats to handling online check-ins, we ensure every stage of your air travel is effortless.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="bi bi-passport"></i>
+                                </div>
+                                <h4>Visa Assistance</h4>
+                                <p>Navigating paperwork can be daunting. We simplify the process by guiding you through applications, assisting with forms, and even offering proxy services so you don't have to visit embassies yourself.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="bi bi-ship"></i>
+                                </div>
+                                <h4>Cruise Bookings</h4>
+                                <p>Whether for leisure or luxury, we organize smooth and enjoyable cruise experiences, tailored to your preferences.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="350">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="bi bi-people-fill"></i>
+                                </div>
+                                <h4>Group Travel</h4>
+                                <p>Planning for families, friends, or colleagues? We make group arrangements simple, ensuring everyone travels with ease and unity.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="bi bi-building"></i>
+                                </div>
+                                <h4>Hotel & Transportation</h4>
+                                <p>From accommodations to reliable ground transfers, we take care of the details so you can focus on enjoying your trip.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="450">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="bi bi-headset"></i>
+                                </div>
+                                <h4>24/7 Client Services</h4>
+                                <p>Travel doesn't stop, and neither do we. Our team is always available — day or night — to provide support whenever and wherever you need it.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- End Services Section -->
+                <!-- Why Choose Us -->
+                <div class="why-choose-section mt-5">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 text-center mb-5" data-aos="fade-up" data-aos-delay="100">
+                            <h3>The DM Luxe Voyages Difference</h3>
+                            <p>What sets us apart is our unwavering commitment to excellence, attention to detail, and personalized approach to every journey we create.</p>
+                        </div>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="bi bi-geo-alt-fill"></i>
+                                </div>
+                                <h4>Local & International Expertise</h4>
+                                <p>Our team lives and breathes South African and international travel, offering insider knowledge you won't find in guidebooks.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="bi bi-stars"></i>
+                                </div>
+                                <h4>VIP Access</h4>
+                                <p>Exclusive access to private game reserves, premium flight deals, and behind-the-scenes experiences.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="bi bi-person-heart"></i>
+                                </div>
+                                <h4>Tailor-Made</h4>
+                                <p>Every itinerary is crafted around your interests, preferences, and travel style.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="350">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="bi bi-shield-check"></i>
+                                </div>
+                                <h4>24/7 Support</h4>
+                                <p>Dedicated concierge service available throughout your journey for peace of mind.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="bi bi-award"></i>
+                                </div>
+                                <h4>Quality Assured</h4>
+                                <p>We personally vet every hotel, guide, and experience to ensure exceptional quality.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="450">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="bi bi-currency-exchange"></i>
+                                </div>
+                                <h4>Best Value</h4>
+                                <p>Luxury doesn't have to mean overpriced - we negotiate the best rates for our clients.</p>
+                            </div>
+                        </div>
+                    </div><!-- End Features Grid -->
+                </div><!-- End Why Choose Us -->
+
+            </div>
+
+        </section><!-- /Why Us Section -->
+        <!-- Featured Destinations Section -->
+        <section id="featured-destinations" class="featured-destinations section">
+
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <h2>Our Signature Destinations</h2>
+                <div><span>Explore</span> <span class="description-title">South Africa's Finest</span></div>
+            </div><!-- End Section Title -->
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="row">
+
+                    <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="featured-destination">
+                            <div class="destination-overlay">
+                                <img src="assets/img/travel/destination-3.webp" alt="Cape Town" class="img-fluid">
+                                <div class="destination-info">
+                                    <span class="destination-tag">Most Popular</span>
+                                    <h3>Cape Town</h3>
+                                    <p class="location"><i class="bi bi-geo-alt-fill"></i> Western Cape, South Africa</p>
+                                    <p class="description">Discover the Mother City's stunning beaches, iconic Table Mountain, world-class vineyards, and vibrant cultural scene on our luxury Cape Town tours.</p>
+                                    <div class="destination-meta">
+                                        <div class="tours-count">
+                                            <i class="bi bi-collection"></i>
+                                            <span>18 Packages</span>
+                                        </div>
+                                        <div class="rating">
+                                            <i class="bi bi-star-fill"></i>
+                                            <span>4.9 (412)</span>
+                                        </div>
+                                    </div>
+                                    <a href="destination-details.html" class="explore-btn">
+                                        <span>Explore Now</span>
+                                        <i class="bi bi-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="row g-3">
+
+                            <div class="col-12" data-aos="fade-left" data-aos-delay="300">
+                                <div class="compact-destination">
+                                    <div class="destination-image">
+                                        <img src="assets/img/travel/destination-7.webp" alt="Johannesburg" class="img-fluid">
+                                        <div class="badge-offer">Best Value</div>
+                                    </div>
+                                    <div class="destination-details">
+                                        <h4>Johannesburg & Pretoria</h4>
+                                        <p class="location"><i class="bi bi-geo-alt"></i> Gauteng, South Africa</p>
+                                        <p class="brief">Experience the vibrant energy of South Africa's economic hub combined with Pretoria's historic charm and jacaranda-lined streets.</p>
+                                        <div class="stats-row">
+                                            <span class="tour-count"><i class="bi bi-calendar-check"></i> 12 Tours</span>
+                                            <span class="rating"><i class="bi bi-star-fill"></i> 4.7</span>
+                                        </div>
+                                        <a href="destination-details.html" class="quick-link">View Details <i class="bi bi-chevron-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12" data-aos="fade-left" data-aos-delay="400">
+                                <div class="compact-destination">
+                                    <div class="destination-image">
+                                        <img src="assets/img/travel/destination-11.webp" alt="Mpumalanga" class="img-fluid">
+                                    </div>
+                                    <div class="destination-details">
+                                        <h4>Mpumalanga Escapes</h4>
+                                        <p class="location"><i class="bi bi-geo-alt"></i> Mpumalanga, South Africa</p>
+                                        <p class="brief">Journey through breathtaking landscapes including the Panorama Route, Blyde River Canyon, and private game reserves bordering Kruger National Park.</p>
+                                        <div class="stats-row">
+                                            <span class="tour-count"><i class="bi bi-calendar-check"></i> 9 Safaris</span>
+                                            <span class="rating"><i class="bi bi-star-fill"></i> 4.8</span>
+                                        </div>
+                                        <a href="destination-details.html" class="quick-link">View Details <i class="bi bi-chevron-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12" data-aos="fade-left" data-aos-delay="500">
+                                <div class="compact-destination">
+                                    <div class="destination-image">
+                                        <img src="assets/img/travel/destination-16.webp" alt="Flight Packages" class="img-fluid">
+                                        <div class="badge-offer limited">Limited Seats</div>
+                                    </div>
+                                    <div class="destination-details">
+                                        <h4>International Flight Packages</h4>
+                                        <p class="location"><i class="bi bi-geo-alt"></i> Worldwide</p>
+                                        <p class="brief">Premium flight packages from Cape Town to USA or Johannesburg to Europe with exclusive upgrades and stopover options.</p>
+                                        <div class="stats-row">
+                                            <span class="tour-count"><i class="bi bi-calendar-check"></i> 6 Options</span>
+                                            <span class="rating"><i class="bi bi-star-fill"></i> 4.9</span>
+                                        </div>
+                                        <a href="destination-details.html" class="quick-link">View Details <i class="bi bi-chevron-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section><!-- /Featured Destinations Section -->
+        <!-- Featured Tours Section -->
+        <section id="featured-tours" class="featured-tours section">
+
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <h2>Our Tour Experiences</h2>
+                <div><span>Discover</span> <span class="description-title">Tailored Travel Styles</span></div>
+            </div><!-- End Section Title -->
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="row gy-4">
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="tour-card">
+                            <div class="tour-image">
+                                <img src="assets/img/travel/tour-1.webp" alt="Luxury Getaways" class="img-fluid" loading="lazy">
+                                <div class="tour-badge">Most Popular</div>
+                            </div>
+                            <div class="tour-content">
+                                <h4>Luxury Getaways</h4>
+                                <div class="tour-meta">
+                                    <span class="duration"><i class="bi bi-clock"></i> 5-10 Days</span>
+                                    <span class="group-size"><i class="bi bi-people"></i> Private</span>
+                                </div>
+                                <p>Indulge in South Africa's finest 5-star accommodations, private transfers, and exclusive experiences tailored to your preferences.</p>
+                                <div class="tour-highlights">
+                                    <span>Private Guides</span>
+                                    <span>VIP Access</span>
+                                    <span>Bespoke Itineraries</span>
+                                </div>
+                                <div class="tour-action">
+                                    <a href="booking.html" class="btn-book">Book Now</a>
+                                    <div class="tour-rating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-half"></i>
+                                        <span>4.8 (156)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End Tour Item -->
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="tour-card">
+                            <div class="tour-image">
+                                <img src="assets/img/travel/tour-2.webp" alt="Safari Adventures" class="img-fluid" loading="lazy">
+                                <div class="tour-badge limited">Small Groups</div>
+                            </div>
+                            <div class="tour-content">
+                                <h4>Safari Adventures</h4>
+                                <div class="tour-meta">
+                                    <span class="duration"><i class="bi bi-clock"></i> 3-7 Days</span>
+                                    <span class="group-size"><i class="bi bi-people"></i> Max 8</span>
+                                </div>
+                                <p>Experience Africa's wildlife in luxury private game reserves with expert guides, premium accommodations, and unforgettable game drives.</p>
+                                <div class="tour-highlights">
+                                    <span>Big Five</span>
+                                    <span>Luxury Lodges</span>
+                                    <span>Private Reserves</span>
+                                </div>
+                                <div class="tour-action">
+                                    <a href="booking.html" class="btn-book">Book Now</a>
+                                    <div class="tour-rating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <span>4.9 (98)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End Tour Item -->
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                        <div class="tour-card">
+                            <div class="tour-image">
+                                <img src="assets/img/travel/tour-4.webp" alt="Flight Packages" class="img-fluid" loading="lazy">
+                                <div class="tour-badge new">Exclusive</div>
+                            </div>
+                            <div class="tour-content">
+                                <h4>International Flight Packages</h4>
+                                <div class="tour-meta">
+                                    <span class="duration"><i class="bi bi-clock"></i> Varies</span>
+                                    <span class="group-size"><i class="bi bi-people"></i> Flexible</span>
+                                </div>
+                                <p>Premium flight packages with business class upgrades, curated stopovers, and exclusive airport services for seamless international travel.</p>
+                                <div class="tour-highlights">
+                                    <span>Cape Town to USA</span>
+                                    <span>Johannesburg to Europe</span>
+                                    <span>Business Class</span>
+                                </div>
+                                <div class="tour-action">
+                                    <a href="booking.html" class="btn-book">Book Now</a>
+                                    <div class="tour-rrating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-half"></i>
+                                        <span>4.7 (72)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End Tour Item -->
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="tour-card">
+                            <div class="tour-image">
+                                <img src="assets/img/travel/tour-5.webp" alt="Cultural Journeys" class="img-fluid" loading="lazy">
+                                <div class="tour-badge">Cultural</div>
+                            </div>
+                            <div class="tour-content">
+                                <h4>Cultural Journeys</h4>
+                                <div class="tour-meta">
+                                    <span class="duration"><i class="bi bi-clock"></i> 4-8 Days</span>
+                                    <span class="group-size"><i class="bi bi-people"></i> Private</span>
+                                </div>
+                                <p>Immerse yourself in South Africa's rich heritage with curated experiences including township tours, historical sites, and local interactions.</p>
+                                <div class="tour-highlights">
+                                    <span>Local Guides</span>
+                                    <span>Authentic Experiences</span>
+                                    <span>Historical Sites</span>
+                                </div>
+                                <div class="tour-action">
+                                    <a href="booking.html" class="btn-book">Book Now</a>
+                                    <div class="tour-rating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star"></i>
+                                        <span>4.5 (64)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End Tour Item -->
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="tour-card">
+                            <div class="tour-image">
+                                <img src="assets/img/travel/tour-6.webp" alt="Culinary Tours" class="img-fluid" loading="lazy">
+                                <div class="tour-badge cultural">Gourmet</div>
+                            </div>
+                            <div class="tour-content">
+                                <h4>Culinary Tours</h4>
+                                <div class="tour-meta">
+                                    <span class="duration"><i class="bi bi-clock"></i> 3-5 Days</span>
+                                    <span class="group-size"><i class="bi bi-people"></i> Small Groups</span>
+                                </div>
+                                <p>Savor South Africa's diverse culinary scene with wine tastings, cooking classes, and exclusive dining experiences with local chefs.</p>
+                                <div class="tour-highlights">
+                                    <span>Wine Estates</span>
+                                    <span>Market Tours</span>
+                                    <span>Chef Experiences</span>
+                                </div>
+                                <div class="tour-action">
+                                    <a href="booking.html" class="btn-book">Book Now</a>
+                                    <div class="tour-rating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <span>5.0 (48)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End Tour Item -->
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                        <div class="tour-card">
+                            <div class="tour-image">
+                                <img src="assets/img/travel/tour-8.webp" alt="Family Adventures" class="img-fluid" loading="lazy">
+                                <div class="tour-badge adventure">Family</div>
+                            </div>
+                            <div class="tour-content">
+                                <h4>Family Adventures</h4>
+                                <div class="tour-meta">
+                                    <span class="duration"><i class="bi bi-clock"></i> 5-10 Days</span>
+                                    <span class="group-size"><i class="bi bi-people"></i> Custom</span>
+                                </div>
+                                <p>Create lasting memories with specially designed family itineraries featuring child-friendly activities and accommodations.</p>
+                                <div class="tour-highlights">
+                                    <span>Kid-Friendly</span>
+                                    <span>Educational</span>
+                                    <span>Flexible</span>
+                                </div>
+                                <div class="tour-action">
+                                    <a href="booking.html" class="btn-book">Book Now</a>
+                                    <div class="tour-rating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-half"></i>
+                                        <span>4.7 (52)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End Tour Item -->
+
+                </div>
+
+                <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="500">
+                    <a href="tours.html" class="btn-view-all">View All Tour Types</a>
+                </div>
+
+            </div>
+
+        </section><!-- /Featured Tours Section -->
+        <!-- Testimonials Home Section -->
+        <section id="testimonials-home" class="testimonials-home section">
+
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <h2>Client Experiences</h2>
+                <div><span>What Our</span> <span class="description-title">Travelers Say</span></div>
+            </div><!-- End Section Title -->
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="swiper init-swiper">
+                    <script type="application/json" class="swiper-config">
+                        {
+                          "loop": true,
+                          "speed": 600,
+                          "autoplay": {
+                            "delay": 5000
+                          },
+                          "slidesPerView": "auto",
+                          "pagination": {
+                            "el": ".swiper-pagination",
+                            "type": "bullets",
+                            "clickable": true
+                          },
+                          "breakpoints": {
+                            "320": {
+                              "slidesPerView": 1,
+                              "spaceBetween": 40
+                            },
+                            "1200": {
+                              "slidesPerView": 3,
+                              "spaceBetween": 1
+                            }
+                          }
+                        }
+                    </script>
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                            <div class="testimonial-item">
+                                <p>
+                                    <i class="bi bi-quote quote-icon-left"></i>
+                                    <span>DM Luxe Voyages handled our complex visa requirements for our family safari with absolute professionalism. Their guidance through the entire process saved us countless hours of stress. The safari itself was beyond spectacular - we saw the Big Five in just two days!</span>
+                                    <i class="bi bi-quote quote-icon-right"></i>
+                                </p>
+                                <h3>Dr Thabo Sekau</h3>
+                                <h4>Family Safari, 2024</h4>
+                            </div>
+                        </div><!-- End testimonial item -->
+
+                        <div class="swiper-slide">
+                            <div class="testimonial-item">
+                                <p>
+                                    <i class="bi bi-quote quote-icon-left"></i>
+                                    <span>As a business traveler, the 24/7 support from DM Luxe Voyages has been invaluable. When my flight from Lagos was unexpectedly canceled, they had me rebooked on the next available flight and arranged a luxury hotel stay within an hour. Their responsiveness is unmatched.</span>
+                                    <i class="bi bi-quote quote-icon-right"></i>
+                                </p>
+                                <h3>Emanuella Abuja</h3>
+                                <h4>Business Travel, 2024</h4>
+                            </div>
+                        </div><!-- End testimonial item -->
+
+                        <div class="swiper-slide">
+                            <div class="testimonial-item">
+                                <p>
+                                    <i class="bi bi-quote quote-icon-left"></i>
+                                    <span>The cruise booking experience with DM Luxe Voyages was seamless. They secured us a premium suite on the Mediterranean cruise with all the amenities we requested. Their attention to detail extended to arranging special dietary requirements and private shore excursions that weren't available to regular passengers.</span>
+                                    <i class="bi bi-quote quote-icon-right"></i>
+                                </p>
+                                <h3>Muhamed Aziz</h3>
+                                <h4>Mediterranean Cruise, 2023</h4>
+                            </div>
+                        </div><!-- End testimonial item -->
+
+                        <div class="swiper-slide">
+                            <div class="testimonial-item">
+                                <p>
+                                    <i class="bi bi-quote quote-icon-left"></i>
+                                    <span>Our anniversary trip to Mpumalanga was magical thanks to DM Luxe Voyages. They arranged a private helicopter tour over Blyde River Canyon and a romantic dinner under the stars at our luxury lodge. The transportation was flawless throughout, with punctual, luxury vehicles and knowledgeable drivers.</span>
+                                    <i class="bi bi-quote quote-icon-right"></i>
+                                </p>
+                                <h3>James & Lisa Brown</h3>
+                                <h4>Anniversary Trip, 2024</h4>
+                            </div>
+                        </div><!-- End testimonial item -->
+
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
+            </div>
+
+        </section><!-- /Testimonials Home Section -->
+        <!-- Call To Action Section -->
+        <section id="call-to-action" class="call-to-action section light-background">
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="hero-content" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="content-wrapper">
+                        <div class="badge-wrapper">
+                            <span class="promo-badge">Exclusive Offer</span>
+                        </div>
+                        <h2>Ready for Your DM Luxe Voyage?</h2>
+                        <p>Let us craft your perfect itinerary with personalized recommendations, VIP access, and seamless planning from start to finish.</p>
+
+                        <div class="action-section">
+                            <div class="main-actions">
+                                <a href="booking.html" class="btn btn-explore">
+                                    <i class="bi bi-calendar-check"></i>
+                                    Book Now
+                                </a>
+                                <a href="contact.html" class="btn btn-deals">
+                                    <i class="bi bi-chat-dots"></i>
+                                    Contact Us
+                                </a>
+                            </div>
+
+                            <div class="quick-contact">
+                                <span class="contact-label">Need immediate assistance?</span>
+                                <a href="tel:+27111234567" class="contact-link">
+                                    <i class="bi bi-telephone"></i>
+                                    Call +27 72 369 9937
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="visual-element">
+                        <img src="assets/img/travel/showcase-3.webp" alt="Luxury Travel" class="hero-image" loading="lazy">
+                        <div class="image-overlay">
+                            <div class="stat-item">
+                                <span class="stat-number">100%</span>
+                                <span class="stat-label">Custom Itineraries</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">24/7</span>
+                                <span class="stat-label">Concierge Support</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="benefits-showcase" data-aos="fade-up" data-aos-delay="400">
+                    <div class="benefits-header">
+                        <h3>Our Travel Assurance</h3>
+                        <p>What you can expect when you travel with DM Luxe Voyages</p>
+                    </div>
+
+                    <div class="benefits-grid">
+                        <div class="benefit-card" data-aos="flip-left" data-aos-delay="450">
+                            <div class="benefit-visual">
+                                <div class="benefit-icon-wrap">
+                                    <i class="bi bi-shield-check"></i>
+                                </div>
+                                <div class="benefit-pattern"></div>
+                            </div>
+                            <div class="benefit-content">
+                                <h4>Financial Protection</h4>
+                                <p>All client funds are securely held in trust accounts until travel completion</p>
+                            </div>
+                        </div>
+
+                        <div class="benefit-card" data-aos="flip-left" data-aos-delay="500">
+                            <div class="benefit-visual">
+                                <div class="benefit-icon-wrap">
+                                    <i class="bi bi-arrow-repeat"></i>
+                                </div>
+                                <div class="benefit-pattern"></div>
+                            </div>
+                            <div class="benefit-content">
+                                <h4>Flexible Changes</h4>
+                                <p>Most bookings can be adjusted up to 30 days before departure</p>
+                            </div>
+                        </div>
+
+                        <div class="benefit-card" data-aos="flip-left" data-aos-delay="550">
+                            <div class="benefit-visual">
+                                <div class="benefit-icon-wrap">
+                                    <i class="bi bi-headset"></i>
+                                </div>
+                                <div class="benefit-pattern"></div>
+                            </div>
+                            <div class="benefit-content">
+                                <h4>Dedicated Support</h4>
+                                <p>Personal travel concierge available throughout your journey</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section><!-- /Call To Action Section -->
+
+    </main>
+
+    <footer id="footer" class="footer position-relative dark-background">
+
+        <div class="footer-newsletter">
+            <div class="container">
+                <div class="row justify-content-center text-center">
+                    <div class="col-lg-6">
+                        <h4>Luxury Travel Insights</h4>
+                        <p>Subscribe for exclusive access to Tour and flight special's, destination guides, and VIP travel tips.</p>
+                        <form action="forms/newsletter.php" method="post" class="php-email-form">
+                            <div class="newsletter-form"><input type="email" name="email" placeholder="Enter your email"><input type="submit" value="Subscribe"></div>
+                            <div class="loading">Loading</div>
+                            <div class="error-message"></div>
+                            <div class="sent-message">Thank you for joining our luxury travel community!</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container footer-top">
+            <div class="row gy-4">
+                <div class="col-lg-4 col-md-6 footer-about">
+                    <a href="index.html" class="d-flex align-items-center">
+                        <span class="sitename">DM Luxe Voyages</span>
+                    </a>
+                    <div class="footer-contact pt-3">
+                        <p>Pretoria, Gauteng 1807</p>
+                        <p class="mt-3"><strong>Phone:</strong> <span>+27 72 369 9937</span></p>
+                        <p><strong>Email:</strong> <span>info@dmluxevoyages.com</span></p>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><i class="bi bi-chevron-right"></i> <a href="index.html">Home</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="about.html">About Us</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="destinations.html">Destinations</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="tours.html">Tour Types</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="booking.html">Book Now</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-md-3 footer-links">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><i class="bi bi-chevron-right"></i> <a href="booking.html">Flight Reservations</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="booking.html">Visa Assistance</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="booking.html">Cruise Bookings</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="booking.html">Group Travel</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="booking.html">Hotel & Transportation Reservations</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-12">
+                    <h4>Connect With Us</h4>
+                    <p>Indulge in the extraordinary. Experience our world of curated luxury.</p>
+                    <div class="social-links d-flex">
+                        <a href=""><i class="bi bi-facebook"></i></a>
+                        <a href=""><i class="bi bi-instagram"></i></a>
+                        <a href=""><i class="bi bi-linkedin"></i></a>
+                        <a href=""><i class="bi bi-pinterest"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container copyright text-center mt-4">
+            <p>© <span>Copyright</span> <strong class="px-1 sitename">DM Luxe Voyages</strong> <span>All Rights Reserved</span></p>
+        </div>
+
+    </footer>
+
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
