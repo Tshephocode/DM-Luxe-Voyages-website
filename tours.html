@@ -2,871 +2,1361 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Tours & Cruises</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Tours & Cruises</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet">
 
+    <style>
+        /* Filter Styles - Updated to match destinations layout */
+        .isotope-filters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 10px;
+        }
+
+            .isotope-filters li {
+                cursor: pointer;
+                padding: 8px 16px;
+                border-radius: 30px;
+                background: #f8f9fa;
+                border: 1px solid #dee2e6;
+                transition: all 0.3s ease;
+                font-size: 14px;
+            }
+
+                .isotope-filters li.filter-active,
+                .isotope-filters li:hover {
+                    background: #3b71fe;
+                    color: white;
+                    border-color: #3b71fe;
+                }
+
+        .filter-section {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .filter-group {
+            margin-bottom: 15px;
+        }
+
+            .filter-group h5 {
+                margin-bottom: 10px;
+                font-size: 16px;
+                color: #3b71fe;
+            }
+
+        .filter-dropdown {
+            width: 100%;
+        }
+
+            .filter-dropdown .btn {
+                width: 100%;
+                text-align: left;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: white;
+                border: 1px solid #dee2e6;
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+
+                .filter-dropdown .btn:focus {
+                    box-shadow: none;
+                }
+
+            .filter-dropdown .dropdown-menu {
+                width: 100%;
+                max-height: 300px;
+                overflow-y: auto;
+            }
+
+            .filter-dropdown .dropdown-item {
+                padding: 8px 15px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                font-size: 14px;
+            }
+
+                .filter-dropdown .dropdown-item.active {
+                    background-color: #3b71fe;
+                    color: white;
+                }
+
+                .filter-dropdown .dropdown-item .bi {
+                    margin-right: 8px;
+                    visibility: hidden;
+                }
+
+                .filter-dropdown .dropdown-item.active .bi {
+                    visibility: visible;
+                }
+
+        .filter-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            display: none;
+        }
+
+            .no-results.show {
+                display: block;
+            }
+
+        .dropdown-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .show .dropdown-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Tour tile styles to match destinations layout */
+        .tour-tile {
+            display: block;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+
+            .tour-tile:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+                text-decoration: none;
+            }
+
+        .tile-image {
+            position: relative;
+            overflow: hidden;
+            height: 250px;
+        }
+
+            .tile-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.5s ease;
+            }
+
+        .tour-tile:hover .tile-image img {
+            transform: scale(1.05);
+        }
+
+        .overlay-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .tour-tag {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+            .tour-tag.luxury {
+                background: #ffd700;
+                color: #000;
+            }
+
+            .tour-tag.adventure {
+                background: #28a745;
+                color: white;
+            }
+
+            .tour-tag.family {
+                background: #17a2b8;
+                color: white;
+            }
+
+            .tour-tag.cultural {
+                background: #6f42c1;
+                color: white;
+            }
+
+        .tour-info h4 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: white;
+        }
+
+        .tour-info p {
+            font-size: 14px;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .tour-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        .tour-price {
+            font-weight: 600;
+            color: #ffd700;
+        }
+    </style>
 </head>
 
 <body class="tours-page">
 
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+    <header id="header" class="header d-flex align-items-center fixed-top">
+        <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.webp" alt=""> -->
-        <h1 class="sitename">DM Luxe Voyages</h1>
-      </a>
+            <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+                <h1 class="sitename">DM Luxe Voyages</h1>
+            </a>
 
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="destinations.html">Destinations</a></li>
-          <li><a href="tours.html" class="active">Tours & Cruises</a></li>
-          <li class="dropdown"><a href="#"><span>More Pages</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="testimonials">Testimonials</a></li>
-              <li><a href="faq.html">Frequently Asked Questions</a></li>
-              <li><a href="terms.html">Terms</a></li>
-              <li><a href="privacy.html">Privacy</a></li>
-              <li><a href="404.html">404</a></li>
-            </ul>
-          </li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="destinations.html">Destinations</a></li>
+                    <li><a href="tours.html" class="active">Tours & Cruises</a></li>
+                    <li class="dropdown">
+                        <a href="#"><span>More Pages</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                        <ul>
+                            <li><a href="faq.html">Frequently Asked Questions</a></li>
+                            <li><a href="terms.html">Terms</a></li>
+                            <li><a href="privacy.html">Privacy</a></li>
+                            <li><a href="404.html">404</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
 
-      <a class="btn-getstarted" href="booking.html">Book Now</a>
+            <a class="btn-getstarted" href="booking.html">Book Now</a>
 
-    </div>
-  </header>
+        </div>
+    </header>
 
-  <main class="main">
+    <main class="main">
 
-    <!-- Page Title -->
-    <div class="page-title dark-background" data-aos="fade" style="background-image: url(assets/img/travel/showcase-8.webp);">
-      <div class="container position-relative">
-        <h1>Tours & Cruises</h1>
-        <p>Experience the world in unparalleled luxury with our curated selection of tours and cruise packages.</p>
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">Tours & Cruises</li>
-          </ol>
-        </nav>
-      </div>
-    </div><!-- End Page Title -->
-
-    <!-- Travel Tours Section -->
-    <section id="travel-tours" class="travel-tours section">
-
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-            <div class="row">
-                <div class="col-lg-8 mx-auto text-center mb-5">
-                    <h2>Find Your Perfect Tour</h2>
-                    <p>Discover unforgettable travel experiences with our curated collection of tours and cruises. Explore by destination, travel style, or date to find the adventure that's perfect for you.</p>
-                </div>
+        <!-- Page Title -->
+        <div class="page-title dark-background" data-aos="fade" style="background-image: url(assets/img/travel/showcase-8.webp);">
+            <div class="container position-relative">
+                <h1>Tours & Cruises</h1>
+                <p>Experience the world in unparalleled luxury with our curated selection of tours and cruise packages.</p>
+                <nav class="breadcrumbs">
+                    <ol>
+                        <li><a href="index.html">Home</a></li>
+                        <li class="current">Tours & Cruises</li>
+                    </ol>
+                </nav>
             </div>
+        </div><!-- End Page Title -->
+        <!-- Travel Tours Section -->
+        <section id="travel-tours" class="travel-tours section">
 
-            <!-- Tour Filters -->
-            <div class="row mb-5" data-aos="fade-up" data-aos-delay="200">
-                <div class="col-12">
-                    <div class="tour-filters">
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="row">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <h2>Find Your Perfect Tour</h2>
+                        <p class="mb-5">Discover unforgettable travel experiences with our curated collection of tours and cruises. Explore by destination, travel style, or date to find the adventure that's perfect for you.</p>
+                    </div>
+                </div>
+
+                <!-- Filter Section -->
+                <div class="filter-section" data-aos="fade-up" data-aos-delay="200">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="filter-group">
+                                <h5>Destination</h5>
+                                <div class="filter-dropdown">
+                                    <button class="btn btn-light dropdown-toggle" type="button" id="destinationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span id="destinationText">All Destinations</span>
+                                        <i class="bi bi-chevron-down dropdown-icon"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="destinationDropdown">
+                                        <li><a class="dropdown-item active" href="#" data-filter="*">All Destinations</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter=".South.Africa">South Africa</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter=".Africa">Africa</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter=".Europe">Europe</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter=".Asia">Asia</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter=".North.America">North America</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter=".South.America">South America</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter=".Australia">Australia</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter=".Antarctica">Antarctica</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="filter-group">
+                                <h5>Travel Style</h5>
+                                <div class="filter-dropdown">
+                                    <button class="btn btn-light dropdown-toggle" type="button" id="styleDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span id="styleText">All Styles</span>
+                                        <i class="bi bi-chevron-down dropdown-icon"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="styleDropdown">
+                                        <li><a class="dropdown-item active" href="#" data-filter="*">All Styles</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter=".Holiday">Holiday</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter=".Business">Business</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter=".Luxury">Luxury</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter=".Budget">Budget</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter=".Adventure">Adventure</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter=".Family">Family</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter=".Honeymoon">Honeymoon</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter=".Solo">Solo</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter=".Group">Group</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="filter-group">
+                                <h5>Duration</h5>
+                                <div class="filter-dropdown">
+                                    <button class="btn btn-light dropdown-toggle" type="button" id="durationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span id="durationText">Any Duration</span>
+                                        <i class="bi bi-chevron-down dropdown-icon"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="durationDropdown">
+                                        <li><a class="dropdown-item active" href="#" data-filter="*">Any Duration</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter=".duration-1-2">1-2 Days</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter=".duration-3-4">3-4 Days</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter=".duration-5-7">5-7 Days</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter=".duration-8-14">8-14 Days</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter=".duration-14-plus">14+ Days</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="filter-group">
+                                <h5>Price Range</h5>
+                                <div class="filter-dropdown">
+                                    <button class="btn btn-light dropdown-toggle" type="button" id="priceDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span id="priceText">Any Price</span>
+                                        <i class="bi bi-chevron-down dropdown-icon"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="priceDropdown">
+                                        <li><a class="dropdown-item active" href="#" data-filter="*">Any Price</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter=".price-0-5000">R0-R5,000</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter=".price-5000-10000">R5,000-R10,000</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter=".price-10000-25000">R10,000-R25,000</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter=".price-25000-50000">R25,000-R50,000</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter=".price-50000-100000">R50,000-R100,000</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter=".price-100000-plus">R100,000+</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter-controls">
+                        <button id="reset-filters" class="btn btn-outline-secondary btn-sm">Reset Filters</button>
+                        <span id="results-count" class="text-muted">Showing all tours</span>
+                    </div>
+                </div>
+
+                <!-- Tours Grid - Using destination.html structure -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="no-results" id="no-results">
+                            <i class="bi bi-search display-1 text-muted"></i>
+                            <h4>No tours match your filters</h4>
+                            <p>Try adjusting your filters to see more results</p>
+                            <button id="reset-filters-btn" class="btn btn-primary mt-3">Reset All Filters</button>
+                        </div>
+
+                        <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="300">
+                            <!-- Tour Items -->
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item South.Africa Holiday Luxury duration-5-7 price-25000-50000">
+                                <a href="tour-details.html?id=cape-town" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/Capetown.jpeg" alt="Cape Town Explorer" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag luxury">Luxury</span>
+                                            <div class="tour-info">
+                                                <h4>Cape Town Explorer</h4>
+                                                <p>Discover Table Mountain, Robben Island, and Cape Point on a vibrant coastal escape.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 7 Days</span>
+                                                    <span class="tour-price">R45,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item South.Africa Adventure Family duration-8-14 price-25000-50000">
+                                <a href="tour-details.html?id=garden-route" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/tour-6.webp" alt="Garden Route Discovery" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag adventure">Adventure</span>
+                                            <div class="tour-info">
+                                                <h4>Garden Route Discovery</h4>
+                                                <p>Journey from Cape Town to Knysna and Tsitsikamma with beaches, forests, and wildlife.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 8 Days</span>
+                                                    <span class="tour-price">R48,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item South.Africa Adventure Solo duration-5-7 price-25000-50000">
+                                <a href="tour-details.html?id=drakensberg" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/drakensberg4.webp" alt="Drakensberg Highlands" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag adventure">Adventure</span>
+                                            <div class="tour-info">
+                                                <h4>Drakensberg Highlands</h4>
+                                                <p>Hike dramatic peaks, ancient rock art, and serene valleys in KwaZulu-Natal's mountains.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 7 Days</span>
+                                                    <span class="tour-price">R44,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item Africa Adventure Group duration-5-7 price-25000-50000">
+                                <a href="tour-details.html?id=victoria-falls" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/victoriafallshotel1.webp" alt="Victoria Falls Experience" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag adventure">Adventure</span>
+                                            <div class="tour-info">
+                                                <h4>Victoria Falls Experience</h4>
+                                                <p>Marvel at one of the Seven Natural Wonders of the World with thrilling river safaris.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 5 Days</span>
+                                                    <span class="tour-price">R39,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item Africa Adventure Group duration-5-7 price-50000-100000">
+                                <a href="tour-details.html?id=okavango-delta" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/okavongodelta.jpg" alt="Okavango Delta Safari" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag adventure">Adventure</span>
+                                            <div class="tour-info">
+                                                <h4>Okavango Delta Safari</h4>
+                                                <p>Glide by mokoro canoe and explore Botswana's pristine wetlands teeming with wildlife.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 6 Days</span>
+                                                    <span class="tour-price">R56,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item Africa Holiday Luxury Honeymoon duration-5-7 price-25000-50000">
+                                <a href="tour-details.html?id=zanzibar-escape" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/Zanzibar.jpeg" alt="Zanzibar Beach Escape" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag luxury">Luxury</span>
+                                            <div class="tour-info">
+                                                <h4>Zanzibar Beach Escape</h4>
+                                                <p>Relax on spice island beaches with turquoise waters, rich Swahili heritage and explore Spice Town.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 7 Days</span>
+                                                    <span class="tour-price">R41,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item Africa Adventure Group duration-5-7 price-25000-50000">
+                                <a href="tour-details.html?id=namibia-dunes" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/Namibdesert4.jpeg" alt="Namib Desert & Dunes" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag adventure">Adventure</span>
+                                            <div class="tour-info">
+                                                <h4>Namib Desert & Dunes</h4>
+                                                <p>Climb the red dunes of Sossusvlei and explore Namibia's surreal desert landscapes.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 6 Days</span>
+                                                    <span class="tour-price">R46,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item Africa Holiday Luxury Honeymoon duration-5-7 price-50000-100000">
+                                <a href="tour-details.html?id=seychelles-escape" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/seychelles9.jpeg" alt="Seychelles Island Escape" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag luxury">Luxury</span>
+                                            <div class="tour-info">
+                                                <h4>Seychelles Island Escape</h4>
+                                                <p>Enjoy a luxury island getaway with white sands, granite boulders,coral reefs and cultural experience.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 6 Days</span>
+                                                    <span class="tour-price">R54,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item Africa Adventure Group duration-8-14 price-50000-100000">
+                                <a href="tour-details.html?id=madagascar-wildlife" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/madagascar.jpg" alt="Madagascar Wildlife Discovery" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag adventure">Adventure</span>
+                                            <div class="tour-info">
+                                                <h4>Madagascar Wildlife Discovery</h4>
+                                                <p>Meet lemurs, baobabs, and rare species found nowhere else on Earth,and the amazing scenery.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 9 Days</span>
+                                                    <span class="tour-price">R58,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item Africa Adventure Group duration-8-14 price-25000-50000">
+                                <a href="tour-details.html?id=morocco-sahara" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/moroccodesert.jpg" alt="Morocco Sahara Journey" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag adventure">Adventure</span>
+                                            <div class="tour-info">
+                                                <h4>Morocco Sahara Journey</h4>
+                                                <p>Ride camels across golden dunes and sleep under the stars in Berber camps and witness the sunrise of the Sahara.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 8 Days</span>
+                                                    <span class="tour-price">R49,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item Africa Holiday Luxury duration-8-14 price-50000-100000">
+                                <a href="tour-details.html?id=egypt-nile" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/nilecruise.jpeg" alt="Egypt & Nile Cruise" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag luxury">Luxury</span>
+                                            <div class="tour-info">
+                                                <h4>Egypt & Nile Cruise</h4>
+                                                <p>Discover the Pyramids, Valley of the Kings, and glide along the timeless Nile River while witnessing the beauty of Egypt.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 9 Days</span>
+                                                    <span class="tour-price">R62,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item Africa Adventure Group duration-5-7 price-50000-100000">
+                                <a href="tour-details.html?id=kenya-safari" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/masai-mara-saruni-mara.jpg" alt="Kenya Safari Expedition" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag adventure">Adventure</span>
+                                            <div class="tour-info">
+                                                <h4>Kenya Safari Expedition</h4>
+                                                <p>Witness elephants, lions, and wildebeest across the legendary Maasai Mara plains. Explore nature's beauty and serenity'.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 7 Days</span>
+                                                    <span class="tour-price">R59,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item Africa Adventure Group duration-8-14 price-50000-100000">
+                                <a href="tour-details.html?id=tanzania-serengeti" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/Greatmigration_resized.jpeg" alt="Tanzania Serengeti Migration" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag adventure">Adventure</span>
+                                            <div class="tour-info">
+                                                <h4>Tanzania Serengeti Migration</h4>
+                                                <p>Follow the Great Migration with millions of wildebeest and other wildlife crossing rivers and plains. A rare occurence</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 8 Days</span>
+                                                    <span class="tour-price">R64,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item Europe Holiday Luxury duration-8-14 price-50000-100000">
+                                <a href="tour-details.html?id=italy-classic" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/italy2.jpg" alt="Italy Classic Journey" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag luxury">Luxury</span>
+                                            <div class="tour-info">
+                                                <h4>Italy Classic Journey</h4>
+                                                <p>Travel from Venice to Florence and Rome, uncovering Italy's finest art, cuisine and delve in the culture of Italy.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 10 Days</span>
+                                                    <span class="tour-price">R67,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item Europe Holiday Luxury duration-8-14 price-50000-100000">
+                                <a href="tour-details.html?id=france-paris-loire" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/paris1.jpeg" alt="France Paris & Loire Castles" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag luxury">Luxury</span>
+                                            <div class="tour-info">
+                                                <h4>France Paris & Loire Castles</h4>
+                                                <p>Admire the Eiffel Tower, Versailles, explore fairytale châteaux of the Loire Valley and the city of Paris.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 8 Days</span>
+                                                    <span class="tour-price">R61,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item Europe Holiday Luxury duration-8-14 price-50000-100000">
+                                <a href="tour-details.html?id=spain-andalusia" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/spain4.avif" alt="Spain Andalusia & Barcelona" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag luxury">Luxury</span>
+                                            <div class="tour-info">
+                                                <h4>Spain Andalusia & Barcelona</h4>
+                                                <p>Experience flamenco, Gaudí's masterpieces, and the charm of Seville and Granada.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 9 Days</span>
+                                                    <span class="tour-price">R63,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item Europe Holiday Luxury duration-5-7 price-50000-100000">
+                                <a href="tour-details.html?id=portugal-lisbon-porto" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/portugal2.jpeg" alt="Portugal Lisbon & Porto" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag luxury">Luxury</span>
+                                            <div class="tour-info">
+                                                <h4>Portugal Lisbon & Porto</h4>
+                                                <p>Enjoy Fado music, historic trams, and Douro Valley wines in Portugal's top cities.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 7 Days</span>
+                                                    <span class="tour-price">R55,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item Europe Holiday Luxury duration-8-14 price-50000-100000">
+                                <a href="tour-details.html?id=greece-classic" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/destination-3.webp" alt="Greece Classic Journey" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag luxury">Luxury</span>
+                                            <div class="tour-info">
+                                                <h4>Greece Classic Journey</h4>
+                                                <p>Visit Athens, Delphi, and Santorini with ancient ruins and stunning island views.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 8 Days</span>
+                                                    <span class="tour-price">R60,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item Europe Holiday Luxury duration-8-14 price-50000-100000">
+                                <a href="tour-details.html?id=turkey-highlights" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/turkey.jpeg" alt="Turkey Highlights" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag luxury">Luxury</span>
+                                            <div class="tour-info">
+                                                <h4>Turkey Highlights</h4>
+                                                <p>Uncover Istanbul's wonders, Cappadocia's caves, and the ruins of Ephesus in one of Europe's beautiful scenery.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 9 Days</span>
+                                                    <span class="tour-price">R62,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item Asia Holiday Adventure duration-8-14 price-50000-100000">
+                                <a href="tour-details.html?id=jordan-petra-deadsea" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/jordanpetra3.webp" alt="Jordan Petra & Dead Sea" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag adventure">Adventure</span>
+                                            <div class="tour-info">
+                                                <h4>Jordan Petra & Dead Sea</h4>
+                                                <p>Discover Petra's ancient treasures and float in the mineral-rich waters of the Dead Sea.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 8 Days</span>
+                                                    <span class="tour-price">R52,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item South.Africa Adventure Budget duration-1-2 price-5000-10000">
+                                <a href="tour-details.html?id=robben-island-tour" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/Robbenisland.jpeg" alt="Robben Island Historical Tour" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag cultural">Cultural</span>
+                                            <div class="tour-info">
+                                                <h4>Robben Island Historical Tour</h4>
+                                                <p>Visit the UNESCO World Heritage Site where Nelson Mandela was imprisoned for 18 years with expert guides.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 4 Hours</span>
+                                                    <span class="tour-price">R850</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item South.Africa Luxury Family duration-5-7 price-50000-100000">
+                                <a href="tour-details.html?id=family-safari-adventure" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/safariviews.webp" alt="Family Safari Adventure" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag family">Family</span>
+                                            <div class="tour-info">
+                                                <h4>Family Safari Adventure</h4>
+                                                <p>Perfect family-friendly safari experience with child-appropriate game drives and educational activities in Pilanesberg National Park.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 3 Days</span>
+                                                    <span class="tour-price">R32,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item South.Africa Adventure Group duration-3-4 price-10000-25000">
+                                <a href="tour-details.html?id=cango-caves-adventure" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/cangocaves.jpg" alt="Cango Caves Adventure Tour" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag adventure">Adventure</span>
+                                            <div class="tour-info">
+                                                <h4>Cango Caves Adventure Tour</h4>
+                                                <p>Explore the spectacular limestone formations of Cango Caves with adventure options for climbing and crawling through narrow passages.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 6 Hours</span>
+                                                    <span class="tour-price">R1,200</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item South.Africa Cultural Luxury duration-3-4 price-25000-50000">
+                                <a href="tour-details.html?id=kapama-luxury-safari" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/safarilodge.webp" alt="Kapama Luxury Safari Experience" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag luxury">Luxury</span>
+                                            <div class="tour-info">
+                                                <h4>Kapama Luxury Safari Experience</h4>
+                                                <p>Exclusive 4-day safari at Kapama Private Game Reserve with luxury accommodations, gourmet dining, and premium game viewing experiences.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 4 Days</span>
+                                                    <span class="tour-price">R45,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item South.Africa Adventure Solo duration-1-2 price-0-5000">
+                                <a href="tour-details.html?id=soweto-bicycle-tour" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/sowetobicycle1.jpg" alt="Soweto Bicycle Cultural Tour" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag cultural">Cultural</span>
+                                            <div class="tour-info">
+                                                <h4>Soweto Bicycle Cultural Tour</h4>
+                                                <p>Guided bicycle tour through Soweto's historic landmarks, including Vilakazi Street and Hector Pieterson Memorial.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 3 Hours</span>
+                                                    <span class="tour-price">R650</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item South.Africa Luxury Honeymoon duration-5-7 price-100000-plus">
+                                <a href="tour-details.html?id=sabi-sands-luxury" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/sabi1.jpg" alt="Sabi Sands Luxury Safari" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag luxury">Luxury</span>
+                                            <div class="tour-info">
+                                                <h4>Sabi Sands Luxury Safari</h4>
+                                                <p>Ultimate 5-star luxury safari experience in Sabi Sands Private Reserve with exceptional leopard viewing opportunities and premium accommodations.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 5 Days</span>
+                                                    <span class="tour-price">R125,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item South.Africa Adventure Group duration-1-2 price-5000-10000">
+                                <a href="tour-details.html?id=helicopter-tablemountain" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/capetownflight.jpg" alt="Table Mountain Helicopter Tour" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag adventure">Adventure</span>
+                                            <div class="tour-info">
+                                                <h4>Table Mountain Helicopter Tour</h4>
+                                                <p>Breathtaking 30-minute helicopter flight over Table Mountain, Cape Peninsula, and Atlantic coastline.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 1 Hour</span>
+                                                    <span class="tour-price">R4,500</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item South.Africa Cultural Budget duration-3-4 price-10000-25000">
+                                <a href="tour-details.html?id=bo-kaap-cultural" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/bo-kaap1.jpg" alt="Bo-Kaap Cultural Experience" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag cultural">Cultural</span>
+                                            <div class="tour-info">
+                                                <h4>Bo-Kaap Cultural Experience</h4>
+                                                <p>Immerse yourself in Cape Malay culture with cooking classes, historical tours, and vibrant photography in Cape Town's colorful Bo-Kaap neighborhood.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 2 Days</span>
+                                                    <span class="tour-price">R3,800</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item South.Africa Adventure Solo duration-5-7 price-25000-50000">
+                                <a href="tour-details.html?id=wild-coast-hiking" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/wildcoasthike.png" alt="Wild Coast Hiking Adventure" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag adventure">Adventure</span>
+                                            <div class="tour-info">
+                                                <h4>Wild Coast Hiking Adventure</h4>
+                                                <p>5-day guided hiking tour along South Africa's spectacular Wild Coast with rustic accommodations and cultural village visits.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 5 Days</span>
+                                                    <span class="tour-price">R18,500</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item South.Africa Luxury Honeymoon duration-8-14 price-100000-plus">
+                                <a href="tour-details.html?id=blue-train-experience" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/train.webp" alt="Blue Train Luxury Journey" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag luxury">Luxury</span>
+                                            <div class="tour-info">
+                                                <h4>Blue Train Luxury Journey</h4>
+                                                <p>World-renowned luxury train journey from Pretoria to Cape Town with butler service, gourmet dining, and panoramic views.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 3 Days</span>
+                                                    <span class="tour-price">R85,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item Asia Business Luxury duration-5-7 price-50000-100000">
+                                <a href="tour-details.html?id=dubai-desert-luxury" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/Burjkhalifa.jpeg" alt="Dubai Desert Luxury Escape" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag luxury">Luxury</span>
+                                            <div class="tour-info">
+                                                <h4>Dubai Desert Luxury Escape</h4>
+                                                <p>Indulge in desert safaris, futuristic skyscrapers, and luxury shopping in Dubai.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 7 Days</span>
+                                                    <span class="tour-price">R68,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item Asia Holiday Luxury duration-8-14 price-25000-50000">
+                                <a href="tour-details.html?id=bali-retreat" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/Bali.jpeg" alt="Bali Wellness & Culture Retreat" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag luxury">Luxury</span>
+                                            <div class="tour-info">
+                                                <h4>Bali Wellness & Culture Retreat</h4>
+                                                <p>Relax with yoga, beaches, and Balinese culture in a tropical island paradise.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 9 Days</span>
+                                                    <span class="tour-price">R49,500</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 tour-item isotope-item South.America Adventure Group duration-8-14 price-25000-50000">
+                                <a href="tour-details.html" class="tour-tile">
+                                    <div class="tile-image">
+                                        <img src="assets/img/travel/tour-25.webp" alt="Patagonia Wilderness Trek" class="img-fluid" loading="lazy">
+                                        <div class="overlay-content">
+                                            <span class="tour-tag adventure">Adventure</span>
+                                            <div class="tour-info">
+                                                <h4>Patagonia Wilderness Trek</h4>
+                                                <p>Challenge yourself in one of the world's last great wildernesses with glaciers and mountain peaks.</p>
+                                                <div class="tour-stats">
+                                                    <span class="duration"><i class="bi bi-clock"></i> 12 Days</span>
+                                                    <span class="tour-price">R40,769</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div><!-- End Tours Container -->
+                    </div>
+                </div>
+
+                <!-- Tour Categories -->
+                <div class="row mb-5" data-aos="fade-up" data-aos-delay="400">
+                    <div class="col-12">
+                        <h3 class="section-subtitle mb-4">Browse by Category</h3>
                         <div class="row">
-                            <div class="col-lg-3 col-md-6 mb-3">
-                                <select class="form-select">
-                                    <option value="">Select Destination</option>
-                                    <option value="paris">Paris</option>
-                                    <option value="bali">Bali</option>
-                                    <option value="tokyo">Tokyo</option>
-                                    <option value="rome">Rome</option>
-                                    <option value="thailand">Thailand</option>
-                                </select>
+                            <div class="col-lg-2 col-md-4 col-6 mb-3">
+                                <div class="category-card">
+                                    <div class="category-icon">
+                                        <i class="bi bi-compass"></i>
+                                    </div>
+                                    <h5>Adventure</h5>
+                                </div>
                             </div>
-                            <div class="col-lg-3 col-md-6 mb-3">
-                                <select class="form-select">
-                                    <option value="">Tour Type</option>
-                                    <option value="adventure">Adventure</option>
-                                    <option value="luxury">Luxury</option>
-                                    <option value="family">Family</option>
-                                    <option value="cultural">Cultural</option>
-                                    <option value="beach">Beach</option>
-                                </select>
+                            <div class="col-lg-2 col-md-4 col-6 mb-3">
+                                <div class="category-card">
+                                    <div class="category-icon">
+                                        <i class="bi bi-gem"></i>
+                                    </div>
+                                    <h5>Luxury</h5>
+                                </div>
                             </div>
-                            <div class="col-lg-3 col-md-6 mb-3">
-                                <select class="form-select">
-                                    <option value="">Duration</option>
-                                    <option value="1-3">1-3 Days</option>
-                                    <option value="4-7">4-7 Days</option>
-                                    <option value="8-14">8-14 Days</option>
-                                    <option value="15+">15+ Days</option>
-                                </select>
+                            <div class="col-lg-2 col-md-4 col-6 mb-3">
+                                <div class="category-card">
+                                    <div class="category-icon">
+                                        <i class="bi bi-people"></i>
+                                    </div>
+                                    <h5>Family</h5>
+                                </div>
                             </div>
-                            <div class="col-lg-3 col-md-6 mb-3">
-                                <select class="form-select">
-                                    <option value="">Price Range</option>
-                                    <option value="0-500">$0 - $500</option>
-                                    <option value="500-1000">$500 - $1,000</option>
-                                    <option value="1000-2000">$1,000 - $2,000</option>
-                                    <option value="2000+">$2,000+</option>
-                                </select>
+                            <div class="col-lg-2 col-md-4 col-6 mb-3">
+                                <div class="category-card">
+                                    <div class="category-icon">
+                                        <i class="bi bi-palette"></i>
+                                    </div>
+                                    <h5>Cultural</h5>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-4 col-6 mb-3">
+                                <div class="category-card">
+                                    <div class="category-icon">
+                                        <i class="bi bi-sun"></i>
+                                    </div>
+                                    <h5>Beach</h5>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-4 col-6 mb-3">
+                                <div class="category-card">
+                                    <div class="category-icon">
+                                        <i class="bi bi-building"></i>
+                                    </div>
+                                    <h5>City</h5>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- CTA Section -->
+                <div class="row" data-aos="fade-up" data-aos-delay="700">
+                    <div class="col-12">
+                        <div class="cta-section text-center">
+                            <h3>Not Sure What to Choose?</h3>
+                            <p>Our travel experts are here to help you find the perfect tour based on your preferences and budget.</p>
+                            <div class="cta-buttons">
+                                <a href="contact.html" class="btn btn-primary me-3">Contact Our Experts</a>
+                                <a href="#" class="btn btn-outline-primary">Take Our Travel Quiz</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
-            <!-- Featured Tours Slider -->
-            <div class="row mb-5" data-aos="fade-up" data-aos-delay="300">
-                <div class="col-12">
-                    <h3 class="section-subtitle mb-4">Featured Tours</h3>
-                    <div class="featured-tours-slider swiper init-swiper">
-                        <script type="application/json" class="swiper-config">
-                            {
-                              "loop": true,
-                              "speed": 600,
-                              "autoplay": {
-                                "delay": 5000
-                              },
-                              "slidesPerView": 1,
-                              "spaceBetween": 30,
-                              "pagination": {
-                                "el": ".swiper-pagination",
-                                "type": "bullets",
-                                "clickable": true
-                              },
-                              "breakpoints": {
-                                "768": {
-                                  "slidesPerView": 2
-                                },
-                                "1200": {
-                                  "slidesPerView": 3
-                                }
-                              }
+        </section><!-- /Travel Tours Section -->
+
+    </main>
+
+    <footer id="footer" class="footer position-relative dark-background">
+
+        <div class="footer-newsletter">
+            <div class="container">
+                <div class="row justify-content-center text-center">
+                    <div class="col-lg-6">
+                        <h4>Luxury Travel Insights</h4>
+                        <p>Subscribe for exclusive access to Tour and flight specials, destination guides, and VIP travel tips.</p>
+                        <!-- Changed the form action to your Google Script URL and added a name field -->
+                        <form action="https://script.google.com/macros/s/AKfycby4YUS3RIbq1X-3syf8WsmBQaSftrfx3KgD_bS9d7DBNi6jnoUlajDMGAUDT4ceE4bjvg/exec" method="POST" class="php-email-form" id="newsletter-form">
+                            <div class="newsletter-form">
+                                <input type="email" name="email" placeholder="Enter your email" required>
+                                <input type="submit" value="Subscribe">
+                            </div>
+                            <div class="loading">Loading</div>
+                            <div class="error-message"></div>
+                            <div class="sent-message">Thank you for joining our luxury travel community! A confirmation has been sent to our team.</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container footer-top">
+            <div class="row gy-4">
+                <div class="col-lg-4 col-md-6 footer-about">
+                    <a href="index.html" class="d-flex align-items-center">
+                        <span class="sitename">DM Luxe Voyages</span>
+                    </a>
+                    <div class="footer-contact pt-3">
+                        <p>Pretoria, Gauteng 1807</p>
+                        <p class="mt-3"><strong>Phone:</strong> <span>+27 72 369 9937</span></p>
+                        <p><strong>Email:</strong> <span>info@dmluxevoyages.com</span></p>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><i class="bi bi-chevron-right"></i> <a href="index.html">Home</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="about.html">About Us</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="destinations.html">Destinations</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="tours.html">Tours & Cruises</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="booking.html">Book Now</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-md-3 footer-links">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><i class="bi bi-chevron-right"></i> <a href="booking.html">Flight Reservations</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="booking.html">Visa Assistance</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="booking.html">Cruise Bookings</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="booking.html">Group Travel</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="booking.html">Hotel & Transportation Reservations</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-12">
+                    <h4>Connect With Us</h4>
+                    <p>Indulge in the extraordinary. Experience our world of curated luxury.</p>
+                    <div class="social-links d-flex">
+                        <a href=""><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.instagram.com/dmluxevoyages/"><i class="bi bi-instagram"></i></a>
+                        <a href=""><i class="bi bi-linkedin"></i></a>
+                        <a href=""><i class="bi bi-pinterest"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container copyright text-center mt-4">
+            <p>© <span>Copyright</span> <strong class="px-1 sitename">DM Luxe Voyages</strong> <span>All Rights Reserved</span></p>
+        </div>
+
+    </footer>
+
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+    <script>
+        // Wait for the document to be fully loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            // Newsletter form submission
+            const form = document.getElementById('newsletter-form');
+            if (form) {
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    // Show the loading indicator
+                    form.querySelector('.loading').style.display = 'block';
+                    form.querySelector('.error-message').style.display = 'none';
+                    form.querySelector('.sent-message').style.display = 'none';
+
+                    // Use the Fetch API to submit the form data asynchronously
+                    fetch(form.action, {
+                        method: 'POST',
+                        body: new URLSearchParams(new FormData(form)) // Encode the form data
+                    })
+                        .then(response => response.json()) // Parse the JSON response
+                        .then(data => {
+                            // Hide the loading indicator
+                            form.querySelector('.loading').style.display = 'none';
+
+                            if (data.result === 'success') {
+                                // If successful, show the success message and reset the form
+                                form.querySelector('.sent-message').style.display = 'block';
+                                form.reset(); // Clear the input fields
+                            } else {
+                                // If not successful, throw an error to be caught below
+                                throw new Error(data.message || 'Form submission failed');
                             }
-                        </script>
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="featured-tour-card">
-                                    <div class="tour-image">
-                                        <img src="assets/img/travel/tour-15.webp" alt="Bali Adventure" class="img-fluid">
-                                        <div class="tour-badge">Best Seller</div>
-                                    </div>
-                                    <div class="tour-content">
-                                        <h4>Bali Adventure Escape</h4>
-                                        <p>Discover the mystical beauty of Bali with temple visits, volcano hiking, and pristine beaches.</p>
-                                        <div class="tour-meta">
-                                            <span class="duration"><i class="bi bi-clock"></i> 7 Days</span>
-                                            <span class="price">From R17 599.00</span>
-                                        </div>
-                                        <a href="tour-details.html" class="btn btn-primary">View Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="featured-tour-card">
-                                    <div class="tour-image">
-                                        <img src="assets/img/travel/tour-22.webp" alt="Paris Romance" class="img-fluid">
-                                        <div class="tour-badge">Luxury</div>
-                                    </div>
-                                    <div class="tour-content">
-                                        <h4>Zanzibar</h4>
-                                        <p>Embrace the rhythm of the spice isle with premium accommodations and exclusive dining.</p>
-                                        <div class="tour-meta">
-                                            <span class="duration"><i class="bi bi-clock"></i> 7 Days</span>
-                                            <span class="price">From R19 550.00</span>
-                                        </div>
-                                        <a href="tour-details.html" class="btn btn-primary">View Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="featured-tour-card">
-                                    <div class="tour-image">
-                                        <img src="assets/img/travel/tour-8.webp" alt="Tokyo Culture" class="img-fluid">
-                                        <div class="tour-badge">New</div>
-                                    </div>
-                                    <div class="tour-content">
-                                        <h4>Tokyo Cultural Experience</h4>
-                                        <p>Immerse yourself in Japanese culture, from traditional tea ceremonies to modern city life.</p>
-                                        <div class="tour-meta">
-                                            <span class="duration"><i class="bi bi-clock"></i> 10 Days</span>
-                                            <span class="price">From $1599</span>
-                                        </div>
-                                        <a href="tour-details.html" class="btn btn-primary">View Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="featured-tour-card">
-                                    <div class="tour-image">
-                                        <img src="assets/img/travel/tour-14.webp" alt="Norwegian Fjords" class="img-fluid">
-                                        <div class="tour-badge">Popular</div>
-                                    </div>
-                                    <div class="tour-content">
-                                        <h4>Norwegian Fjords Cruise</h4>
-                                        <p>Sail through dramatic fjords and witness the stunning landscapes of Norway's coastline.</p>
-                                        <div class="tour-meta">
-                                            <span class="duration"><i class="bi bi-clock"></i> 9 Days</span>
-                                            <span class="price">From $1899</span>
-                                        </div>
-                                        <a href="tour-details.html" class="btn btn-primary">View Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="featured-tour-card">
-                                    <div class="tour-image">
-                                        <img src="assets/img/travel/tour-7.webp" alt="Egyptian Adventure" class="img-fluid">
-                                        <div class="tour-badge">Cultural</div>
-                                    </div>
-                                    <div class="tour-content">
-                                        <h4>Ancient Egypt Explorer</h4>
-                                        <p>Journey through time visiting pyramids, temples, and sailing the legendary Nile River.</p>
-                                        <div class="tour-meta">
-                                            <span class="duration"><i class="bi bi-clock"></i> 8 Days</span>
-                                            <span class="price">From $1149</span>
-                                        </div>
-                                        <a href="tour-details.html" class="btn btn-primary">View Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="featured-tour-card">
-                                    <div class="tour-image">
-                                        <img src="assets/img/travel/tour-19.webp" alt="Costa Rica Adventure" class="img-fluid">
-                                        <div class="tour-badge">Adventure</div>
-                                    </div>
-                                    <div class="tour-content">
-                                        <h4>Costa Rica Eco Adventure</h4>
-                                        <p>Experience rainforest canopy tours, wildlife viewing, and pristine beaches in this eco paradise.</p>
-                                        <div class="tour-meta">
-                                            <span class="duration"><i class="bi bi-clock"></i> 6 Days</span>
-                                            <span class="price">From $749</span>
-                                        </div>
-                                        <a href="tour-details.html" class="btn btn-primary">View Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="featured-tour-card">
-                                    <div class="tour-image">
-                                        <img src="assets/img/travel/tour-2.webp" alt="Greek Islands" class="img-fluid">
-                                        <div class="tour-badge">Summer Special</div>
-                                    </div>
-                                    <div class="tour-content">
-                                        <h4>Greek Islands Hopping</h4>
-                                        <p>Explore the stunning Greek islands, from Santorini's sunsets to Mykonos' vibrant nightlife.</p>
-                                        <div class="tour-meta">
-                                            <span class="duration"><i class="bi bi-clock"></i> 11 Days</span>
-                                            <span class="price">From $1399</span>
-                                        </div>
-                                        <a href="tour-details.html" class="btn btn-primary">View Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="featured-tour-card">
-                                    <div class="tour-image">
-                                        <img src="assets/img/travel/tour-25.webp" alt="Patagonia Trek" class="img-fluid">
-                                        <div class="tour-badge">Extreme</div>
-                                    </div>
-                                    <div class="tour-content">
-                                        <h4>Patagonia Wilderness Trek</h4>
-                                        <p>Challenge yourself in one of the world's last great wildernesses with glaciers and mountain peaks.</p>
-                                        <div class="tour-meta">
-                                            <span class="duration"><i class="bi bi-clock"></i> 12 Days</span>
-                                            <span class="price">From $2299</span>
-                                        </div>
-                                        <a href="tour-details.html" class="btn btn-primary">View Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-pagination"></div>
-                    </div>
-                </div>
-            </div>
+                        })
+                        .catch(error => {
+                            // Hide loading indicator and show error message
+                            form.querySelector('.loading').style.display = 'none';
+                            form.querySelector('.error-message').innerHTML = error.message;
+                            form.querySelector('.error-message').style.display = 'block';
+                        });
+                });
+            }
 
-            <!-- Tour Categories -->
-            <div class="row mb-5" data-aos="fade-up" data-aos-delay="400">
-                <div class="col-12">
-                    <h3 class="section-subtitle mb-4">Browse by Category</h3>
-                    <div class="row">
-                        <div class="col-lg-2 col-md-4 col-6 mb-3">
-                            <div class="category-card">
-                                <div class="category-icon">
-                                    <i class="bi bi-compass"></i>
-                                </div>
-                                <h5>Adventure</h5>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-4 col-6 mb-3">
-                            <div class="category-card">
-                                <div class="category-icon">
-                                    <i class="bi bi-gem"></i>
-                                </div>
-                                <h5>Luxury</h5>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-4 col-6 mb-3">
-                            <div class="category-card">
-                                <div class="category-icon">
-                                    <i class="bi bi-people"></i>
-                                </div>
-                                <h5>Family</h5>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-4 col-6 mb-3">
-                            <div class="category-card">
-                                <div class="category-icon">
-                                    <i class="bi bi-palette"></i>
-                                </div>
-                                <h5>Cultural</h5>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-4 col-6 mb-3">
-                            <div class="category-card">
-                                <div class="category-icon">
-                                    <i class="bi bi-sun"></i>
-                                </div>
-                                <h5>Beach</h5>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-4 col-6 mb-3">
-                            <div class="category-card">
-                                <div class="category-icon">
-                                    <i class="bi bi-building"></i>
-                                </div>
-                                <h5>City</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            // Filter functionality
+            let activeFilters = {
+                destination: '*',
+                style: '*',
+                duration: '*',
+                price: '*'
+            };
 
-            <!-- Featured Tours Slider -->
-            <div class="row mb-5" data-aos="fade-up" data-aos-delay="300">
-                <div class="col-12">
-                    <h3 class="section-subtitle mb-4">Featured Tours</h3>
-                    <div class="featured-tours-slider swiper init-swiper">
-                        <script type="application/json" class="swiper-config">
-                            {
-                              "loop": true,
-                              "speed": 600,
-                              "autoplay": {
-                                "delay": 5000
-                              },
-                              "slidesPerView": 1,
-                              "spaceBetween": 30,
-                              "pagination": {
-                                "el": ".swiper-pagination",
-                                "type": "bullets",
-                                "clickable": true
-                              },
-                              "breakpoints": {
-                                "768": {
-                                  "slidesPerView": 2
-                                },
-                                "1200": {
-                                  "slidesPerView": 3
-                                }
-                              }
-                            }
-                        </script>
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="featured-tour-card">
-                                    <div class="tour-image">
-                                        <img src="assets/img/travel/tour-15.webp" alt="Bali Adventure" class="img-fluid">
-                                        <div class="tour-badge">Best Seller</div>
-                                    </div>
-                                    <div class="tour-content">
-                                        <h4>Bali Adventure Escape</h4>
-                                        <p>Discover the mystical beauty of Bali with temple visits, volcano hiking, and pristine beaches.</p>
-                                        <div class="tour-meta">
-                                            <span class="duration"><i class="bi bi-clock"></i> 7 Days</span>
-                                            <span class="price">From $899</span>
-                                        </div>
-                                        <a href="tour-details.html" class="btn btn-primary">View Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="featured-tour-card">
-                                    <div class="tour-image">
-                                        <img src="assets/img/travel/tour-22.webp" alt="Paris Romance" class="img-fluid">
-                                        <div class="tour-badge">Luxury</div>
-                                    </div>
-                                    <div class="tour-content">
-                                        <h4>Romantic Paris Getaway</h4>
-                                        <p>Experience the city of love with premium accommodations and exclusive dining.</p>
-                                        <div class="tour-meta">
-                                            <span class="duration"><i class="bi bi-clock"></i> 5 Days</span>
-                                            <span class="price">From $1299</span>
-                                        </div>
-                                        <a href="tour-details.html" class="btn btn-primary">View Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="featured-tour-card">
-                                    <div class="tour-image">
-                                        <img src="assets/img/travel/tour-8.webp" alt="Tokyo Culture" class="img-fluid">
-                                        <div class="tour-badge">New</div>
-                                    </div>
-                                    <div class="tour-content">
-                                        <h4>Tokyo Cultural Experience</h4>
-                                        <p>Immerse yourself in Japanese culture, from traditional tea ceremonies to modern city life.</p>
-                                        <div class="tour-meta">
-                                            <span class="duration"><i class="bi bi-clock"></i> 10 Days</span>
-                                            <span class="price">From $1599</span>
-                                        </div>
-                                        <a href="tour-details.html" class="btn btn-primary">View Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="featured-tour-card">
-                                    <div class="tour-image">
-                                        <img src="assets/img/travel/tour-14.webp" alt="Norwegian Fjords" class="img-fluid">
-                                        <div class="tour-badge">Popular</div>
-                                    </div>
-                                    <div class="tour-content">
-                                        <h4>Norwegian Fjords Cruise</h4>
-                                        <p>Sail through dramatic fjords and witness the stunning landscapes of Norway's coastline.</p>
-                                        <div class="tour-meta">
-                                            <span class="duration"><i class="bi bi-clock"></i> 9 Days</span>
-                                            <span class="price">From $1899</span>
-                                        </div>
-                                        <a href="tour-details.html" class="btn btn-primary">View Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="featured-tour-card">
-                                    <div class="tour-image">
-                                        <img src="assets/img/travel/tour-7.webp" alt="Egyptian Adventure" class="img-fluid">
-                                        <div class="tour-badge">Cultural</div>
-                                    </div>
-                                    <div class="tour-content">
-                                        <h4>Ancient Egypt Explorer</h4>
-                                        <p>Journey through time visiting pyramids, temples, and sailing the legendary Nile River.</p>
-                                        <div class="tour-meta">
-                                            <span class="duration"><i class="bi bi-clock"></i> 8 Days</span>
-                                            <span class="price">From $1149</span>
-                                        </div>
-                                        <a href="tour-details.html" class="btn btn-primary">View Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="featured-tour-card">
-                                    <div class="tour-image">
-                                        <img src="assets/img/travel/tour-19.webp" alt="Costa Rica Adventure" class="img-fluid">
-                                        <div class="tour-badge">Adventure</div>
-                                    </div>
-                                    <div class="tour-content">
-                                        <h4>Costa Rica Eco Adventure</h4>
-                                        <p>Experience rainforest canopy tours, wildlife viewing, and pristine beaches in this eco paradise.</p>
-                                        <div class="tour-meta">
-                                            <span class="duration"><i class="bi bi-clock"></i> 6 Days</span>
-                                            <span class="price">From $749</span>
-                                        </div>
-                                        <a href="tour-details.html" class="btn btn-primary">View Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="featured-tour-card">
-                                    <div class="tour-image">
-                                        <img src="assets/img/travel/tour-2.webp" alt="Greek Islands" class="img-fluid">
-                                        <div class="tour-badge">Summer Special</div>
-                                    </div>
-                                    <div class="tour-content">
-                                        <h4>Greek Islands Hopping</h4>
-                                        <p>Explore the stunning Greek islands, from Santorini's sunsets to Mykonos' vibrant nightlife.</p>
-                                        <div class="tour-meta">
-                                            <span class="duration"><i class="bi bi-clock"></i> 11 Days</span>
-                                            <span class="price">From $1399</span>
-                                        </div>
-                                        <a href="tour-details.html" class="btn btn-primary">View Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="featured-tour-card">
-                                    <div class="tour-image">
-                                        <img src="assets/img/travel/tour-25.webp" alt="Patagonia Trek" class="img-fluid">
-                                        <div class="tour-badge">Extreme</div>
-                                    </div>
-                                    <div class="tour-content">
-                                        <h4>Patagonia Wilderness Trek</h4>
-                                        <p>Challenge yourself in one of the world's last great wildernesses with glaciers and mountain peaks.</p>
-                                        <div class="tour-meta">
-                                            <span class="duration"><i class="bi bi-clock"></i> 12 Days</span>
-                                            <span class="price">From $2299</span>
-                                        </div>
-                                        <a href="tour-details.html" class="btn btn-primary">View Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-pagination"></div>
-                    </div>
-                </div>
-            </div>
+            // Dropdown filter functionality
+            document.querySelectorAll('.filter-dropdown .dropdown-item').forEach(item => {
+                item.addEventListener('click', function (e) {
+                    e.preventDefault();
 
-            <!-- Tour Categories -->
-            <div class="row mb-5" data-aos="fade-up" data-aos-delay="400">
-                <div class="col-12">
-                    <h3 class="section-subtitle mb-4">Browse by Category</h3>
-                    <div class="row">
-                        <div class="col-lg-2 col-md-4 col-6 mb-3">
-                            <div class="category-card">
-                                <div class="category-icon">
-                                    <i class="bi bi-compass"></i>
-                                </div>
-                                <h5>Adventure</h5>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-4 col-6 mb-3">
-                            <div class="category-card">
-                                <div class="category-icon">
-                                    <i class="bi bi-gem"></i>
-                                </div>
-                                <h5>Luxury</h5>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-4 col-6 mb-3">
-                            <div class="category-card">
-                                <div class="category-icon">
-                                    <i class="bi bi-people"></i>
-                                </div>
-                                <h5>Family</h5>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-4 col-6 mb-3">
-                            <div class="category-card">
-                                <div class="category-icon">
-                                    <i class="bi bi-palette"></i>
-                                </div>
-                                <h5>Cultural</h5>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-4 col-6 mb-3">
-                            <div class="category-card">
-                                <div class="category-icon">
-                                    <i class="bi bi-sun"></i>
-                                </div>
-                                <h5>Beach</h5>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-4 col-6 mb-3">
-                            <div class="category-card">
-                                <div class="category-icon">
-                                    <i class="bi bi-building"></i>
-                                </div>
-                                <h5>City</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    const dropdown = this.closest('.filter-dropdown');
+                    const filterType = dropdown.querySelector('button').id.replace('Dropdown', '').toLowerCase();
+                    const filterValue = this.getAttribute('data-filter');
+                    const filterText = this.textContent;
 
-            <!-- Special Offers -->
-            <div class="row mb-5" data-aos="fade-up" data-aos-delay="500">
-                <div class="col-12">
-                    <div class="special-offers">
-                        <h3 class="section-subtitle mb-4">Last-Minute Deals</h3>
-                        <div class="row">
-                            <div class="col-lg-6 mb-4">
-                                <div class="offer-banner">
-                                    <div class="offer-content">
-                                        <div class="discount-badge">30% OFF</div>
-                                        <h4>Mediterranean Cruise</h4>
-                                        <p>Explore Italy, Greece, and Spain with luxury accommodations and gourmet dining.</p>
-                                        <span class="urgency">Only 3 seats left!</span>
-                                        <a href="booking.html" class="btn btn-accent">Book Now</a>
-                                    </div>
-                                    <div class="offer-image">
-                                        <img src="assets/img/travel/misc-12.webp" alt="Cruise" class="img-fluid">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 mb-4">
-                                <div class="offer-banner">
-                                    <div class="offer-content">
-                                        <div class="discount-badge">25% OFF</div>
-                                        <h4>African Safari</h4>
-                                        <p>Witness the great migration and encounter magnificent wildlife in their natural habitat.</p>
-                                        <span class="urgency">Limited time offer!</span>
-                                        <a href="booking.html" class="btn btn-accent">Book Now</a>
-                                    </div>
-                                    <div class="offer-image">
-                                        <img src="assets/img/travel/misc-8.webp" alt="Safari" class="img-fluid">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    // Update button text
+                    dropdown.querySelector('span').textContent = filterText;
 
-            <!-- Tour Grid -->
-            <div class="row" data-aos="fade-up" data-aos-delay="600">
-                <div class="col-12">
-                    <h3 class="section-subtitle mb-4">All Tours</h3>
-                    <div class="row">
-                        <div class="col-lg-4 col-md-6 mb-4">
-                            <div class="tour-card">
-                                <div class="tour-image">
-                                    <img src="assets/img/travel/tour-3.webp" alt="Swiss Alps" class="img-fluid">
-                                    <div class="tour-price">$749</div>
-                                </div>
-                                <div class="tour-content">
-                                    <h4>Swiss Alps Adventure</h4>
-                                    <p>Experience breathtaking mountain views and charming alpine villages in the heart of Switzerland.</p>
-                                    <div class="tour-details">
-                                        <span><i class="bi bi-clock"></i> 6 Days</span>
-                                        <span><i class="bi bi-star-fill"></i> 4.8 (124 reviews)</span>
-                                    </div>
-                                    <a href="#" class="btn btn-outline-primary">View Tour</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 mb-4">
-                            <div class="tour-card">
-                                <div class="tour-image">
-                                    <img src="assets/img/travel/tour-11.webp" alt="Iceland" class="img-fluid">
-                                    <div class="tour-price">$1199</div>
-                                </div>
-                                <div class="tour-content">
-                                    <h4>Iceland Northern Lights</h4>
-                                    <p>Chase the aurora borealis and explore ice caves, geysers, and dramatic waterfalls.</p>
-                                    <div class="tour-details">
-                                        <span><i class="bi bi-clock"></i> 8 Days</span>
-                                        <span><i class="bi bi-star-fill"></i> 4.9 (89 reviews)</span>
-                                    </div>
-                                    <a href="#" class="btn btn-outline-primary">View Tour</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 mb-4">
-                            <div class="tour-card">
-                                <div class="tour-image">
-                                    <img src="assets/img/travel/tour-18.webp" alt="Morocco" class="img-fluid">
-                                    <div class="tour-price">$899</div>
-                                </div>
-                                <div class="tour-content">
-                                    <h4>Magical Morocco Tour</h4>
-                                    <p>Discover ancient medinas, sahara desert, and vibrant markets in this exotic destination.</p>
-                                    <div class="tour-details">
-                                        <span><i class="bi bi-clock"></i> 9 Days</span>
-                                        <span><i class="bi bi-star-fill"></i> 4.7 (156 reviews)</span>
-                                    </div>
-                                    <a href="#" class="btn btn-outline-primary">View Tour</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 mb-4">
-                            <div class="tour-card">
-                                <div class="tour-image">
-                                    <img src="assets/img/travel/tour-5.webp" alt="Peru" class="img-fluid">
-                                    <div class="tour-price">$1399</div>
-                                </div>
-                                <div class="tour-content">
-                                    <h4>Peru Machu Picchu Trek</h4>
-                                    <p>Hike the legendary Inca Trail and discover the lost city of Machu Picchu.</p>
-                                    <div class="tour-details">
-                                        <span><i class="bi bi-clock"></i> 12 Days</span>
-                                        <span><i class="bi bi-star-fill"></i> 4.9 (203 reviews)</span>
-                                    </div>
-                                    <a href="#" class="btn btn-outline-primary">View Tour</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 mb-4">
-                            <div class="tour-card">
-                                <div class="tour-image">
-                                    <img src="assets/img/travel/tour-26.webp" alt="Vietnam" class="img-fluid">
-                                    <div class="tour-price">$679</div>
-                                </div>
-                                <div class="tour-content">
-                                    <h4>Vietnam Discovery</h4>
-                                    <p>From bustling Hanoi to serene Ha Long Bay, explore Vietnam's diverse landscapes.</p>
-                                    <div class="tour-details">
-                                        <span><i class="bi bi-clock"></i> 10 Days</span>
-                                        <span><i class="bi bi-star-fill"></i> 4.6 (178 reviews)</span>
-                                    </div>
-                                    <a href="#" class="btn btn-outline-primary">View Tour</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 mb-4">
-                            <div class="tour-card">
-                                <div class="tour-image">
-                                    <img src="assets/img/travel/tour-13.webp" alt="Australia" class="img-fluid">
-                                    <div class="tour-price">$1799</div>
-                                </div>
-                                <div class="tour-content">
-                                    <h4>Australia Highlights</h4>
-                                    <p>Explore Sydney, Melbourne, and the Great Barrier Reef in this comprehensive tour.</p>
-                                    <div class="tour-details">
-                                        <span><i class="bi bi-clock"></i> 14 Days</span>
-                                        <span><i class="bi bi-star-fill"></i> 4.8 (95 reviews)</span>
-                                    </div>
-                                    <a href="#" class="btn btn-outline-primary">View Tour</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    // Update active class
+                    dropdown.querySelectorAll('.dropdown-item').forEach(li => {
+                        li.classList.remove('active');
+                    });
+                    this.classList.add('active');
 
-            <!-- CTA Section -->
-            <div class="row" data-aos="fade-up" data-aos-delay="700">
-                <div class="col-12">
-                    <div class="cta-section text-center">
-                        <h3>Not Sure What to Choose?</h3>
-                        <p>Our travel experts are here to help you find the perfect tour based on your preferences and budget.</p>
-                        <div class="cta-buttons">
-                            <a href="#" class="btn btn-primary me-3">Contact Our Experts</a>
-                            <a href="#" class="btn btn-outline-primary">Take Our Travel Quiz</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    // Update active filters
+                    activeFilters[filterType] = filterValue;
 
-        </div>
+                    // Apply filters
+                    applyFilters();
+                });
+            });
 
-    </section><!-- /Travel Tours Section -->
+            // Reset filters
+            document.getElementById('reset-filters').addEventListener('click', resetFilters);
+            document.getElementById('reset-filters-btn').addEventListener('click', resetFilters);
 
-  </main>
+            function resetFilters() {
+                // Reset all dropdowns
+                document.querySelectorAll('.filter-dropdown').forEach(dropdown => {
+                    const filterType = dropdown.querySelector('button').id.replace('Dropdown', '').toLowerCase();
+                    const allItem = dropdown.querySelector('.dropdown-item[data-filter="*"]');
 
-  <footer id="footer" class="footer position-relative dark-background">
+                    if (allItem) {
+                        dropdown.querySelector('span').textContent = allItem.textContent;
+                        dropdown.querySelectorAll('.dropdown-item').forEach(li => {
+                            li.classList.remove('active');
+                        });
+                        allItem.classList.add('active');
+                    }
+                });
 
-    <div class="footer-newsletter">
-      <div class="container">
-        <div class="row justify-content-center text-center">
-          <div class="col-lg-6">
-            <h4>Join Our Newsletter</h4>
-            <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-            <form action="forms/newsletter.php" method="post" class="php-email-form">
-              <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+                // Reset active filters
+                activeFilters = {
+                    destination: '*',
+                    style: '*',
+                    duration: '*',
+                    price: '*'
+                };
 
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-4 col-md-6 footer-about">
-          <a href="index.html" class="d-flex align-items-center">
-            <span class="sitename">Tour</span>
-          </a>
-          <div class="footer-contact pt-3">
-            <p>A108 Adam Street</p>
-            <p>New York, NY 535022</p>
-            <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-            <p><strong>Email:</strong> <span>info@example.com</span></p>
-          </div>
-        </div>
+                // Apply filters (which will show all tours)
+                applyFilters();
+            }
 
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
-          </ul>
-        </div>
+            function applyFilters() {
+                const tours = document.querySelectorAll('.tour-item');
+                let visibleCount = 0;
 
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Product Management</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Marketing</a></li>
-          </ul>
-        </div>
+                tours.forEach(tour => {
+                    // Check if tour matches all active filters
+                    const matchesDestination = activeFilters.destination === '*' || tour.classList.contains(activeFilters.destination.replace('.', ''));
+                    const matchesStyle = activeFilters.style === '*' || tour.classList.contains(activeFilters.style.replace('.', ''));
+                    const matchesDuration = activeFilters.duration === '*' || tour.classList.contains(activeFilters.duration.replace('.', ''));
+                    const matchesPrice = activeFilters.price === '*' || tour.classList.contains(activeFilters.price.replace('.', ''));
 
-        <div class="col-lg-4 col-md-12">
-          <h4>Follow Us</h4>
-          <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
-          <div class="social-links d-flex">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
-          </div>
-        </div>
+                    if (matchesDestination && matchesStyle && matchesDuration && matchesPrice) {
+                        tour.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        tour.style.display = 'none';
+                    }
+                });
 
-      </div>
-    </div>
+                // Update results count
+                document.getElementById('results-count').textContent = `Showing ${visibleCount} of ${tours.length} tours`;
 
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">MyWebsite</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
+                // Show/hide no results message
+                const noResults = document.getElementById('no-results');
+                if (visibleCount === 0) {
+                    noResults.classList.add('show');
+                } else {
+                    noResults.classList.remove('show');
+                }
+            }
 
-  </footer>
-
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Preloader -->
-  <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
+            // Initialize filters
+            applyFilters();
+        });
+    </script>
 
 </body>
 

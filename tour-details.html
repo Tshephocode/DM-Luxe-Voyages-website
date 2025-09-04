@@ -2,584 +2,3196 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Tour Details - Tour Bootstrap Template</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Tour & Cruise Details - DM Luxe Voyages</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Tour
-  * Template URL: https://bootstrapmade.com/tour-bootstrap-travel-website-template/
-  * Updated: Jul 01 2025 with Bootstrap v5.3.7
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    <style>
+        /* New Gallery Styles - Slider with Thumbnails */
+        .gallery-slider-container {
+            position: relative;
+            margin: 30px 0;
+        }
+
+        .main-slider {
+            position: relative;
+            height: 450px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            background-size: cover;
+            background-position: center;
+        }
+
+            .slide.active {
+                opacity: 1;
+            }
+
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .thumbnails-container {
+            display: flex;
+            gap: 10px;
+            padding: 10px 0;
+            overflow-x: auto;
+            justify-content: center;
+        }
+
+        .thumbnail {
+            min-width: 80px;
+            height: 60px;
+            border-radius: 5px;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+            .thumbnail:hover {
+                opacity: 0.8;
+                transform: translateY(-2px);
+            }
+
+            .thumbnail.active {
+                opacity: 1;
+                border: 3px solid #3b71fe;
+                transform: translateY(-3px);
+                box-shadow: 0 5px 10px rgba(59, 113, 254, 0.3);
+            }
+
+        .slider-navigation {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .slider-btn {
+            background: #3b71fe;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(59, 113, 254, 0.3);
+        }
+
+            .slider-btn:hover {
+                background: #2d62e6;
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(59, 113, 254, 0.4);
+            }
+
+        .auto-play-control {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .auto-play-btn {
+            background: #f8f9fa;
+            color: #333;
+            border: 1px solid #ddd;
+            padding: 8px 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+            .auto-play-btn:hover {
+                background: #e9ecef;
+            }
+
+        /* Responsive adjustments for the new gallery */
+        @media (max-width: 768px) {
+            .main-slider {
+                height: 350px;
+            }
+
+            .thumbnail {
+                min-width: 60px;
+                height: 45px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-slider {
+                height: 250px;
+            }
+
+            .thumbnail {
+                min-width: 50px;
+                height: 40px;
+            }
+
+            .slider-btn {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+        }
+
+        /* Remove old gallery grid styles */
+        .gallery-grid {
+            display: none;
+        }
+
+        /* Keep the rest of your existing styles below */
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+            .section-header h2 {
+                font-size: 2.5rem;
+                margin-bottom: 15px;
+                position: relative;
+                display: inline-block;
+            }
+
+                .section-header h2:after {
+                    content: '';
+                    position: absolute;
+                    bottom: -10px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 60px;
+                    height: 3px;
+                    background: #3b71fe;
+                }
+
+            .section-header p {
+                font-size: 1.1rem;
+                color: #6c757d;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+        /* Itinerary timeline enhancement */
+        .itinerary-timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+            .itinerary-timeline:before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 2px;
+                background: #e9ecef;
+            }
+
+        .itinerary-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 30px;
+        }
+
+            .itinerary-item:last-child {
+                margin-bottom: 0;
+            }
+
+            .itinerary-item:before {
+                content: '';
+                position: absolute;
+                left: -40px;
+                top: 5px;
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background: #3b71fe;
+                border: 3px solid #fff;
+                box-shadow: 0 0 0 2px #3b71fe;
+            }
+
+        .day-number {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: #343a40;
+        }
+
+        .day-content h4 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #212529;
+        }
+
+        .day-content p {
+            margin-bottom: 8px;
+            color: #495057;
+        }
+
+        .day-content small {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        /* Pricing table enhancement */
+        .pricing-table {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .price-item h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #495057;
+        }
+
+        .price-amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #3b71fe;
+        }
+
+        .pricing-options, .available-dates {
+            margin-bottom: 30px;
+        }
+
+            .pricing-options:last-child, .available-dates:last-child {
+                margin-bottom: 0;
+            }
+
+            .pricing-options h3, .available-dates h3 {
+                font-size: 1.4rem;
+                margin-bottom: 15px;
+                font-weight: 600;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #dee2e6;
+            }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Hero section enhancement */
+        .tour-hero-content {
+            margin-bottom: 50px;
+        }
+
+        .hero-image-wrapper {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            background: #f8f9fa;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 500;
+        }
+
+            .meta-item i {
+                margin-right: 8px;
+                color: #3b71fe;
+            }
+
+        /* Overview section enhancement */
+        .tour-highlights {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            height: 100%;
+        }
+
+            .tour-highlights h3 {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #dee2e6;
+            }
+
+        .list-unstyled li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .list-unstyled i {
+            margin-right: 12px;
+            font-size: 1.2rem;
+            margin-top: 2px;
+            color: #28a745;
+        }
+
+        /* Inclusions/Exclusions enhancement */
+        .included-section, .excluded-section {
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            height: 100%;
+        }
+
+            .included-section h3, .excluded-section h3 {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #dee2e6;
+                display: flex;
+                align-items: center;
+            }
+
+                .included-section h3 i {
+                    color: #28a745;
+                    margin-right: 10px;
+                }
+
+                .excluded-section h3 i {
+                    color: #dc3545;
+                    margin-right: 10px;
+                }
+
+        /* Booking form enhancement */
+        .booking-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            .form-group label {
+                font-weight: 500;
+                margin-bottom: 8px;
+                display: block;
+            }
+
+        .form-control {
+            border-radius: 8px;
+            padding: 12px 15px;
+            border: 1px solid #ced4da;
+            transition: all 0.3s;
+        }
+
+            .form-control:focus {
+                border-color: #3b71fe;
+                box-shadow: 0 0 0 0.2rem rgba(59, 113, 254, 0.25);
+            }
+
+        /* CTA section enhancement */
+        .cta-section {
+            background: #f8f9fa;
+            padding: 50px 0;
+            border-radius: 12px;
+            margin-top: 50px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        .urgency-banner {
+            display: inline-flex;
+            align-items: center;
+            background: #fff4e5;
+            color: #e67700;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 500;
+            margin-top: 15px;
+        }
+
+            .urgency-banner i {
+                margin-right: 8px;
+            }
+    </style>
 </head>
 
 <body class="tour-details-page">
 
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+    <header id="header" class="header d-flex align-items-center fixed-top">
+        <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.webp" alt=""> -->
-        <h1 class="sitename">Tour</h1>
-      </a>
+            <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+                <h1 class="sitename">DM Luxe Voyages</h1>
+            </a>
 
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="destinations.html">Destinations</a></li>
-          <li><a href="tours.html">Tours</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li class="dropdown"><a href="#"><span>More Pages</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="destination-details.html">Destination Details</a></li>
-              <li><a href="tour-details.html" class="active">Tour Details</a></li>
-              <li><a href="booking.html">Booking</a></li>
-              <li><a href="testimonials">Testimonials</a></li>
-              <li><a href="faq.html">Frequently Asked Questions</a></li>
-              <li><a href="blog-details.html">Blog Details</a></li>
-              <li><a href="terms.html">Terms</a></li>
-              <li><a href="privacy.html">Privacy</a></li>
-              <li><a href="404.html">404</a></li>
-            </ul>
-          </li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <nav id="navmenu" class="navmenu">
                 <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="destinations.html">Destinations</a></li>
+                    <li><a href="tours.html">Tours & Cruises</a></li>
+                    <li class="dropdown">
+                        <a href="#"><span>More Pages</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                        <ul>
+                            <li><a href="testimonials">Testimonials</a></li>
+                            <li><a href="faq.html">Frequently Asked Questions</a></li>
+                            <li><a href="terms.html">Terms</a></li>
+                            <li><a href="privacy.html">Privacy</a></li>
+                            <li><a href="404.html">404</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
-            </ul>
-          </li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
 
-      <a class="btn-getstarted" href="destiantios.html">Get Started</a>
+            <a class="btn-getstarted" href="booking.html">Book Now</a>
 
-    </div>
-  </header>
+        </div>
+    </header>
 
-  <main class="main">
+    <main class="main">
 
-    <!-- Page Title -->
-    <div class="page-title dark-background" data-aos="fade" style="background-image: url(assets/img/travel/showcase-8.webp);">
-      <div class="container position-relative">
-        <h1>Tour Details</h1>
-        <p>Esse dolorum voluptatum ullam est sint nemo et est ipsa porro placeat quibusdam quia assumenda numquam molestias.</p>
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">Tour Details</li>
-          </ol>
-        </nav>
-      </div>
-    </div><!-- End Page Title -->
-
-    <!-- Travel Tour Details Section -->
-    <section id="travel-tour-details" class="travel-tour-details section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <!-- Hero Section -->
-        <div class="tour-hero">
-          <div class="hero-image-wrapper">
-            <img src="assets/img/travel/showcase-9.webp" alt="Mediterranean Adventure Tour" class="img-fluid w-100">
-            <div class="hero-overlay">
-              <div class="hero-content">
-                <h1>Mediterranean Adventure</h1>
-                <div class="hero-meta">
-                  <span class="duration"><i class="bi bi-calendar"></i> 12 Days</span>
-                  <span class="destination"><i class="bi bi-geo-alt"></i> Italy, Greece &amp; Turkey</span>
-                  <span class="rating"><i class="bi bi-star-fill"></i> 4.8 (124 reviews)</span>
-                </div>
-                <p class="hero-tagline">Experience ancient wonders, pristine beaches, and vibrant cultures across three magnificent countries</p>
-                <a href="#booking" class="btn-book">Check Availability</a>
-              </div>
+        <!-- Page Title -->
+        <div id="tour-hero" class="page-title dark-background" data-aos="fade">
+            <div class="container position-relative">
+                <h1 id="tour-name">Tour Details</h1>
+                <p id="tour-tagline">We create unforgettable moments, free of stress and worry — leaving you to simply enjoy the journey.</p>
+                <nav class="breadcrumbs">
+                    <ol>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="tours.html">Tours & Cruises</a></li>
+                        <li class="current" id="breadcrumb-tour">Tour Details</li>
+                    </ol>
+                </nav>
             </div>
-          </div>
+        </div><!-- End Page Title -->
+        <!-- Travel Tour Details Section -->
+        <section id="travel-tour-details" class="travel-tour-details section">
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+                <!-- Hero Section -->
+                <div class="tour-hero-content" data-aos="fade-up" data-aos-delay="150">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto text-center">
+                            <div class="hero-image-wrapper mb-4">
+                                <img id="tour-hero-image" src="assets/img/travel/default-hero.jpg" alt="Tour Hero Image" class="img-fluid">
+                            </div>
+                            <div class="hero-meta mb-4">
+                                <span class="meta-item"><i class="bi bi-calendar"></i> <span id="tour-duration">Duration</span></span>
+                                <span class="meta-item"><i class="bi bi-geo-alt"></i> <span id="tour-destination">Destination</span></span>
+                                <span class="meta-item"><i class="bi bi-star-fill"></i> <span id="tour-rating">Rating</span></span>
+                            </div>
+                            <a href="#booking" class="btn btn-primary">Check Availability</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Overview Section -->
+                <div class="tour-overview-section" data-aos="fade-up" data-aos-delay="200">
+                    <div class="section-header">
+                        <h2>Tour Overview</h2>
+                        <p>Get to know what makes this tour special</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <p id="overview-description">Select a tour to view the overview and highlights.</p>
+                            <p id="overview-extra"></p>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="tour-highlights">
+                                <h3>Tour Highlights</h3>
+                                <ul id="highlights-container" class="list-unstyled">
+                                    <li><i class="bi bi-check-circle"></i> Highlight Example</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Itinerary Section -->
+                <div class="itinerary-section" data-aos="fade-up" data-aos-delay="300">
+                    <div class="section-header">
+                        <h2>Day-by-Day Itinerary</h2>
+                        <p>Follow the carefully planned schedule for your journey</p>
+                    </div>
+                    <div id="itinerary-container" class="itinerary-timeline">
+                        <div class="itinerary-item">
+                            <div class="day-number">Day 1</div>
+                            <div class="day-content">
+                                <h4>Sample Itinerary</h4>
+                                <p>Choose a tour to view the detailed daily plan.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inclusions & Exclusions Section -->
+                <div class="inclusions-section" data-aos="fade-up" data-aos-delay="400">
+                    <div class="section-header">
+                        <h2>What's Included</h2>
+                        <p>Understand what is covered in your tour package</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="included-section">
+                                <h3><i class="bi bi-check-circle-fill"></i> What's Included</h3>
+                                <ul id="inclusions-container" class="list-unstyled">
+                                    <li><i class="bi bi-check"></i> Select a tour to see inclusions</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="excluded-section">
+                                <h3><i class="bi bi-x-circle-fill"></i> What's Not Included</h3>
+                                <ul id="exclusions-container" class="list-unstyled">
+                                    <li><i class="bi bi-x"></i> Select a tour to see exclusions</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pricing Section -->
+                <div class="pricing-section" data-aos="fade-up" data-aos-delay="500">
+                    <div class="section-header">
+                        <h2>Pricing & Dates</h2>
+                        <p>Find the perfect option and timing for your adventure</p>
+                    </div>
+                    <div class="pricing-table">
+                        <div class="pricing-header">
+                            <div class="price-item">
+                                <h3>Starting from</h3>
+                                <div id="starting-price" class="price-amount">USD 0</div>
+                                <p>per person (double occupancy)</p>
+                            </div>
+                        </div>
+                        <div class="pricing-options">
+                            <h3>Options</h3>
+                            <ul id="pricing-options" class="list-unstyled">
+                                <li>Double / Single options will load here</li>
+                            </ul>
+                        </div>
+                        <div class="available-dates">
+                            <h3>Available Departure Dates</h3>
+                            <ul id="pricing-dates" class="list-unstyled">
+                                <li>Select a tour to view dates</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Section - UPDATED TO SLIDER WITH THUMBNAILS -->
+                <div class="gallery-section" data-aos="fade-up" data-aos-delay="600">
+                    <div class="section-header">
+                        <h2>Gallery</h2>
+                        <p>Immerse yourself in the beauty of this tour</p>
+                    </div>
+
+                    <div class="gallery-slider-container">
+                        <!-- Main Slider -->
+                        <div class="main-slider" id="main-slider">
+                            <!-- Slides will be dynamically added here -->
+                        </div>
+
+                        <!-- Thumbnails -->
+                        <div class="thumbnails-container" id="thumbnails-container">
+                            <!-- Thumbnails will be dynamically added here -->
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="slider-navigation">
+                            <button class="slider-btn prev">Previous</button>
+                            <button class="slider-btn next">Next</button>
+                        </div>
+
+                        <!-- Auto Play Control -->
+                        <div class="auto-play-control">
+                            <button class="auto-play-btn">Start Auto Play</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Booking Form Section -->
+                <div class="booking-section" id="booking" data-aos="fade-up" data-aos-delay="700">
+                    <div class="section-header">
+                        <h2>Book This Tour</h2>
+                        <p>Reserve your spot for an unforgettable experience</p>
+                    </div>
+                    <div class="booking-card">
+                        <form action="forms/tour-booking.php" method="post" class="php-email-form">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="travel-date">Preferred Travel Date</label>
+                                        <select name="date" id="travel-date" class="form-control" required="">
+                                            <option value="">Select a date</option>
+                                            <option value="May 15-26">May 15-26, 2024</option>
+                                            <option value="June 12-23">June 12-23, 2024</option>
+                                            <option value="July 10-21">July 10-21, 2024</option>
+                                            <option value="August 14-25">August 14-25, 2024</option>
+                                            <option value="September 18-29">September 18-29, 2024</option>
+                                            <option value="October 9-20">October 9-20, 2024</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="travelers">Number of Travelers</label>
+                                        <select name="travelers" id="travelers" class="form-control" required="">
+                                            <option value="">Select travelers</option>
+                                            <option value="1">1 Traveler</option>
+                                            <option value="2">2 Travelers</option>
+                                            <option value="3">3 Travelers</option>
+                                            <option value="4">4 Travelers</option>
+                                            <option value="5">5 Travelers</option>
+                                            <option value="6+">6+ Travelers</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="name">Full Name</label>
+                                        <input type="text" name="name" id="name" class="form-control" required="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="email">Email Address</label>
+                                        <input type="email" name="email" id="email" class="form-control" required="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" name="phone" id="phone" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Special Requests or Questions</label>
+                                <textarea name="message" id="message" rows="4" class="form-control" placeholder="Any dietary restrictions, accessibility needs, or special occasions..."></textarea>
+                            </div>
+                            <div class="loading">Loading</div>
+                            <div class="error-message"></div>
+                            <div class="sent-message">Your booking request has been sent. We'll contact you within 24 hours!</div>
+                            <button type="submit" class="btn btn-primary">Send Booking Request</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Call to Action Section -->
+                <div class="cta-section" data-aos="fade-up" data-aos-delay="800">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto text-center">
+                            <h2>Ready for Your Adventure?</h2>
+                            <p>Limited spots available for 2024 departures. Book now to secure your place on this incredible journey.</p>
+                            <div class="cta-buttons">
+                                <a href="booking.html" class="btn btn-primary">Book Now</a>
+                                <a href="tel:+1-555-123-4567" class="btn btn-outline">Call Us: +1 (555) 123-4567</a>
+                            </div>
+                            <div class="urgency-banner mt-3">
+                                <i class="bi bi-clock"></i>
+                                <span>Next departure in 45 days - Only 6 spots remaining!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section><!-- /Travel Tour Details Section -->
+
+    </main>
+
+    <footer id="footer" class="footer position-relative dark-background">
+
+        <div class="footer-newsletter">
+            <div class="container">
+                <div class="row justify-content-center text-center">
+                    <div class="col-lg-6">
+                        <h4>Join Our Newsletter</h4>
+                        <p>Be the first to know. Receive exclusive flight and tour sales, expertly curated guides, and members-only travel tips.</p>
+                        <form action="forms/newsletter.php" method="post" class="php-email-form">
+                            <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
+                            <div class="loading">Loading</div>
+                            <div class="error-message"></div>
+                            <div class="sent-message">Your subscription request has been sent. Thank you!</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Tour Overview -->
-        <div class="tour-overview" data-aos="fade-up" data-aos-delay="200">
-          <div class="row">
-            <div class="col-lg-8">
-              <h2>Tour Overview</h2>
-              <p>Embark on an unforgettable journey through the heart of the Mediterranean, where ancient civilizations left their mark on stunning landscapes. This comprehensive tour takes you from the romantic canals of Venice to the sun-soaked islands of Santorini, culminating in the magical city of Istanbul where East meets West.</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <div class="container footer-top">
+            <div class="row gy-4">
+                <div class="col-lg-4 col-md-6 footer-about">
+                    <a href="index.html" class="d-flex align-items-center">
+                        <span class="sitename">DM Luxe Voyages</span>
+                    </a>
+                    <div class="footer-contact pt-3">
+                        <p>Pretoria</p>
+                        <p>South Africa,1807</p>
+                        <p class="mt-3"><strong>Phone:</strong> <span>+27 72 369 9937</span></p>
+                        <p><strong>Email:</strong> <span>info@Dmluxevoyages.co.za</span></p>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 footer-links">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><i class="bi bi-chevron-right"></i> <a href="index.html">Home</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="about.html">About us</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="destinations.html">Destinations</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="tours.html">Tours & Cruise's</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-md-3 footer-links">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><i class="bi bi-chevron-right"></i> <a href="booking.html">Flight Reservations</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="booking.html">Visa Assistance</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="booking.html">Cruise Bookings</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="booking.html">Group Travel</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="booking.html">Hotel and Transport Reservations</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-12">
+                    <h4>Connect With Us</h4>
+                    <p>Indulge in the extraordinary. Experience our world of curated luxury.</p>
+                    <div class="social-links d-flex">
+                        <a href=""><i class="bi bi-twitter-x"></i></a>
+                        <a href=""><i class="bi bi-facebook"></i></a>
+                        <a href=""><i class="bi bi-instagram"></i></a>
+                        <a href=""><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+
             </div>
-            <div class="col-lg-4">
-              <div class="tour-highlights">
-                <h3>Tour Highlights</h3>
-                <ul>
-                  <li><i class="bi bi-check-circle"></i> 4-Star Boutique Hotels</li>
-                  <li><i class="bi bi-check-circle"></i> Expert Local Guides</li>
-                  <li><i class="bi bi-check-circle"></i> Daily Breakfast Included</li>
-                  <li><i class="bi bi-check-circle"></i> Small Group (Max 16)
-                  </li>
-                  <li><i class="bi bi-check-circle"></i> UNESCO World Heritage Sites</li>
-                  <li><i class="bi bi-check-circle"></i> Cultural Experiences</li>
-                </ul>
-              </div>
-            </div>
-          </div>
         </div>
 
-        <!-- Itinerary -->
-        <div class="tour-itinerary" data-aos="fade-up" data-aos-delay="300">
-          <h2>Day-by-Day Itinerary</h2>
-          <div class="itinerary-timeline">
-
-            <div class="itinerary-item">
-              <div class="day-number">Day 1</div>
-              <div class="day-content">
-                <h4>Arrival in Venice</h4>
-                <p>Welcome to the enchanting city of canals. Upon arrival, check into your waterfront hotel and enjoy a welcome dinner featuring fresh seafood and local Venetian specialties.</p>
-                <div class="day-details">
-                  <span class="accommodation"><i class="bi bi-building"></i> Hotel Palazzo Vitturi</span>
-                  <span class="meals"><i class="bi bi-cup-hot"></i> Welcome Dinner</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="itinerary-item">
-              <div class="day-number">Day 2</div>
-              <div class="day-content">
-                <h4>Venice City Tour</h4>
-                <p>Explore St. Mark's Square, visit the magnificent Basilica, and take a gondola ride through the romantic canals. Afternoon visit to Murano Island to see traditional glassblowing demonstrations.</p>
-                <div class="day-details">
-                  <span class="accommodation"><i class="bi bi-building"></i> Hotel Palazzo Vitturi</span>
-                  <span class="meals"><i class="bi bi-cup-hot"></i> Breakfast</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="itinerary-item">
-              <div class="day-number">Day 3</div>
-              <div class="day-content">
-                <h4>Florence Discovery</h4>
-                <p>Travel to Florence, the cradle of Renaissance. Visit the Uffizi Gallery, admire Michelangelo's David, and climb to the top of the Duomo for breathtaking city views.</p>
-                <div class="day-details">
-                  <span class="accommodation"><i class="bi bi-building"></i> Hotel Davanzati</span>
-                  <span class="meals"><i class="bi bi-cup-hot"></i> Breakfast</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="itinerary-item">
-              <div class="day-number">Days 4-5</div>
-              <div class="day-content">
-                <h4>Rome Exploration</h4>
-                <p>Two full days in the Eternal City. Visit the Colosseum, Roman Forum, Vatican City with the Sistine Chapel, and enjoy an authentic cooking class with a local Roman family.</p>
-                <div class="day-details">
-                  <span class="accommodation"><i class="bi bi-building"></i> Hotel Artemide</span>
-                  <span class="meals"><i class="bi bi-cup-hot"></i> Breakfast, Cooking Class</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="itinerary-item">
-              <div class="day-number">Days 6-8</div>
-              <div class="day-content">
-                <h4>Santorini Paradise</h4>
-                <p>Flight to Greece and arrival in Santorini. Three days to explore the iconic blue-domed churches, stunning sunsets in Oia, wine tasting, and relaxation on unique volcanic beaches.</p>
-                <div class="day-details">
-                  <span class="accommodation"><i class="bi bi-building"></i> Canaves Oia Hotel</span>
-                  <span class="meals"><i class="bi bi-cup-hot"></i> Breakfast Daily</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="itinerary-item">
-              <div class="day-number">Days 9-11</div>
-              <div class="day-content">
-                <h4>Istanbul Adventure</h4>
-                <p>Fly to Istanbul for three incredible days exploring where Europe meets Asia. Visit Hagia Sophia, Blue Mosque, Grand Bazaar, and enjoy a Bosphorus cruise at sunset.</p>
-                <div class="day-details">
-                  <span class="accommodation"><i class="bi bi-building"></i> Four Seasons Sultanahmet</span>
-                  <span class="meals"><i class="bi bi-cup-hot"></i> Breakfast, Farewell Dinner</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="itinerary-item">
-              <div class="day-number">Day 12</div>
-              <div class="day-content">
-                <h4>Departure</h4>
-                <p>Transfer to Istanbul Airport for your departure flight. Take home memories of an incredible Mediterranean adventure that will last a lifetime.</p>
-                <div class="day-details">
-                  <span class="meals"><i class="bi bi-cup-hot"></i> Breakfast</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
+        <div class="container copyright text-center mt-4">
+            <p>© <span>Copyright</span> <strong class="px-1 sitename">DM Luxe Voyages</strong> <span>All Rights Reserved</span></p>
         </div>
 
-        <!-- Inclusions -->
-        <div class="tour-inclusions" data-aos="fade-up" data-aos-delay="400">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="included-section">
-                <h3><i class="bi bi-check-circle-fill"></i> What's Included</h3>
-                <ul class="inclusion-list included">
-                  <li><i class="bi bi-check"></i> Round-trip flights between destinations</li>
-                  <li><i class="bi bi-check"></i> 11 nights accommodation (4-star hotels)</li>
-                  <li><i class="bi bi-check"></i> Daily breakfast at all hotels</li>
-                  <li><i class="bi bi-check"></i> Professional English-speaking guides</li>
-                  <li><i class="bi bi-check"></i> All entrance fees to attractions</li>
-                  <li><i class="bi bi-check"></i> Private transportation</li>
-                  <li><i class="bi bi-check"></i> Welcome and farewell dinners</li>
-                  <li><i class="bi bi-check"></i> Gondola ride in Venice</li>
-                  <li><i class="bi bi-check"></i> Wine tasting in Santorini</li>
-                  <li><i class="bi bi-check"></i> Bosphorus cruise in Istanbul</li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="excluded-section">
-                <h3><i class="bi bi-x-circle-fill"></i> What's Not Included</h3>
-                <ul class="inclusion-list excluded">
-                  <li><i class="bi bi-x"></i> International flights to/from departure city</li>
-                  <li><i class="bi bi-x"></i> Lunch and dinner (except specified)</li>
-                  <li><i class="bi bi-x"></i> Personal expenses and shopping</li>
-                  <li><i class="bi bi-x"></i> Travel insurance (recommended)</li>
-                  <li><i class="bi bi-x"></i> Tips for guides and drivers</li>
-                  <li><i class="bi bi-x"></i> Optional activities and excursions</li>
-                  <li><i class="bi bi-x"></i> Alcoholic beverages (except wine tasting)</li>
-                  <li><i class="bi bi-x"></i> Visa fees if required</li>
-                  <li><i class="bi bi-x"></i> Single supplement for solo travelers</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
+    </footer>
 
-        <!-- Pricing -->
-        <div class="tour-pricing" data-aos="fade-up" data-aos-delay="500">
-          <h2>Pricing &amp; Dates</h2>
-          <div class="pricing-table">
-            <div class="pricing-header">
-              <div class="price-item">
-                <h3>Starting from</h3>
-                <div class="price-amount">$3,299</div>
-                <p>per person (double occupancy)</p>
-              </div>
-            </div>
-            <div class="pricing-details">
-              <div class="row">
-                <div class="col-lg-4">
-                  <div class="price-type">
-                    <h4>Double Occupancy</h4>
-                    <div class="price">$3,299</div>
-                    <p>per person</p>
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div class="price-type">
-                    <h4>Single Supplement</h4>
-                    <div class="price">+$899</div>
-                    <p>additional</p>
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div class="price-type">
-                    <h4>Group Discount</h4>
-                    <div class="price">-$200</div>
-                    <p>for 6+ people</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="available-dates">
-              <h3>2024 Departure Dates</h3>
-              <div class="dates-grid">
-                <div class="date-option">
-                  <div class="date">May 15-26</div>
-                  <div class="availability">6 spots left</div>
-                </div>
-                <div class="date-option">
-                  <div class="date">June 12-23</div>
-                  <div class="availability">Available</div>
-                </div>
-                <div class="date-option">
-                  <div class="date">July 10-21</div>
-                  <div class="availability">Almost full</div>
-                </div>
-                <div class="date-option">
-                  <div class="date">August 14-25</div>
-                  <div class="availability">Available</div>
-                </div>
-                <div class="date-option">
-                  <div class="date">September 18-29</div>
-                  <div class="availability">Available</div>
-                </div>
-                <div class="date-option">
-                  <div class="date">October 9-20</div>
-                  <div class="availability">11 spots left</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-        <!-- Booking Form -->
-        <div class="booking-section" id="booking" data-aos="fade-up" data-aos-delay="600">
-          <div class="booking-card">
-            <h2>Book This Tour</h2>
-            <form action="forms/tour-booking.php" method="post" class="php-email-form">
-              <div class="row">
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label for="travel-date">Preferred Travel Date</label>
-                    <select name="date" id="travel-date" class="form-control" required="">
-                      <option value="">Select a date</option>
-                      <option value="May 15-26">May 15-26, 2024</option>
-                      <option value="June 12-23">June 12-23, 2024</option>
-                      <option value="July 10-21">July 10-21, 2024</option>
-                      <option value="August 14-25">August 14-25, 2024</option>
-                      <option value="September 18-29">September 18-29, 2024</option>
-                      <option value="October 9-20">October 9-20, 2024</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label for="travelers">Number of Travelers</label>
-                    <select name="travelers" id="travelers" class="form-control" required="">
-                      <option value="">Select travelers</option>
-                      <option value="1">1 Traveler</option>
-                      <option value="2">2 Travelers</option>
-                      <option value="3">3 Travelers</option>
-                      <option value="4">4 Travelers</option>
-                      <option value="5">5 Travelers</option>
-                      <option value="6+">6+ Travelers</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" name="name" id="name" class="form-control" required="">
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" name="email" id="email" class="form-control" required="">
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" name="phone" id="phone" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="message">Special Requests or Questions</label>
-                <textarea name="message" id="message" rows="4" class="form-control" placeholder="Any dietary restrictions, accessibility needs, or special occasions..."></textarea>
-              </div>
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Your booking request has been sent. We'll contact you within 24 hours!</div>
-              <button type="submit" class="btn-submit">Send Booking Request</button>
-            </form>
-          </div>
-        </div>
+    <!-- Preloader -->
+    <div id="preloader"></div>
 
-        <!-- Gallery -->
-        <div class="tour-gallery" data-aos="fade-up" data-aos-delay="700">
-          <h2>Photo Gallery</h2>
-          <div class="gallery-grid">
-            <div class="gallery-item">
-              <a href="assets/img/travel/destination-1.webp" class="glightbox">
-                <img src="assets/img/travel/destination-1.webp" alt="Venice Canals" class="img-fluid" loading="lazy">
-              </a>
-            </div>
-            <div class="gallery-item">
-              <a href="assets/img/travel/destination-2.webp" class="glightbox">
-                <img src="assets/img/travel/destination-2.webp" alt="Florence Cathedral" class="img-fluid" loading="lazy">
-              </a>
-            </div>
-            <div class="gallery-item">
-              <a href="assets/img/travel/destination-3.webp" class="glightbox">
-                <img src="assets/img/travel/destination-3.webp" alt="Roman Colosseum" class="img-fluid" loading="lazy">
-              </a>
-            </div>
-            <div class="gallery-item">
-              <a href="assets/img/travel/destination-4.webp" class="glightbox">
-                <img src="assets/img/travel/destination-4.webp" alt="Santorini Sunset" class="img-fluid" loading="lazy">
-              </a>
-            </div>
-            <div class="gallery-item">
-              <a href="assets/img/travel/destination-5.webp" class="glightbox">
-                <img src="assets/img/travel/destination-5.webp" alt="Hagia Sophia" class="img-fluid" loading="lazy">
-              </a>
-            </div>
-            <div class="gallery-item">
-              <a href="assets/img/travel/destination-6.webp" class="glightbox">
-                <img src="assets/img/travel/destination-6.webp" alt="Mediterranean Cuisine" class="img-fluid" loading="lazy">
-              </a>
-            </div>
-          </div>
-        </div>
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
 
-        <!-- Final CTA -->
-        <div class="final-cta" data-aos="fade-up" data-aos-delay="1000">
-          <div class="cta-content">
-            <h2>Ready for Your Mediterranean Adventure?</h2>
-            <p>Limited spots available for 2024 departures. Book now to secure your place on this incredible journey.</p>
-            <div class="cta-actions">
-              <a href="booking.html" class="btn-primary">Book Now</a>
-              <a href="tel:+1-555-123-4567" class="btn-secondary">Call Us: +1 (555) 123-4567</a>
-            </div>
-            <div class="urgency-banner">
-              <i class="bi bi-clock"></i>
-              <span>Next departure in 45 days - Only 6 spots remaining!</span>
-            </div>
-          </div>
-        </div>
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
 
-      </div>
+    <script>
+        const tours = {
+            "cape-town": {
+                hero: {
+                    name: "Cape Town Explorer",
+                    tagline: "Where mountain, sea, and culture unite.",
+                    image: "assets/img/travel/Capetown.jpeg",
+                    duration: "7 Days",
+                    destination: "South Africa",
+                    rating: "4.9 (210 reviews)"
+                },
+                overview: {
+                    description: "Nestled between the iconic Table Mountain and the Atlantic Ocean, Cape Town offers breathtaking beauty and vibrant culture. This tour blends natural wonders, wine estates, and historical landmarks.",
+                    extra: "Ideal for first-time visitors wanting to experience the Mother City."
+                },
+                highlights: [
+                    "Table Mountain Cable Car",
+                    "Cape Point & Penguins at Boulders Beach",
+                    "Wine tasting in Stellenbosch",
+                    "Robben Island Tour",
+                    "V&A Waterfront"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Arrival & City Orientation", details: "Transfer to hotel, evening stroll at V&A Waterfront.", accommodation: "Waterfront Hotel", meals: "Dinner" },
+                    { day: "Day 2", title: "Table Mountain & City Tour", details: "Ride the cable car, explore Bo-Kaap and District Six.", accommodation: "Waterfront Hotel", meals: "Breakfast" },
+                    { day: "Day 3", title: "Cape Peninsula", details: "Cape Point, Chapman's Peak, and Boulders Beach penguins.", accommodation: "Waterfront Hotel", meals: "Breakfast" },
+                    { day: "Day 4", title: "Winelands", details: "Visit Stellenbosch & Franschhoek with wine tastings.", accommodation: "Stellenbosch Estate Lodge", meals: "Breakfast, Lunch" },
+                    { day: "Day 5", title: "Robben Island", details: "Ferry to the historic prison island.", accommodation: "Waterfront Hotel", meals: "Breakfast" },
+                    { day: "Day 6", title: "Free Day", details: "Optional hiking, beaches, or shopping.", accommodation: "Waterfront Hotel", meals: "Breakfast" },
+                    { day: "Day 7", title: "Departure", details: "Transfer to Cape Town International Airport.", meals: "Breakfast" }
+                ],
+                inclusions: [
+                    "Round-trip airport transfers",
+                    "6 nights 4-star accommodation",
+                    "Daily breakfast",
+                    "Professional guide",
+                    "Robben Island ferry tickets"
+                ],
+                exclusions: [
+                    "International flights",
+                    "Lunch & dinners (unless specified)",
+                    "Travel insurance",
+                    "Tips & personal expenses"
+                ],
+                pricing: {
+                    startingFrom: "R18,500",
+                    options: [
+                        { type: "Double Occupancy", price: "R18,500" },
+                        { type: "Single Supplement", price: "R5,500 additional" },
+                        { type: "Group Discount", price: "Save R1,500 for 6+ travelers" }
+                    ],
+                    dates: [
+                        { date: "March 10–16, 2024", availability: "Available" },
+                        { date: "April 14–20, 2024", availability: "Almost full" },
+                        { date: "May 12–18, 2024", availability: "5 spots left" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/capecableway.jpeg",
+                    "assets/img/travel/V&Awaterfront.jpg",
+                    "assets/img/travel/V&Awaterfront_1.jpg",
+                    "assets/img/travel/Robbenisland.jpeg",
+                    "assets/img/travel/capetown_split.jpg",
+                    "assets/img/travel/capetowncableway.jpg",
+                    "assets/img/travel/bouldersbeach.jpeg"
+                ]
+            },
+            "kruger-safari": {
+                hero: {
+                    name: "Kruger Safari Adventure",
+                    tagline: "Discover Africa’s Big Five in their natural habitat.",
+                    image: "assets/img/travel/.jpeg",
+                    duration: "6 Days",
+                    destination: "South Africa",
+                    rating: "4.8 (180 reviews)"
+                },
+                overview: {
+                    description: "Experience thrilling game drives in one of the world’s premier wildlife reserves. The Kruger National Park offers unforgettable encounters with lions, elephants, rhinos, leopards, and buffalo.",
+                    extra: "Perfect for nature lovers and photography enthusiasts."
+                },
+                highlights: [
+                    "Morning and evening game drives",
+                    "Luxury safari lodge",
+                    "Bush braai under the stars",
+                    "Professional rangers and trackers",
+                    "Chance to see the Big Five"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Arrival at Kruger", details: "Transfer from Johannesburg to lodge, evening welcome dinner.", accommodation: "Safari Lodge", meals: "Dinner" },
+                    { day: "Day 2", title: "Morning & Evening Game Drives", details: "Spot wildlife at dawn and dusk in open 4x4 vehicles.", accommodation: "Safari Lodge", meals: "Breakfast, Dinner" },
+                    { day: "Day 3", title: "Bush Walk", details: "Guided walk with ranger to explore flora and smaller wildlife.", accommodation: "Safari Lodge", meals: "Breakfast, Dinner" },
+                    { day: "Day 4", title: "Full Day Safari", details: "Venture deep into the park for extended game viewing.", accommodation: "Safari Lodge", meals: "Breakfast, Lunch, Dinner" },
+                    { day: "Day 5", title: "Community Visit", details: "Cultural tour of local village near Kruger.", accommodation: "Safari Lodge", meals: "Breakfast, Dinner" },
+                    { day: "Day 6", title: "Departure", details: "Transfer back to Johannesburg for onward travel.", meals: "Breakfast" }
+                ],
+                inclusions: [
+                    "5 nights luxury lodge accommodation",
+                    "Daily game drives",
+                    "All meals as specified",
+                    "Transfers from Johannesburg",
+                    "Conservation fees"
+                ],
+                exclusions: [
+                    "International flights",
+                    "Alcoholic beverages",
+                    "Personal expenses",
+                    "Tips"
+                ],
+                pricing: {
+                    startingFrom: "R22,000",
+                    options: [
+                        { type: "Double Occupancy", price: "R22,000" },
+                        { type: "Single Supplement", price: "R6,000 additional" }
+                    ],
+                    dates: [
+                        { date: "April 5–10, 2024", availability: "Available" },
+                        { date: "May 7–12, 2024", availability: "Almost full" },
+                        { date: "June 12–17, 2024", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/kruger4.jpg",
+                    "assets/img/travel/kruger3.jpg",
+                    "assets/img/travel/kruger5.jpg",
+                    "assets/img/travel/kruger2.jpg",
+                    "assets/img/travel/kruger.jpg"
+                ]
+            },
 
-    </section><!-- /Travel Tour Details Section -->
+            "garden-route": {
+                hero: {
+                    name: "Garden Route Discovery",
+                    tagline: "Scenic coastlines, forests, and adventure await.",
+                    image: "assets/img/travel/tour-6.webp",
+                    duration: "8 Days",
+                    destination: "South Africa",
+                    rating: "4.7 (160 reviews)"
+                },
+                overview: {
+                    description: "Drive along South Africa’s most iconic coastal route, passing beaches, lagoons, and forests. Adventure activities and breathtaking views make this journey unforgettable.",
+                    extra: "Ideal for travelers seeking a mix of relaxation and adventure."
+                },
+                highlights: [
+                    "Tsitsikamma National Park",
+                    "Knysna Lagoon Cruise",
+                    "Oudtshoorn Cango Caves",
+                    "Plettenberg Bay beaches",
+                    "Addo Elephant Park"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Arrival in Cape Town", details: "Pick-up and overnight in Cape Town.", accommodation: "City Lodge", meals: "Dinner" },
+                    { day: "Day 2", title: "Hermanus Stopover", details: "Drive to Hermanus, famous for whale watching.", accommodation: "Harbour Hotel", meals: "Breakfast" },
+                    { day: "Day 3", title: "Oudtshoorn", details: "Explore ostrich farms and Cango Caves.", accommodation: "Karoo Hotel", meals: "Breakfast" },
+                    { day: "Day 4", title: "Knysna", details: "Cruise on Knysna Lagoon, visit Featherbed Reserve.", accommodation: "Knysna Lodge", meals: "Breakfast" },
+                    { day: "Day 5", title: "Plettenberg Bay", details: "Relax at beaches and optional adventure sports.", accommodation: "Beach Lodge", meals: "Breakfast" },
+                    { day: "Day 6", title: "Tsitsikamma", details: "Walk suspension bridges and hike in forest.", accommodation: "Storms River Lodge", meals: "Breakfast" },
+                    { day: "Day 7", title: "Addo Elephant Park", details: "Safari drive in elephant sanctuary.", accommodation: "Addo Lodge", meals: "Breakfast, Dinner" },
+                    { day: "Day 8", title: "Return to Cape Town", details: "Scenic drive back, tour ends.", meals: "Breakfast" }
+                ],
+                inclusions: [
+                    "7 nights accommodation",
+                    "Daily breakfast",
+                    "Guided tours",
+                    "Transportation",
+                    "Entrance fees"
+                ],
+                exclusions: [
+                    "Flights",
+                    "Lunch & dinners",
+                    "Optional adventure sports",
+                    "Travel insurance"
+                ],
+                pricing: {
+                    startingFrom: "R19,800",
+                    options: [
+                        { type: "Double Occupancy", price: "R19,800" },
+                        { type: "Single Supplement", price: "R4,800 additional" }
+                    ],
+                    dates: [
+                        { date: "March 18–25, 2024", availability: "Available" },
+                        { date: "April 15–22, 2024", availability: "Almost full" },
+                        { date: "May 20–27, 2024", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/gardenroute.jpg",
+                    "assets/img/travel/gardenroute2.jpg",
+                    "assets/img/travel/gardenroute3.jpg",
+                    "assets/img/travel/gardenroute4.jpg"
+                ]
+            },
+            "robben-island-tour": {
+                hero: {
+                    name: "Robben Island Historical Tour",
+                    tagline: "Walk in the footsteps of Nelson Mandela at this UNESCO World Heritage Site.",
+                    image: "assets/img/travel/Robbenisland.jpeg",
+                    duration: "4 Hours",
+                    destination: "Cape Town, South Africa",
+                    rating: "4.8 (185 reviews)"
+                },
+                overview: {
+                    description: "Visit the infamous prison where Nelson Mandela spent 18 years of his imprisonment. This tour offers a profound historical experience with former political prisoners as guides, providing firsthand accounts of life under apartheid.",
+                    extra: "Includes ferry ride with stunning views of Table Mountain and Cape Town coastline."
+                },
+                highlights: [
+                    "Ferry ride to Robben Island",
+                    "Guided tour by former political prisoners",
+                    "Nelson Mandela's prison cell",
+                    "Maximum Security Prison",
+                    "Lime Quarry where prisoners worked"
+                ],
+                itinerary: [
+                    { day: "Tour", title: "Departure from Nelson Mandela Gateway", details: "Board ferry at V&A Waterfront for scenic ride to island.", meals: "None" },
+                    { day: "Tour", title: "Bus Tour of Island", details: "Guided tour around the island showing key historical sites.", meals: "None" },
+                    { day: "Tour", title: "Prison Tour", details: "Walking tour through prison facilities with former inmate guides.", meals: "None" },
+                    { day: "Tour", title: "Return to Cape Town", details: "Ferry ride back to V&A Waterfront with photo opportunities.", meals: "None" }
+                ],
+                inclusions: [
+                    "Return ferry tickets",
+                    "Guided bus tour on island",
+                    "Prison tour with former political prisoner guide",
+                    "All entry fees"
+                ],
+                exclusions: [
+                    "Transportation to V&A Waterfront",
+                    "Meals and drinks",
+                    "Gratuities",
+                    "Personal expenses"
+                ],
+                pricing: {
+                    startingFrom: "R850",
+                    options: [
+                        { type: "Adult", price: "R850" },
+                        { type: "Child (under 18)", price: "R450" },
+                        { type: "Senior Citizen", price: "R750" }
+                    ],
+                    dates: [
+                        { date: "Daily departures at 9:00, 11:00, 13:00", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/robben1.jpg",
+                    "assets/img/travel/robben2.jpg",
+                    "assets/img/travel/robben3.jpg"
+                ]
+            },
 
-  </main>
+            "family-safari-adventure": {
+                hero: {
+                    name: "Family Safari Adventure",
+                    tagline: "Create unforgettable family memories in the heart of Pilanesberg National Park.",
+                    image: "assets/img/travel/safariviews.webp",
+                    duration: "3 Days",
+                    destination: "Pilanesberg National Park, South Africa",
+                    rating: "4.9 (142 reviews)"
+                },
+                overview: {
+                    description: "Specially designed for families with children, this safari experience offers child-friendly game drives, educational activities, and comfortable accommodations in a malaria-free environment perfect for all ages.",
+                    extra: "Children receive special safari activity packs and junior ranger certificates."
+                },
+                highlights: [
+                    "Child-friendly game drives",
+                    "Educational bush walks",
+                    "Swimming pool with wildlife view",
+                    "Interactive conservation talks",
+                    "Junior ranger program"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Arrival & Afternoon Game Drive", details: "Check into family lodge, orientation, and first game drive.", accommodation: "Family Safari Lodge", meals: "Dinner" },
+                    { day: "Day 2", title: "Full Day Safari Experience", details: "Morning and afternoon game drives with educational breaks.", accommodation: "Family Safari Lodge", meals: "Breakfast, Lunch, Dinner" },
+                    { day: "Day 3", title: "Morning Walk & Departure", details: "Gentle bush walk focused on tracking and conservation education.", meals: "Breakfast" }
+                ],
+                inclusions: [
+                    "2 nights accommodation in family rooms",
+                    "All meals as specified",
+                    "Professional guide specialized in family tours",
+                    "All game drives in open safari vehicles",
+                    "Educational activities for children"
+                ],
+                exclusions: [
+                    "Transportation to/from Pilanesberg",
+                    "Gratuities",
+                    "Personal purchases",
+                    "Alcoholic beverages"
+                ],
+                pricing: {
+                    startingFrom: "R32,000",
+                    options: [
+                        { type: "Family of 4", price: "R32,000" },
+                        { type: "Additional child", price: "R5,000" },
+                        { type: "Additional adult", price: "R12,000" }
+                    ],
+                    dates: [
+                        { date: "June 15-17, 2024", availability: "Available" },
+                        { date: "July 20-22, 2024", availability: "Limited" },
+                        { date: "August 10-12, 2024", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/familysafari1.jpg",
+                    "assets/img/travel/familysafari2.jpg",
+                    "assets/img/travel/familysafari3.jpg"
+                ]
+            },
 
-  <footer id="footer" class="footer position-relative dark-background">
+            "cango-caves-adventure": {
+                hero: {
+                    name: "Cango Caves Adventure Tour",
+                    tagline: "Explore ancient underground wonders in the spectacular limestone caverns.",
+                    image: "assets/img/travel/cangocaves.jpg",
+                    duration: "6 Hours",
+                    destination: "Oudtshoorn, South Africa",
+                    rating: "4.7 (98 reviews)"
+                },
+                overview: {
+                    description: "Discover one of South Africa's most impressive natural wonders with both standard and adventure tours through magnificent limestone formations that date back millions of years.",
+                    extra: "Choose between Heritage Tour (easy) or Adventure Tour (challenging crawl spaces)."
+                },
+                highlights: [
+                    "Spectacular limestone formations",
+                    "Crystal Palace chamber",
+                    "Adventure route with narrow passages",
+                    "Ancient rock formations",
+                    "Underground conservation education"
+                ],
+                itinerary: [
+                    { day: "Tour", title: "Orientation & Safety Briefing", details: "Introduction to cave system and safety procedures.", meals: "None" },
+                    { day: "Tour", title: "Heritage Tour Section", details: "Explore easily accessible chambers with spectacular formations.", meals: "None" },
+                    { day: "Tour", title: "Adventure Tour Extension", details: "Optional challenging route through narrow passages (for adventurous participants).", meals: "None" },
+                    { day: "Tour", title: "Return to Surface", details: "Exit caves and visit interpretive center.", meals: "None" }
+                ],
+                inclusions: [
+                    "Professional cave guide",
+                    "Safety equipment for adventure tour",
+                    "Entry fees",
+                    "Interpretive center access"
+                ],
+                exclusions: [
+                    "Transportation to Cango Caves",
+                    "Meals and drinks",
+                    "Souvenirs",
+                    "Personal expenses"
+                ],
+                pricing: {
+                    startingFrom: "R1,200",
+                    options: [
+                        { type: "Heritage Tour Only", price: "R250" },
+                        { type: "Adventure Tour", price: "R1,200" },
+                        { type: "Child Adventure Tour (8-14 years)", price: "R800" }
+                    ],
+                    dates: [
+                        { date: "Daily tours every hour from 9:00-16:00", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/cango1.jpg",
+                    "assets/img/travel/cango2.jpg",
+                    "assets/img/travel/cango3.jpg"
+                ]
+            },
 
-    <div class="footer-newsletter">
-      <div class="container">
-        <div class="row justify-content-center text-center">
-          <div class="col-lg-6">
-            <h4>Join Our Newsletter</h4>
-            <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-            <form action="forms/newsletter.php" method="post" class="php-email-form">
-              <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+            "kapama-luxury-safari": {
+                hero: {
+                    name: "Kapama Luxury Safari Experience",
+                    tagline: "Ultimate luxury in a private game reserve with exceptional wildlife viewing.",
+                    image: "assets/img/travel/safarilodge.webp",
+                    duration: "4 Days",
+                    destination: "Kapama Private Game Reserve, South Africa",
+                    rating: "4.9 (176 reviews)"
+                },
+                overview: {
+                    description: "Experience the height of safari luxury at Kapama Private Game Reserve, offering exclusive game viewing, five-star accommodations, gourmet dining, and personalized service in a pristine wilderness setting.",
+                    extra: "Enjoy sundowner drinks at scenic spots and night drives with spotlight wildlife viewing."
+                },
+                highlights: [
+                    "Twice daily game drives",
+                    "Luxury lodge accommodation",
+                    "Gourmet bush dinners",
+                    "Spa treatments available",
+                    "Big Five viewing guaranteed"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Arrival & Afternoon Drive", details: "Welcome drink, lunch, and first game drive.", accommodation: "Kapama River Lodge", meals: "Lunch, Dinner" },
+                    { day: "Day 2", title: "Full Safari Experience", details: "Morning and afternoon game drives with leisure time.", accommodation: "Kapama River Lodge", meals: "Breakfast, Lunch, Dinner" },
+                    { day: "Day 3", title: "Safari Activities", details: "Game drives, bush walk option, and special boma dinner.", accommodation: "Kapama River Lodge", meals: "Breakfast, Lunch, Dinner" },
+                    { day: "Day 4", title: "Final Game Drive & Departure", details: "Early morning drive, breakfast, and transfer out.", meals: "Breakfast" }
+                ],
+                inclusions: [
+                    "3 nights luxury accommodation",
+                    "All meals and select beverages",
+                    "Twice daily game drives",
+                    "Professional ranger and tracker",
+                    "Return transfers from Hoedspruit Airport"
+                ],
+                exclusions: [
+                    "Flights to Hoedspruit",
+                    "Premium beverages",
+                    "Spa treatments",
+                    "Conservation fees"
+                ],
+                pricing: {
+                    startingFrom: "R45,000",
+                    options: [
+                        { type: "Per person sharing", price: "R45,000" },
+                        { type: "Single supplement", price: "R12,000" },
+                        { type: "Honeymoon suite upgrade", price: "R8,000 additional" }
+                    ],
+                    dates: [
+                        { date: "March 15-18, 2024", availability: "Limited" },
+                        { date: "April 20-23, 2024", availability: "Available" },
+                        { date: "May 18-21, 2024", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/kapama1.jpg",
+                    "assets/img/travel/kapama2.jpg",
+                    "assets/img/travel/kapama3.jpg"
+                ]
+            },
 
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-4 col-md-6 footer-about">
-          <a href="index.html" class="d-flex align-items-center">
-            <span class="sitename">Tour</span>
-          </a>
-          <div class="footer-contact pt-3">
-            <p>A108 Adam Street</p>
-            <p>New York, NY 535022</p>
-            <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-            <p><strong>Email:</strong> <span>info@example.com</span></p>
-          </div>
-        </div>
+            "soweto-bicycle-tour": {
+                hero: {
+                    name: "Soweto Bicycle Cultural Tour",
+                    tagline: "Explore the vibrant streets and rich history of Soweto on two wheels.",
+                    image: "assets/img/travel/sowetobicycle1.jpg",
+                    duration: "3 Hours",
+                    destination: "Soweto, Johannesburg, South Africa",
+                    rating: "4.8 (203 reviews)"
+                },
+                overview: {
+                    description: "Cycle through the iconic township of Soweto with local guides, visiting historical landmarks, experiencing the vibrant street life, and learning about the community's significant role in South Africa's history.",
+                    extra: "Includes visits to local shebeens (traditional pubs) for a taste of Soweto's social culture."
+                },
+                highlights: [
+                    "Vilakazi Street (home to two Nobel Prize winners)",
+                    "Hector Pieterson Memorial",
+                    "Orlando Towers",
+                    "Local market visits",
+                    "Traditional lunch option"
+                ],
+                itinerary: [
+                    { day: "Tour", title: "Meeting Point & Bike Setup", details: "Introduction and safety briefing at cycling center.", meals: "None" },
+                    { day: "Tour", title: "Cycle Through Soweto", details: "Guided tour through different neighborhoods and landmarks.", meals: "None" },
+                    { day: "Tour", title: "Cultural Interactions", details: "Visit local homes, shebeens, and community projects.", meals: "None" },
+                    { day: "Tour", title: "Return & Refreshments", details: "Return bikes and enjoy traditional refreshments.", meals: "Refreshments" }
+                ],
+                inclusions: [
+                    "Quality mountain bike and helmet",
+                    "Experienced local guide",
+                    "Bottled water",
+                    "Traditional refreshments",
+                    "All entry fees"
+                ],
+                exclusions: [
+                    "Transportation to meeting point",
+                    "Additional food and drinks",
+                    "Gratuities",
+                    "Souvenirs"
+                ],
+                pricing: {
+                    startingFrom: "R650",
+                    options: [
+                        { type: "Standard Tour", price: "R650" },
+                        { type: "With Traditional Lunch", price: "R850" },
+                        { type: "Private Group Tour (min 4)", price: "R550 per person" }
+                    ],
+                    dates: [
+                        { date: "Daily departures at 9:30 and 14:00", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/sowetobike1.jpg",
+                    "assets/img/travel/sowetobike2.jpg",
+                    "assets/img/travel/sowetobike3.jpg"
+                ]
+            },
 
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
-          </ul>
-        </div>
+            "sabi-sands-luxury": {
+                hero: {
+                    name: "Sabi Sands Luxury Safari",
+                    tagline: "Exceptional wildlife encounters in South Africa's premier private reserve.",
+                    image: "assets/img/travel/sabi1.jpg",
+                    duration: "5 Days",
+                    destination: "Sabi Sands Game Reserve, South Africa",
+                    rating: "5.0 (189 reviews)"
+                },
+                overview: {
+                    description: "Experience the ultimate luxury safari in the world-renowned Sabi Sands Private Game Reserve, adjacent to Kruger National Park. Famous for exceptional leopard sightings and unparalleled luxury accommodations.",
+                    extra: "Enjoy off-road driving for optimal photographic opportunities and intimate wildlife encounters."
+                },
+                highlights: [
+                    "Unparalleled leopard viewing",
+                    "Luxury suite accommodation",
+                    "Private plunge pools",
+                    "Star bed sleep-out option",
+                    "Spa and wellness center"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Arrival & Evening Drive", details: "Welcome and orientation, afternoon game drive.", accommodation: "Londolozi Private Suite", meals: "Dinner" },
+                    { day: "Day 2", title: "Full Day Safari", details: "Morning and evening game drives with relaxation time.", accommodation: "Londolozi Private Suite", meals: "Breakfast, Lunch, Dinner" },
+                    { day: "Day 3", title: "Bush Walk & Safari", details: "Morning bush walk, afternoon game drive.", accommodation: "Londolozi Private Suite", meals: "Breakfast, Lunch, Dinner" },
+                    { day: "Day 4", title: "Safari Experience", details: "Game drives with photographic focus.", accommodation: "Londolozi Private Suite", meals: "Breakfast, Lunch, Dinner" },
+                    { day: "Day 5", title: "Final Drive & Departure", details: "Early morning game drive and breakfast.", meals: "Breakfast" }
+                ],
+                inclusions: [
+                    "4 nights ultra-luxury accommodation",
+                    "All meals and premium beverages",
+                    "Twice daily game drives",
+                    "Bush walks with armed guides",
+                    "Return transfers from Skukuza Airport"
+                ],
+                exclusions: [
+                    "Charter flights",
+                    "Spa treatments",
+                    "Premium wines and spirits",
+                    "Conservation fees"
+                ],
+                pricing: {
+                    startingFrom: "R125,000",
+                    options: [
+                        { type: "Per person sharing", price: "R125,000" },
+                        { type: "Single supplement", price: "R45,000" },
+                        { type: "Villa upgrade", price: "R25,000 additional" }
+                    ],
+                    dates: [
+                        { date: "September 5-9, 2024", availability: "Limited" },
+                        { date: "October 10-14, 2024", availability: "Available" },
+                        { date: "November 15-19, 2024", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/sabi2.jpg",
+                    "assets/img/travel/sabi3.jpg",
+                    "assets/img/travel/sabi4.jpg"
+                ]
+            },
 
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Product Management</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Marketing</a></li>
-          </ul>
-        </div>
+            "helicopter-tablemountain": {
+                hero: {
+                    name: "Table Mountain Helicopter Tour",
+                    tagline: "Soar above Cape Town's iconic landmarks for breathtaking aerial views.",
+                    image: "assets/img/travel/capetownflight.jpg",
+                    duration: "1 Hour",
+                    destination: "Cape Town, South Africa",
+                    rating: "4.9 (167 reviews)"
+                },
+                overview: {
+                    description: "Experience Cape Town from a spectacular perspective with a helicopter tour that showcases Table Mountain, the Twelve Apostles, Camps Bay, and the Atlantic coastline from above.",
+                    extra: "Includes photo opportunities and commentary from experienced pilot guides."
+                },
+                highlights: [
+                    "Aerial views of Table Mountain",
+                    "Coastal flight along Atlantic seaboard",
+                    "Camps Bay and Clifton beaches",
+                    "Twelve Apostles mountain range",
+                    "Robben Island overview"
+                ],
+                itinerary: [
+                    { day: "Tour", title: "Pre-flight Briefing", details: "Safety orientation and introduction to route.", meals: "None" },
+                    { day: "Tour", title: "Scenic Flight", details: "30-minute helicopter tour over key landmarks.", meals: "None" },
+                    { day: "Tour", title: "Photo Opportunities", details: "Multiple passes for optimal photography.", meals: "None" },
+                    { day: "Tour", title: "Landing & Debrief", details: "Return to helipad and receive flight certificate.", meals: "None" }
+                ],
+                inclusions: [
+                    "30-minute helicopter flight",
+                    "Professional pilot/guide",
+                    "Safety briefing and equipment",
+                    "Flight certificate",
+                    "All taxes and fees"
+                ],
+                exclusions: [
+                    "Transportation to helipad",
+                    "Additional flight time",
+                    "Photography services",
+                    "Personal expenses"
+                ],
+                pricing: {
+                    startingFrom: "R4,500",
+                    options: [
+                        { type: "Per person (shared flight)", price: "R4,500" },
+                        { type: "Private charter (3 passengers)", price: "R12,000" },
+                        { type: "Extended 45-minute tour", price: "R6,500" }
+                    ],
+                    dates: [
+                        { date: "Daily flights from 8:00-18:00", availability: "Weather dependent" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/heli1.jpg",
+                    "assets/img/travel/heli2.jpg",
+                    "assets/img/travel/heli3.jpg"
+                ]
+            },
 
-        <div class="col-lg-4 col-md-12">
-          <h4>Follow Us</h4>
-          <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
-          <div class="social-links d-flex">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
-          </div>
-        </div>
+            "bo-kaap-cultural": {
+                hero: {
+                    name: "Bo-Kaap Cultural Experience",
+                    tagline: "Immerse yourself in the vibrant Cape Malay culture and colorful streets.",
+                    image: "assets/img/travel/bo-kaap1.jpg",
+                    duration: "2 Days",
+                    destination: "Cape Town, South Africa",
+                    rating: "4.7 (134 reviews)"
+                },
+                overview: {
+                    description: "Discover the rich cultural heritage of Cape Town's Bo-Kaap neighborhood, known for its brightly colored homes, Cape Malay cuisine, and significant Islamic heritage dating back to the 17th century.",
+                    extra: "Includes hands-on cooking class learning to make traditional Cape Malay dishes."
+                },
+                highlights: [
+                    "Cape Malay cooking class",
+                    "Historical walking tour",
+                    "Visit to first South African mosque",
+                    "Spice shop experience",
+                    "Traditional music demonstration"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Cultural Walking Tour", details: "Explore colorful streets and learn about history.", accommodation: "Boutique Guesthouse", meals: "Lunch" },
+                    { day: "Day 1", title: "Cooking Class", details: "Hands-on preparation of traditional Cape Malay dishes.", accommodation: "Boutique Guesthouse", meals: "Dinner" },
+                    { day: "Day 2", title: "Spice Tour & Mosque Visit", details: "Visit spice market and historical religious sites.", meals: "Breakfast, Lunch" }
+                ],
+                inclusions: [
+                    "1 night accommodation in Bo-Kaap",
+                    "All meals as specified",
+                    "Cooking class with ingredients",
+                    "Expert cultural guide",
+                    "All entry fees"
+                ],
+                exclusions: [
+                    "Transportation to Bo-Kaap",
+                    "Additional purchases",
+                    "Alcoholic beverages",
+                    "Personal expenses"
+                ],
+                pricing: {
+                    startingFrom: "R3,800",
+                    options: [
+                        { type: "Per person", price: "R3,800" },
+                        { type: "Without accommodation", price: "R2,200" },
+                        { type: "Private group tour (min 4)", price: "R3,200 per person" }
+                    ],
+                    dates: [
+                        { date: "Weekly every Friday-Saturday", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/bokaap1.jpg",
+                    "assets/img/travel/bokaap2.jpg",
+                    "assets/img/travel/bokaap3.jpg"
+                ]
+            },
 
-      </div>
-    </div>
+            "wild-coast-hiking": {
+                hero: {
+                    name: "Wild Coast Hiking Adventure",
+                    tagline: "Trek through unspoiled landscapes and traditional Xhosa communities.",
+                    image: "assets/img/travel/wildcoasthike.png",
+                    duration: "5 Days",
+                    destination: "Wild Coast, Eastern Cape, South Africa",
+                    rating: "4.8 (121 reviews)"
+                },
+                overview: {
+                    description: "Experience the raw beauty of South Africa's Wild Coast on a guided hiking adventure that combines spectacular coastal scenery, remote beaches, and cultural interactions with local Xhosa communities.",
+                    extra: "Includes visits to traditional villages and learning about Xhosa culture firsthand."
+                },
+                highlights: [
+                    "Dramatic coastal cliffs",
+                    "Remote beaches and estuaries",
+                    "Traditional Xhosa village visits",
+                    "Hole in the Wall landmark",
+                    "Rustic coastal accommodation"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Transfer to Wild Coast & First Hike", details: "Travel to starting point, afternoon coastal walk.", accommodation: "Beach Lodge", meals: "Dinner" },
+                    { day: "Day 2", title: "Coastal Trek", details: "Full day hiking along dramatic coastline.", accommodation: "Coastal Cabin", meals: "Breakfast, Lunch, Dinner" },
+                    { day: "Day 3", title: "Village Cultural Experience", details: "Hike to traditional village, cultural exchange.", accommodation: "Village Homestay", meals: "Breakfast, Lunch, Dinner" },
+                    { day: "Day 4", title: "Hole in the Wall", details: "Hike to iconic landmark, beach time.", accommodation: "Beach Lodge", meals: "Breakfast, Lunch, Dinner" },
+                    { day: "Day 5", title: "Final Hike & Departure", details: "Morning coastal walk, transfer back.", meals: "Breakfast" }
+                ],
+                inclusions: [
+                    "4 nights accommodation",
+                    "All meals",
+                    "Professional hiking guide",
+                    "Support vehicle for luggage",
+                    "All cultural experience fees"
+                ],
+                exclusions: [
+                    "Transportation to starting point",
+                    "Hiking equipment",
+                    "Personal expenses",
+                    "Travel insurance"
+                ],
+                pricing: {
+                    startingFrom: "R18,500",
+                    options: [
+                        { type: "Per person sharing", price: "R18,500" },
+                        { type: "Single supplement", price: "R3,000" },
+                        { type: "Group discount (6+ people)", price: "R16,500 per person" }
+                    ],
+                    dates: [
+                        { date: "April 10-14, 2024", availability: "Available" },
+                        { date: "May 15-19, 2024", availability: "Limited" },
+                        { date: "June 12-16, 2024", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/wildcoast1.jpg",
+                    "assets/img/travel/wildcoast2.jpg",
+                    "assets/img/travel/wildcoast3.jpg"
+                ]
+            },
 
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">MyWebsite</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
+            "blue-train-experience": {
+                hero: {
+                    name: "Blue Train Luxury Journey",
+                    tagline: "Travel like royalty on Africa's most luxurious train journey.",
+                    image: "assets/img/travel/train.webp",
+                    duration: "3 Days",
+                    destination: "Pretoria to Cape Town, South Africa",
+                    rating: "4.9 (157 reviews)"
+                },
+                overview: {
+                    description: "Experience the ultimate in luxury rail travel aboard the legendary Blue Train, featuring butler service, gourmet dining, and panoramic views of South Africa's diverse landscapes between Pretoria and Cape Town.",
+                    extra: "Includes off-train excursions and all-inclusive premium beverages."
+                },
+                highlights: [
+                    "Luxury suite accommodation",
+                    "Gourmet dining car",
+                    "Observation car with panoramic views",
+                    "Butler service",
+                    "Off-train excursion in Kimberley"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Departure from Pretoria", details: "Board and settle into luxury suite, welcome reception.", accommodation: "Blue Train Suite", meals: "Lunch, Dinner" },
+                    { day: "Day 2", title: "Full Day Journey", details: "Scenic landscapes, Kimberley diamond mine visit.", accommodation: "Blue Train Suite", meals: "Breakfast, Lunch, Dinner" },
+                    { day: "Day 3", title: "Arrival in Cape Town", details: "Final breakfast onboard, arrival at Cape Town Station.", meals: "Breakfast" }
+                ],
+                inclusions: [
+                    "2 nights luxury suite accommodation",
+                    "All gourmet meals",
+                    "Premium beverages including champagne",
+                    "Butler service",
+                    "Kimberley mine museum excursion"
+                ],
+                exclusions: [
+                    "Transportation to station",
+                    "Premium wines and spirits beyond standard offering",
+                    "Personal shopping",
+                    "Gratuities"
+                ],
+                pricing: {
+                    startingFrom: "R85,000",
+                    options: [
+                        { type: "Luxury Suite per person", price: "R85,000" },
+                        { type: "De Luxe Suite upgrade", price: "R120,000" },
+                        { type: "Single occupancy supplement", price: "R40,000" }
+                    ],
+                    dates: [
+                        { date: "Monthly departures - check schedule", availability: "Limited" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/bluetrain1.jpg",
+                    "assets/img/travel/bluetrain2.jpg",
+                    "assets/img/travel/bluetrain3.jpg"
+                ]
+            },
 
-  </footer>
+            "drakensberg": {
+                hero: {
+                    name: "Drakensberg Highlands",
+                    tagline: "Hike dramatic peaks and discover hidden valleys.",
+                    image: "assets/img/travel/drakensberg4.webp",
+                    duration: "7 Days",
+                    destination: "South Africa",
+                    rating: "4.6 (140 reviews)"
+                },
+                overview: {
+                    description: "Explore the Drakensberg mountains with scenic hikes, caves with San rock art, and tranquil valleys. A perfect mix of adventure and serenity.",
+                    extra: "Great for hikers, photographers, and cultural explorers."
+                },
+                highlights: [
+                    "Cathedral Peak hikes",
+                    "Amphitheatre trek",
+                    "San rock art caves",
+                    "Royal Natal National Park",
+                    "Scenic mountain lodges"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Arrival in Drakensberg", details: "Transfer from Durban or Johannesburg.", accommodation: "Mountain Lodge", meals: "Dinner" },
+                    { day: "Day 2", title: "Royal Natal Park", details: "Guided hike to Tugela Falls, the second highest waterfall.", accommodation: "Mountain Lodge", meals: "Breakfast, Dinner" },
+                    { day: "Day 3", title: "San Rock Art", details: "Visit ancient caves with indigenous rock paintings.", accommodation: "Mountain Lodge", meals: "Breakfast" },
+                    { day: "Day 4", title: "Cathedral Peak Hike", details: "Full-day trekking adventure with panoramic views.", accommodation: "Mountain Lodge", meals: "Breakfast, Dinner" },
+                    { day: "Day 5", title: "Free Day", details: "Optional horse riding or spa relaxation.", accommodation: "Mountain Lodge", meals: "Breakfast" },
+                    { day: "Day 6", title: "Amphitheatre Excursion", details: "Climb chain ladders to incredible vistas.", accommodation: "Mountain Lodge", meals: "Breakfast, Dinner" },
+                    { day: "Day 7", title: "Departure", details: "Return transfer to city.", meals: "Breakfast" }
+                ],
+                inclusions: [
+                    "6 nights mountain lodge accommodation",
+                    "Daily breakfast and dinners",
+                    "Guided hikes",
+                    "National park fees"
+                ],
+                exclusions: [
+                    "Flights",
+                    "Lunches",
+                    "Optional tours",
+                    "Insurance"
+                ],
+                pricing: {
+                    startingFrom: "R17,500",
+                    options: [
+                        { type: "Double Occupancy", price: "R17,500" },
+                        { type: "Single Supplement", price: "R4,000 additional" }
+                    ],
+                    dates: [
+                        { date: "April 8–14, 2024", availability: "Available" },
+                        { date: "May 10–16, 2024", availability: "Almost full" },
+                        { date: "June 14–20, 2024", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/drakensberg1.jpg",
+                    "assets/img/travel/drakensberg2.jpg",
+                    "assets/img/travel/drakensberg3.jpg"
+                ]
+            },
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+            "victoria-falls": {
+                hero: {
+                    name: "Victoria Falls Experience",
+                    tagline: "Witness the world’s largest waterfall in all its glory.",
+                    image: "assets/img/travel/victoriafallshotel1.webp",
+                    duration: "5 Days",
+                    destination: "Zimbabwe",
+                    rating: "4.9 (220 reviews)"
+                },
+                overview: {
+                    description: "Discover the thundering Victoria Falls, known as the 'Smoke that Thunders'. Enjoy sunset cruises, helicopter rides, and cultural tours in this natural wonder of the world.",
+                    extra: "A bucket-list destination for nature and adventure lovers."
+                },
+                highlights: [
+                    "Guided tour of Victoria Falls",
+                    "Zambezi River sunset cruise",
+                    "Optional helicopter flight",
+                    "Boma cultural dinner",
+                    "Victoria Falls rainforest walk"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Arrival", details: "Arrival and transfer to hotel near the Falls.", accommodation: "Victoria Falls Hotel", meals: "Dinner" },
+                    { day: "Day 2", title: "Falls Guided Tour", details: "Explore viewpoints and rainforest trails.", accommodation: "Victoria Falls Hotel", meals: "Breakfast" },
+                    { day: "Day 3", title: "Zambezi Sunset Cruise", details: "Evening cruise with snacks and drinks.", accommodation: "Victoria Falls Hotel", meals: "Breakfast, Dinner" },
+                    { day: "Day 4", title: "Adventure Day", details: "Optional helicopter ride or white-water rafting.", accommodation: "Victoria Falls Hotel", meals: "Breakfast" },
+                    { day: "Day 5", title: "Departure", details: "Final morning at leisure, then transfer to airport.", meals: "Breakfast" }
+                ],
+                inclusions: [
+                    "4 nights accommodation",
+                    "Daily breakfast",
+                    "Guided tour of the Falls",
+                    "Sunset cruise",
+                    "Airport transfers"
+                ],
+                exclusions: [
+                    "International flights",
+                    "Adventure activities",
+                    "Meals not specified",
+                    "Insurance"
+                ],
+                pricing: {
+                    startingFrom: "R21,000",
+                    options: [
+                        { type: "Double Occupancy", price: "R21,000" },
+                        { type: "Single Supplement", price: "R6,500 additional" }
+                    ],
+                    dates: [
+                        { date: "March 22–26, 2024", availability: "Available" },
+                        { date: "April 18–22, 2024", availability: "Almost full" },
+                        { date: "May 16–20, 2024", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/victoriafalls22.webp",
+                    "assets/img/travel/victoriafalls222.webp",
+                    "assets/img/travel/victoriafallshotel.jpg"
+                ]
+            },
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
+            "okavango-delta": {
+                hero: {
+                    name: "Okavango Delta Safari",
+                    tagline: "Glide through pristine waterways in Botswana’s paradise.",
+                    image: "assets/img/travel/okavongodelta.jpg",
+                    duration: "7 Days",
+                    destination: "Botswana",
+                    rating: "4.8 (165 reviews)"
+                },
+                overview: {
+                    description: "The Okavango Delta is a UNESCO World Heritage Site, offering unique safari experiences by mokoro (traditional canoe), game drives, and walking safaris.",
+                    extra: "Perfect for travelers seeking wilderness immersion."
+                },
+                highlights: [
+                    "Mokoro rides through the Delta",
+                    "Luxury tented camps",
+                    "Walking safaris with guides",
+                    "Elephant and hippo sightings",
+                    "Stunning birdlife"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Arrival in Maun", details: "Fly to Maun and transfer to Delta camp.", accommodation: "Luxury Tented Camp", meals: "Dinner" },
+                    { day: "Day 2", title: "Mokoro Safari", details: "Glide through channels spotting hippos and birds.", accommodation: "Luxury Tented Camp", meals: "Breakfast, Dinner" },
+                    { day: "Day 3", title: "Walking Safari", details: "Learn about flora and tracking wildlife.", accommodation: "Luxury Tented Camp", meals: "Breakfast, Lunch, Dinner" },
+                    { day: "Day 4", title: "Game Drives", details: "Morning and evening drives in nearby concessions.", accommodation: "Luxury Tented Camp", meals: "Breakfast, Dinner" },
+                    { day: "Day 5", title: "Scenic Flight", details: "Optional helicopter over the Delta.", accommodation: "Luxury Tented Camp", meals: "Breakfast" },
+                    { day: "Day 6", title: "Free Day", details: "Relax and enjoy lodge activities.", accommodation: "Luxury Tented Camp", meals: "Breakfast, Dinner" },
+                    { day: "Day 7", title: "Departure", details: "Fly back to Maun for onward travel.", meals: "Breakfast" }
+                ],
+                inclusions: [
+                    "6 nights accommodation",
+                    "All meals as specified",
+                    "Game drives & mokoro excursions",
+                    "Professional guides",
+                    "Transfers from Maun"
+                ],
+                exclusions: [
+                    "International flights",
+                    "Optional scenic flight",
+                    "Tips & personal expenses"
+                ],
+                pricing: {
+                    startingFrom: "USD 3,200",
+                    options: [
+                        { type: "Double Occupancy", price: "USD 3,200" },
+                        { type: "Single Supplement", price: "USD 750 additional" }
+                    ],
+                    dates: [
+                        { date: "April 12–18, 2024", availability: "Available" },
+                        { date: "May 15–21, 2024", availability: "Almost full" },
+                        { date: "June 10–16, 2024", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/okavongodelta3.jpg",
+                    "assets/img/travel/okavangodelta2.jpg",
+                    "assets/img/travel/okavangodelta34.jpg"
+                ]
+            },
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+            "zanzibar-escape": {
+                hero: {
+                    name: "Zanzibar Beach Escape",
+                    tagline: "White sands, turquoise waters, and spice island charm.",
+                    image: "assets/img/travel/Zanzibar.jpeg",
+                    duration: "6 Days",
+                    destination: "Tanzania",
+                    rating: "4.7 (190 reviews)"
+                },
+                overview: {
+                    description: "Relax on the pristine beaches of Zanzibar, explore Stone Town’s rich history, and discover fragrant spice plantations.",
+                    extra: "Ideal for honeymooners and beach lovers."
+                },
+                highlights: [
+                    "Stone Town walking tour",
+                    "Spice plantation visit",
+                    "Snorkeling & diving",
+                    "Relaxation on Nungwi Beach",
+                    "Sunset dhow cruise"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Arrival in Zanzibar", details: "Transfer to beach resort.", accommodation: "Nungwi Beach Resort", meals: "Dinner" },
+                    { day: "Day 2", title: "Stone Town Tour", details: "Explore winding alleys and history.", accommodation: "Nungwi Beach Resort", meals: "Breakfast" },
+                    { day: "Day 3", title: "Spice Plantation", details: "Learn about Zanzibar’s spices.", accommodation: "Nungwi Beach Resort", meals: "Breakfast, Lunch" },
+                    { day: "Day 4", title: "Snorkeling & Diving", details: "Optional Mnemba Atoll trip.", accommodation: "Nungwi Beach Resort", meals: "Breakfast" },
+                    { day: "Day 5", title: "Free Beach Day", details: "Relax or join optional tours.", accommodation: "Nungwi Beach Resort", meals: "Breakfast" },
+                    { day: "Day 6", title: "Departure", details: "Transfer to airport for flight.", meals: "Breakfast" }
+                ],
+                inclusions: [
+                    "5 nights beachfront accommodation",
+                    "Daily breakfast",
+                    "Tours as specified",
+                    "Airport transfers"
+                ],
+                exclusions: [
+                    "Flights",
+                    "Lunch & dinners not listed",
+                    "Optional activities",
+                    "Insurance"
+                ],
+                pricing: {
+                    startingFrom: "USD 1,450",
+                    options: [
+                        { type: "Double Occupancy", price: "USD 1,450" },
+                        { type: "Single Supplement", price: "USD 400 additional" }
+                    ],
+                    dates: [
+                        { date: "March 5–10, 2024", availability: "Available" },
+                        { date: "April 12–17, 2024", availability: "Almost full" },
+                        { date: "May 20–25, 2024", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/zanzibarnigt_resized.jpg",
+                    "assets/img/travel/zanzibarfood_resized.jpg",
+                    "assets/img/travel/zanzibarstay.jpg",
+                    "assets/img/travel/zanzibarspicefarm_resized.jpg"
+                ]
+            },
 
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
+            "namibia-dunes": {
+                hero: {
+                    name: "Namib Desert & Dunes",
+                    tagline: "Explore surreal landscapes of towering red dunes.",
+                    image: "assets/img/travel/Namibdesert4.jpeg",
+                    duration: "7 Days",
+                    destination: "Namibia",
+                    rating: "4.8 (150 reviews)"
+                },
+                overview: {
+                    description: "From Sossusvlei’s red dunes to Deadvlei’s petrified trees, this journey offers the most spectacular desert landscapes on Earth.",
+                    extra: "Great for photographers and nature lovers."
+                },
+                highlights: [
+                    "Sossusvlei sunrise hike",
+                    "Dead Vlei exploration",
+                    "Swakopmund coastal town",
+                    "Wildlife at Etosha NP",
+                    "Desert stargazing"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Arrival in Windhoek", details: "Welcome briefing & overnight stay.", accommodation: "Windhoek Hotel", meals: "Dinner" },
+                    { day: "Day 2", title: "Sesriem", details: "Drive to Namib Desert.", accommodation: "Desert Lodge", meals: "Breakfast, Dinner" },
+                    { day: "Day 3", title: "Sossusvlei & Deadvlei", details: "Climb Big Daddy dune, explore Deadvlei.", accommodation: "Desert Lodge", meals: "Breakfast" },
+                    { day: "Day 4", title: "Swakopmund", details: "Coastal town visit.", accommodation: "Swakop Hotel", meals: "Breakfast" },
+                    { day: "Day 5", title: "Etosha Safari", details: "Wildlife game drive.", accommodation: "Etosha Lodge", meals: "Breakfast, Dinner" },
+                    { day: "Day 6", title: "Etosha NP", details: "Full day safari.", accommodation: "Etosha Lodge", meals: "Breakfast" },
+                    { day: "Day 7", title: "Return to Windhoek", details: "End of tour.", meals: "Breakfast" }
+                ],
+                inclusions: [
+                    "6 nights accommodation",
+                    "Daily breakfast",
+                    "Game drives & desert tours",
+                    "Transfers & guide"
+                ],
+                exclusions: [
+                    "Flights",
+                    "Meals not listed",
+                    "Optional activities",
+                    "Insurance"
+                ],
+                pricing: {
+                    startingFrom: "USD 2,100",
+                    options: [
+                        { type: "Double Occupancy", price: "USD 2,100" },
+                        { type: "Single Supplement", price: "USD 600 additional" }
+                    ],
+                    dates: [
+                        { date: "April 7–13, 2024", availability: "Available" },
+                        { date: "May 5–11, 2024", availability: "Almost full" },
+                        { date: "June 9–15, 2024", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/Namibdesert.webp",
+                    "assets/img/travel/namibdesertlodge.webp",
+                    "assets/img/travel/Namibdesert3.webp"
+                ]
+            },
+
+            "seychelles-escape": {
+                hero: {
+                    name: "Seychelles Island Escape",
+                    tagline: "Discover paradise in the Indian Ocean.",
+                    image: "assets/img/travel/seychelles9.jpeg",
+                    duration: "7 Days",
+                    destination: "Seychelles",
+                    rating: "4.9 (175 reviews)"
+                },
+                overview: {
+                    description: "Pristine beaches, lush jungles, and Creole culture await in this tropical paradise of the Seychelles archipelago.",
+                    extra: "Perfect for couples and beach enthusiasts."
+                },
+                highlights: [
+                    "Beau Vallon Beach",
+                    "Snorkeling at Sainte Anne Marine Park",
+                    "La Digue Island cycling",
+                    "Creole cuisine experience",
+                    "Anse Lazio beach"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Arrival in Mahé", details: "Transfer to hotel and welcome dinner.", accommodation: "Beach Resort", meals: "Dinner" },
+                    { day: "Day 2", title: "Beach Relaxation", details: "Enjoy Beau Vallon beach.", accommodation: "Beach Resort", meals: "Breakfast" },
+                    { day: "Day 3", title: "La Digue", details: "Cycling tour and beaches.", accommodation: "Beach Resort", meals: "Breakfast" },
+                    { day: "Day 4", title: "Praslin Island", details: "Visit Vallée de Mai UNESCO site.", accommodation: "Beach Resort", meals: "Breakfast" },
+                    { day: "Day 5", title: "Marine Park Snorkeling", details: "Full-day boat trip.", accommodation: "Beach Resort", meals: "Breakfast, Lunch" },
+                    { day: "Day 6", title: "Free Day", details: "Optional spa or excursions.", accommodation: "Beach Resort", meals: "Breakfast" },
+                    { day: "Day 7", title: "Departure", details: "Final morning at leisure.", meals: "Breakfast" }
+                ],
+                inclusions: [
+                    "6 nights beachfront resort",
+                    "Daily breakfast",
+                    "Island transfers",
+                    "Excursions as listed"
+                ],
+                exclusions: [
+                    "Flights",
+                    "Meals not listed",
+                    "Optional activities",
+                    "Insurance"
+                ],
+                pricing: {
+                    startingFrom: "USD 2,600",
+                    options: [
+                        { type: "Double Occupancy", price: "USD 2,600" },
+                        { type: "Single Supplement", price: "USD 800 additional" }
+                    ],
+                    dates: [
+                        { date: "March 15–21, 2024", availability: "Available" },
+                        { date: "April 19–25, 2024", availability: "Almost full" },
+                        { date: "May 17–23, 2024", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/seychelles9.jpeg",
+                    "assets/img/travel/seychelles2.jpg",
+                    "assets/img/travel/seychelles1.jpeg"
+                ]
+            },
+
+            "madagascar-wildlife": {
+                hero: {
+                    name: "Madagascar Wildlife Discovery",
+                    tagline: "A journey into the land of lemurs and baobabs.",
+                    image: "assets/img/travel/madagascar.jpg",
+                    duration: "10 Days",
+                    destination: "Madagascar",
+                    rating: "4.8 (160 reviews)"
+                },
+                overview: {
+                    description: "Explore Madagascar’s unique biodiversity, from lemurs and chameleons to iconic baobab trees and pristine beaches.",
+                    extra: "Perfect for eco-travelers and wildlife lovers."
+                },
+                highlights: [
+                    "Avenue of the Baobabs",
+                    "Andasibe National Park",
+                    "Nosy Be beaches",
+                    "Local villages",
+                    "Lemur spotting"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Arrival in Antananarivo", details: "Welcome dinner & overnight.", accommodation: "City Hotel", meals: "Dinner" },
+                    { day: "Day 2", title: "Andasibe National Park", details: "Spot indri lemurs.", accommodation: "Eco Lodge", meals: "Breakfast, Dinner" },
+                    { day: "Day 3", title: "Wildlife Excursions", details: "Chameleons & rainforest hikes.", accommodation: "Eco Lodge", meals: "Breakfast" },
+                    { day: "Day 4", title: "Drive to Morondava", details: "Baobab avenue sunset.", accommodation: "Baobab Lodge", meals: "Breakfast" },
+                    { day: "Day 5", title: "Kirindy Forest", details: "Spot fossas and lemurs.", accommodation: "Baobab Lodge", meals: "Breakfast" },
+                    { day: "Day 6–8", title: "Nosy Be Island", details: "Beach relaxation & snorkeling.", accommodation: "Beach Resort", meals: "Breakfast" },
+                    { day: "Day 9", title: "Return to Antananarivo", details: "Explore markets.", accommodation: "City Hotel", meals: "Breakfast, Dinner" },
+                    { day: "Day 10", title: "Departure", details: "Transfer to airport.", meals: "Breakfast" }
+                ],
+                inclusions: [
+                    "9 nights accommodation",
+                    "Guided wildlife tours",
+                    "Domestic flights",
+                    "Transfers"
+                ],
+                exclusions: [
+                    "International flights",
+                    "Meals not specified",
+                    "Insurance",
+                    "Optional tours"
+                ],
+                pricing: {
+                    startingFrom: "USD 3,500",
+                    options: [
+                        { type: "Double Occupancy", price: "USD 3,500" },
+                        { type: "Single Supplement", price: "USD 950 additional" }
+                    ],
+                    dates: [
+                        { date: "April 3–12, 2024", availability: "Available" },
+                        { date: "May 8–17, 2024", availability: "Almost full" },
+                        { date: "June 12–21, 2024", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/madagascar4.jpg",
+                    "assets/img/travel/madagascar2.jpg",
+                    "assets/img/travel/madagascar3.jpg"
+                ]
+            },
+            "victoria-falls": {
+                hero: {
+                    name: "Victoria Falls Adventure",
+                    tagline: "Witness the thundering wonder of the Zambezi.",
+                    image: "assets/img/travel/victoriafallshotel1.webp",
+                    duration: "5 Days",
+                    destination: "Zimbabwe & Zambia",
+                    rating: "4.9 (210 reviews)"
+                },
+                overview: {
+                    description: "One of the Seven Natural Wonders of the World, Victoria Falls is a bucket-list experience with breathtaking scenery and thrilling adventures.",
+                    extra: "Perfect for adventure seekers and nature lovers."
+                },
+                highlights: [
+                    "Guided tour of Victoria Falls",
+                    "Sunset Zambezi cruise",
+                    "Helicopter flight (optional)",
+                    "Bungee jumping at the bridge",
+                    "Chobe National Park day trip"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Arrival in Victoria Falls", details: "Transfer to hotel, evening Zambezi sunset cruise.", accommodation: "Falls Lodge", meals: "Dinner" },
+                    { day: "Day 2", title: "Falls Tour", details: "Guided walk to viewpoints and rainforest trails.", accommodation: "Falls Lodge", meals: "Breakfast" },
+                    { day: "Day 3", title: "Adventure Activities", details: "Optional bungee jump, rafting, or helicopter.", accommodation: "Falls Lodge", meals: "Breakfast" },
+                    { day: "Day 4", title: "Chobe Safari", details: "Day trip to Chobe NP in Botswana.", accommodation: "Falls Lodge", meals: "Breakfast, Lunch" },
+                    { day: "Day 5", title: "Departure", details: "Final morning at leisure and departure.", meals: "Breakfast" }
+                ],
+                inclusions: [
+                    "4 nights accommodation",
+                    "Daily breakfast",
+                    "Zambezi cruise",
+                    "Guided falls tour",
+                    "Transfers"
+                ],
+                exclusions: [
+                    "Flights",
+                    "Optional excursions",
+                    "Meals not listed",
+                    "Insurance"
+                ],
+                pricing: {
+                    startingFrom: "USD 1,250",
+                    options: [
+                        { type: "Double Occupancy", price: "USD 1,250" },
+                        { type: "Single Supplement", price: "USD 350 additional" }
+                    ],
+                    dates: [
+                        { date: "March 8–12, 2024", availability: "Available" },
+                        { date: "April 15–19, 2024", availability: "Almost full" },
+                        { date: "May 20–24, 2024", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/victoriafalls222.webp",
+                    "assets/img/travel/victoriafalls22.webp",
+                    "assets/img/travel/Victoriafalls.jpeg"
+                ]
+            },
+
+            "morocco-sahara": {
+                hero: {
+                    name: "Morocco Sahara Journey",
+                    tagline: "Ride camels into golden desert sunsets.",
+                    image: "assets/img/travel/moroccodesert.jpg",
+                    duration: "8 Days",
+                    destination: "Morocco",
+                    rating: "4.8 (185 reviews)"
+                },
+                overview: {
+                    description: "From Marrakech’s bustling souks to the endless dunes of the Sahara, experience the heart of Morocco’s culture and landscapes.",
+                    extra: "Ideal for cultural adventurers and explorers."
+                },
+                highlights: [
+                    "Camel trek in Sahara",
+                    "Overnight in desert camp",
+                    "Kasbah Ait Benhaddou",
+                    "Marrakech medina",
+                    "Atlas Mountains drive"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Arrival in Marrakech", details: "Check-in and evening market walk.", accommodation: "Riad Marrakech", meals: "Dinner" },
+                    { day: "Day 2", title: "City Tour", details: "Explore souks, palaces & gardens.", accommodation: "Riad Marrakech", meals: "Breakfast" },
+                    { day: "Day 3", title: "Atlas Mountains", details: "Drive through mountain passes.", accommodation: "Ouarzazate Hotel", meals: "Breakfast, Dinner" },
+                    { day: "Day 4", title: "Kasbah & Desert Drive", details: "Visit Ait Benhaddou en route.", accommodation: "Desert Camp", meals: "Breakfast, Dinner" },
+                    { day: "Day 5", title: "Sahara Experience", details: "Camel trek & stargazing.", accommodation: "Desert Camp", meals: "Breakfast, Dinner" },
+                    { day: "Day 6", title: "Return via Skoura", details: "Drive past oases & kasbahs.", accommodation: "Ouarzazate Hotel", meals: "Breakfast" },
+                    { day: "Day 7", title: "Back to Marrakech", details: "Evening free to shop & explore.", accommodation: "Riad Marrakech", meals: "Breakfast" },
+                    { day: "Day 8", title: "Departure", details: "Transfer to airport.", meals: "Breakfast" }
+                ],
+                inclusions: [
+                    "7 nights accommodation",
+                    "Daily breakfast",
+                    "Camel trek",
+                    "Transport with driver-guide",
+                    "Desert camp experience"
+                ],
+                exclusions: [
+                    "Flights",
+                    "Optional tours",
+                    "Meals not listed",
+                    "Tips & insurance"
+                ],
+                pricing: {
+                    startingFrom: "USD 2,050",
+                    options: [
+                        { type: "Double Occupancy", price: "USD 2,050" },
+                        { type: "Single Supplement", price: "USD 550 additional" }
+                    ],
+                    dates: [
+                        { date: "April 5–12, 2024", availability: "Available" },
+                        { date: "May 10–17, 2024", availability: "Almost full" },
+                        { date: "June 15–22, 2024", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/morocco.jpeg",
+                    "assets/img/travel/morocco2.jpeg",
+                    "assets/img/travel/morocco33.jpg"
+                ]
+            },
+
+            "egypt-nile": {
+                hero: {
+                    name: "Egypt & Nile Cruise",
+                    tagline: "Sail the timeless waters of the Pharaohs.",
+                    image: "assets/img/travel/nilecruise.jpeg",
+                    duration: "9 Days",
+                    destination: "Egypt",
+                    rating: "4.9 (200 reviews)"
+                },
+                overview: {
+                    description: "Discover the Pyramids of Giza, Luxor’s temples, and cruise the Nile in classic style with expert Egyptologists.",
+                    extra: "Perfect blend of history and relaxation."
+                },
+                highlights: [
+                    "Pyramids of Giza",
+                    "Sphinx & Egyptian Museum",
+                    "Luxor & Karnak temples",
+                    "Nile cruise",
+                    "Abu Simbel optional tour"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Arrival in Cairo", details: "Welcome and hotel transfer.", accommodation: "Cairo Hotel", meals: "Dinner" },
+                    { day: "Day 2", title: "Pyramids & Sphinx", details: "Guided tour with Egyptologist.", accommodation: "Cairo Hotel", meals: "Breakfast" },
+                    { day: "Day 3", title: "Fly to Luxor", details: "Visit Karnak & board Nile cruise.", accommodation: "Nile Cruise", meals: "Breakfast, Dinner" },
+                    { day: "Day 4", title: "Luxor West Bank", details: "Valley of the Kings & Hatshepsut.", accommodation: "Nile Cruise", meals: "Breakfast, Lunch, Dinner" },
+                    { day: "Day 5", title: "Edfu & Kom Ombo", details: "Temple visits.", accommodation: "Nile Cruise", meals: "Breakfast, Lunch, Dinner" },
+                    { day: "Day 6", title: "Aswan", details: "Philae Temple & felucca ride.", accommodation: "Nile Cruise", meals: "Breakfast, Dinner" },
+                    { day: "Day 7", title: "Fly to Cairo", details: "Optional Abu Simbel tour.", accommodation: "Cairo Hotel", meals: "Breakfast" },
+                    { day: "Day 8", title: "Museum & City Tour", details: "Egyptian Museum & Khan el-Khalili.", accommodation: "Cairo Hotel", meals: "Breakfast" },
+                    { day: "Day 9", title: "Departure", details: "Final transfer.", meals: "Breakfast" }
+                ],
+                inclusions: [
+                    "8 nights accommodation",
+                    "Nile cruise with meals",
+                    "Domestic flights",
+                    "Guided tours & transfers"
+                ],
+                exclusions: [
+                    "International flights",
+                    "Optional Abu Simbel",
+                    "Tips & insurance"
+                ],
+                pricing: {
+                    startingFrom: "USD 3,100",
+                    options: [
+                        { type: "Double Occupancy", price: "USD 3,100" },
+                        { type: "Single Supplement", price: "USD 700 additional" }
+                    ],
+                    dates: [
+                        { date: "March 10–18, 2024", availability: "Available" },
+                        { date: "April 14–22, 2024", availability: "Almost full" },
+                        { date: "May 19–27, 2024", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/classicegypttour.jpeg",
+                    "assets/img/travel/valleyofthekings.jpeg",
+                    "assets/img/travel/gizapyramid.jpeg"
+                ]
+            },
+
+            "kenya-safari": {
+                hero: {
+                    name: "Kenya Safari Expedition",
+                    tagline: "Track the Big Five in the heart of Africa.",
+                    image: "assets/img/travel/masai-mara-saruni-mara.jpg",
+                    duration: "7 Days",
+                    destination: "Kenya",
+                    rating: "4.8 (220 reviews)"
+                },
+                overview: {
+                    description: "Experience Masai Mara, Amboseli, and Lake Naivasha with thrilling game drives and cultural encounters.",
+                    extra: "Designed for wildlife enthusiasts."
+                },
+                highlights: [
+                    "Masai Mara game drives",
+                    "Amboseli elephants with Kilimanjaro backdrop",
+                    "Lake Naivasha boat safari",
+                    "Cultural Masai village visit",
+                    "Luxury tented camps"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Arrival in Nairobi", details: "Transfer & overnight stay.", accommodation: "Nairobi Hotel", meals: "Dinner" },
+                    { day: "Day 2", title: "Amboseli NP", details: "Game drive with Kilimanjaro views.", accommodation: "Safari Lodge", meals: "Breakfast, Dinner" },
+                    { day: "Day 3", title: "Lake Naivasha", details: "Boat safari spotting hippos & birds.", accommodation: "Lake Lodge", meals: "Breakfast" },
+                    { day: "Day 4–5", title: "Masai Mara", details: "Full game drives & cultural village visit.", accommodation: "Safari Camp", meals: "Breakfast, Lunch, Dinner" },
+                    { day: "Day 6", title: "Masai Mara Continued", details: "Search for the Big Five.", accommodation: "Safari Camp", meals: "Breakfast, Dinner" },
+                    { day: "Day 7", title: "Return to Nairobi", details: "End of safari adventure.", meals: "Breakfast" }
+                ],
+                inclusions: [
+                    "6 nights accommodation",
+                    "Daily meals",
+                    "Game drives",
+                    "Transfers & guide"
+                ],
+                exclusions: [
+                    "Flights",
+                    "Visa fees",
+                    "Tips & insurance"
+                ],
+                pricing: {
+                    startingFrom: "USD 2,700",
+                    options: [
+                        { type: "Double Occupancy", price: "USD 2,700" },
+                        { type: "Single Supplement", price: "USD 650 additional" }
+                    ],
+                    dates: [
+                        { date: "March 5–11, 2024", availability: "Available" },
+                        { date: "April 9–15, 2024", availability: "Almost full" },
+                        { date: "May 12–18, 2024", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/Maasaivilage.jpeg",
+                    "assets/img/travel/safari2.jpeg",
+                    "assets/img/travel/Greatmigration_resized.jpeg"
+                ]
+            },
+
+            "tanzania-serengeti": {
+                hero: {
+                    name: "Tanzania Serengeti Migration",
+                    tagline: "Witness the Great Migration on epic plains.",
+                    image: "assets/img/travel/Greatmigration_resized.jpeg",
+                    duration: "8 Days",
+                    destination: "Tanzania",
+                    rating: "5.0 (240 reviews)"
+                },
+                overview: {
+                    description: "Track millions of wildebeest and zebra across the Serengeti and Ngorongoro Crater in this once-in-a-lifetime journey.",
+                    extra: "Unmissable for safari lovers."
+                },
+                highlights: [
+                    "Great Migration (seasonal)",
+                    "Serengeti game drives",
+                    "Ngorongoro Crater safari",
+                    "Luxury lodges",
+                    "Endless savanna landscapes"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Arrival in Arusha", details: "Meet & overnight stay.", accommodation: "Arusha Lodge", meals: "Dinner" },
+                    { day: "Day 2–3", title: "Serengeti", details: "Full safari experience.", accommodation: "Serengeti Lodge", meals: "Breakfast, Lunch, Dinner" },
+                    { day: "Day 4–5", title: "Ngorongoro Crater", details: "Explore crater floor.", accommodation: "Ngorongoro Lodge", meals: "Breakfast, Dinner" },
+                    { day: "Day 6", title: "Tarangire NP", details: "Elephants & baobabs.", accommodation: "Safari Lodge", meals: "Breakfast" },
+                    { day: "Day 7", title: "Return to Arusha", details: "Evening rest.", accommodation: "Arusha Lodge", meals: "Breakfast" },
+                    { day: "Day 8", title: "Departure", details: "Final transfer.", meals: "Breakfast" }
+                ],
+                inclusions: [
+                    "7 nights accommodation",
+                    "Daily meals",
+                    "Game drives",
+                    "Park fees & transfers"
+                ],
+                exclusions: [
+                    "Flights",
+                    "Visa fees",
+                    "Optional activities",
+                    "Insurance"
+                ],
+                pricing: {
+                    startingFrom: "USD 3,800",
+                    options: [
+                        { type: "Double Occupancy", price: "USD 3,800" },
+                        { type: "Single Supplement", price: "USD 900 additional" }
+                    ],
+                    dates: [
+                        { date: "March 8–15, 2024", availability: "Available" },
+                        { date: "April 12–19, 2024", availability: "Almost full" },
+                        { date: "May 17–24, 2024", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/serengeti1.jpg",
+                    "assets/img/travel/serengeti2.jpg",
+                    "assets/img/travel/serengeti4.jpg",
+                    "assets/img/travel/serengeti5.jpg",
+                    "assets/img/travel/serengeti3.jpg"
+                ]
+            },
+            "italy-classic": {
+                hero: {
+                    name: "Italy Classic Journey",
+                    tagline: "From Rome’s Colosseum to Venice’s canals.",
+                    image: "assets/img/travel/italy2.jpg",
+                    duration: "10 Days",
+                    destination: "Italy",
+                    rating: "4.9 (280 reviews)"
+                },
+                overview: {
+                    description: "A timeless Italian adventure through Rome, Florence, and Venice. Explore Renaissance art, ancient ruins, and romantic waterways.",
+                    extra: "Perfect for first-time visitors to Italy."
+                },
+                highlights: [
+                    "Rome & Vatican tour",
+                    "Florence & Uffizi Gallery",
+                    "Leaning Tower of Pisa",
+                    "Venice gondola ride",
+                    "Authentic Italian cuisine"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Arrival in Rome", details: "Airport pickup & check-in.", accommodation: "Rome Hotel", meals: "Dinner" },
+                    { day: "Day 2", title: "Rome Highlights", details: "Colosseum & Roman Forum tour.", accommodation: "Rome Hotel", meals: "Breakfast" },
+                    { day: "Day 3", title: "Vatican City", details: "Sistine Chapel & St. Peter’s Basilica.", accommodation: "Rome Hotel", meals: "Breakfast" },
+                    { day: "Day 4", title: "Florence", details: "Visit Duomo & Uffizi Gallery.", accommodation: "Florence Hotel", meals: "Breakfast" },
+                    { day: "Day 5", title: "Tuscany & Pisa", details: "Countryside tour & Leaning Tower.", accommodation: "Florence Hotel", meals: "Breakfast" },
+                    { day: "Day 6", title: "Train to Venice", details: "Evening gondola ride.", accommodation: "Venice Hotel", meals: "Breakfast" },
+                    { day: "Day 7–8", title: "Venice Discovery", details: "St. Mark’s Square & Murano glass.", accommodation: "Venice Hotel", meals: "Breakfast" },
+                    { day: "Day 9", title: "Free Day", details: "Optional Verona excursion.", accommodation: "Venice Hotel", meals: "Breakfast" },
+                    { day: "Day 10", title: "Departure", details: "Airport transfer.", meals: "Breakfast" }
+                ],
+                inclusions: [
+                    "9 nights accommodation",
+                    "Daily breakfast",
+                    "All guided tours",
+                    "Train transfers",
+                    "Gondola ride"
+                ],
+                exclusions: [
+                    "Flights",
+                    "Meals not listed",
+                    "Optional excursions",
+                    "Insurance"
+                ],
+                pricing: {
+                    startingFrom: "USD 3,150",
+                    options: [
+                        { type: "Double Occupancy", price: "USD 3,150" },
+                        { type: "Single Supplement", price: "USD 750 additional" }
+                    ],
+                    dates: [
+                        { date: "April 12–21, 2024", availability: "Available" },
+                        { date: "May 16–25, 2024", availability: "Almost full" },
+                        { date: "June 20–29, 2024", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/milan catherdral.jpg",
+                    "assets/img/travel/italy.jpg",
+                    "assets/img/travel/italy2.jpg"
+                ]
+            },
+
+            "france-paris-loire": {
+                hero: {
+                    name: "France Paris & Loire Castles",
+                    tagline: "Romance of Paris with Loire Valley elegance.",
+                    image: "assets/img/travel/paris1.jpeg",
+                    duration: "8 Days",
+                    destination: "France",
+                    rating: "4.8 (240 reviews)"
+                },
+                overview: {
+                    description: "Experience the magic of Paris combined with the fairytale châteaux of the Loire Valley. Perfect mix of culture, art, and countryside charm.",
+                    extra: "A romantic French escape."
+                },
+                highlights: [
+                    "Eiffel Tower & Louvre Museum",
+                    "Seine River cruise",
+                    "Loire Valley castles tour",
+                    "Wine tasting",
+                    "Versailles Palace"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Arrival in Paris", details: "Check-in & evening Seine cruise.", accommodation: "Paris Hotel", meals: "Dinner" },
+                    { day: "Day 2", title: "Paris Highlights", details: "Eiffel Tower, Champs-Élysées & Arc de Triomphe.", accommodation: "Paris Hotel", meals: "Breakfast" },
+                    { day: "Day 3", title: "Art & Culture", details: "Louvre & Montmartre tour.", accommodation: "Paris Hotel", meals: "Breakfast" },
+                    { day: "Day 4", title: "Versailles", details: "Day trip to Versailles Palace.", accommodation: "Paris Hotel", meals: "Breakfast" },
+                    { day: "Day 5", title: "Loire Valley", details: "Transfer & châteaux visits.", accommodation: "Loire Hotel", meals: "Breakfast" },
+                    { day: "Day 6", title: "Castles & Wine", details: "Explore Chenonceau & wine tasting.", accommodation: "Loire Hotel", meals: "Breakfast" },
+                    { day: "Day 7", title: "Return to Paris", details: "Shopping & leisure.", accommodation: "Paris Hotel", meals: "Breakfast" },
+                    { day: "Day 8", title: "Departure", details: "Airport transfer.", meals: "Breakfast" }
+                ],
+                inclusions: [
+                    "7 nights accommodation",
+                    "Daily breakfast",
+                    "Guided city tours",
+                    "Châteaux entry tickets",
+                    "Wine tasting"
+                ],
+                exclusions: [
+                    "Flights",
+                    "Meals not listed",
+                    "Personal expenses",
+                    "Insurance"
+                ],
+                pricing: {
+                    startingFrom: "USD 2,850",
+                    options: [
+                        { type: "Double Occupancy", price: "USD 2,850" },
+                        { type: "Single Supplement", price: "USD 680 additional" }
+                    ],
+                    dates: [
+                        { date: "April 8–15, 2024", availability: "Available" },
+                        { date: "May 10–17, 2024", availability: "Almost full" },
+                        { date: "June 14–21, 2024", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/paris2.jpg",
+                    "assets/img/travel/parispicture2.jpeg",
+                    "assets/img/travel/paris3.jpg"
+                ]
+            },
+
+            "spain-andalusia": {
+                hero: {
+                    name: "Spain Andalusia & Barcelona",
+                    tagline: "Flamenco nights, Moorish palaces & Gaudí wonders.",
+                    image: "assets/img/travel/spain4.avif",
+                    duration: "9 Days",
+                    destination: "Spain",
+                    rating: "4.9 (220 reviews)"
+                },
+                overview: {
+                    description: "Journey through the vibrant heart of Spain – from Seville’s flamenco shows to Granada’s Alhambra and Barcelona’s unique architecture.",
+                    extra: "Culture-rich adventure."
+                },
+                highlights: [
+                    "Seville Cathedral & Alcázar",
+                    "Flamenco show",
+                    "Granada’s Alhambra",
+                    "Valencia beaches",
+                    "Barcelona’s Sagrada Familia"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Arrival in Seville", details: "Evening flamenco performance.", accommodation: "Seville Hotel", meals: "Dinner" },
+                    { day: "Day 2", title: "Seville Tour", details: "Cathedral & Alcázar visit.", accommodation: "Seville Hotel", meals: "Breakfast" },
+                    { day: "Day 3", title: "Córdoba Excursion", details: "Mezquita & old town.", accommodation: "Seville Hotel", meals: "Breakfast" },
+                    { day: "Day 4", title: "Granada", details: "Visit Alhambra & Albaicín.", accommodation: "Granada Hotel", meals: "Breakfast" },
+                    { day: "Day 5", title: "Valencia", details: "Travel & beach time.", accommodation: "Valencia Hotel", meals: "Breakfast" },
+                    { day: "Day 6–7", title: "Barcelona", details: "Gaudí’s masterpieces & Gothic Quarter.", accommodation: "Barcelona Hotel", meals: "Breakfast" },
+                    { day: "Day 8", title: "More Barcelona", details: "Free time or optional excursion.", accommodation: "Barcelona Hotel", meals: "Breakfast" },
+                    { day: "Day 9", title: "Departure", details: "Airport transfer.", meals: "Breakfast" }
+                ],
+                inclusions: [
+                    "8 nights accommodation",
+                    "Daily breakfast",
+                    "Flamenco show",
+                    "Alhambra tickets",
+                    "Guided city tours"
+                ],
+                exclusions: [
+                    "Flights",
+                    "Optional excursions",
+                    "Meals not listed",
+                    "Insurance"
+                ],
+                pricing: {
+                    startingFrom: "USD 2,990",
+                    options: [
+                        { type: "Double Occupancy", price: "USD 2,990" },
+                        { type: "Single Supplement", price: "USD 720 additional" }
+                    ],
+                    dates: [
+                        { date: "April 14–22, 2024", availability: "Available" },
+                        { date: "May 18–26, 2024", availability: "Almost full" },
+                        { date: "June 22–30, 2024", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/spain1.avif",
+                    "assets/img/travel/spain2.avif",
+                    "assets/img/travel/spain4.avif",
+                    "assets/img/travel/spain5.avif",
+                    "assets/img/travel/spain6.avif",
+                    "assets/img/travel/spain3.avif"
+                ]
+            },
+
+            "portugal-lisbon-porto": {
+                hero: {
+                    name: "Portugal Lisbon & Porto",
+                    tagline: "Pastel streets, Fado music & Douro wines.",
+                    image: "assets/img/travel/portugal2.jpeg",
+                    duration: "8 Days",
+                    destination: "Portugal",
+                    rating: "4.8 (200 reviews)"
+                },
+                overview: {
+                    description: "Discover Portugal’s soulful charm with Lisbon’s vibrant neighborhoods, Porto’s riverfront, and the stunning Douro Valley vineyards.",
+                    extra: "Great for wine & culture lovers."
+                },
+                highlights: [
+                    "Lisbon’s Alfama district",
+                    "Fado music evening",
+                    "Sintra day trip",
+                    "Porto’s Ribeira",
+                    "Douro Valley wine tour"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Arrival in Lisbon", details: "Check-in & evening stroll.", accommodation: "Lisbon Hotel", meals: "Dinner" },
+                    { day: "Day 2", title: "Lisbon Tour", details: "Alfama & Belém Tower.", accommodation: "Lisbon Hotel", meals: "Breakfast" },
+                    { day: "Day 3", title: "Sintra Excursion", details: "Visit Pena Palace & gardens.", accommodation: "Lisbon Hotel", meals: "Breakfast" },
+                    { day: "Day 4", title: "Coimbra Stop", details: "University & old town.", accommodation: "Porto Hotel", meals: "Breakfast" },
+                    { day: "Day 5", title: "Porto Tour", details: "Ribeira & port wine cellars.", accommodation: "Porto Hotel", meals: "Breakfast" },
+                    { day: "Day 6", title: "Douro Valley", details: "Vineyard visits & tastings.", accommodation: "Porto Hotel", meals: "Breakfast, Lunch" },
+                    { day: "Day 7", title: "Free Day", details: "Optional Braga or Guimarães trip.", accommodation: "Porto Hotel", meals: "Breakfast" },
+                    { day: "Day 8", title: "Departure", details: "Airport transfer.", meals: "Breakfast" }
+                ],
+                inclusions: [
+                    "7 nights accommodation",
+                    "Daily breakfast",
+                    "Sintra day trip",
+                    "Wine tastings",
+                    "Guided tours"
+                ],
+                exclusions: [
+                    "Flights",
+                    "Meals not listed",
+                    "Personal expenses",
+                    "Insurance"
+                ],
+                pricing: {
+                    startingFrom: "USD 2,720",
+                    options: [
+                        { type: "Double Occupancy", price: "USD 2,720" },
+                        { type: "Single Supplement", price: "USD 650 additional" }
+                    ],
+                    dates: [
+                        { date: "April 6–13, 2024", availability: "Available" },
+                        { date: "May 12–19, 2024", availability: "Almost full" },
+                        { date: "June 16–23, 2024", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/portugal.jpeg",
+                    "assets/img/travel/portugal2.jpeg",
+                    "assets/img/travel/portugal4.webp",
+                    "assets/img/travel/portugal3.webp"
+                ]
+            },
+
+            "croatia-dalmatian": {
+                hero: {
+                    name: "Croatia Dalmatian Coast",
+                    tagline: "Islands, medieval towns & Adriatic sunsets.",
+                    image: "assets/img/travel/Mauritius.jpeg",
+                    duration: "9 Days",
+                    destination: "Croatia",
+                    rating: "4.9 (195 reviews)"
+                },
+                overview: {
+                    description: "Sail and explore Croatia’s famous Dalmatian coast, from Dubrovnik’s city walls to the island life of Hvar and Split’s Roman ruins.",
+                    extra: "Ideal for summer island hopping."
+                },
+                highlights: [
+                    "Dubrovnik Old Town",
+                    "Island hopping tour",
+                    "Split & Diocletian’s Palace",
+                    "Hvar nightlife",
+                    "Plitvice Lakes"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Arrival in Dubrovnik", details: "Evening city walk.", accommodation: "Dubrovnik Hotel", meals: "Dinner" },
+                    { day: "Day 2", title: "Dubrovnik Tour", details: "City walls & cable car.", accommodation: "Dubrovnik Hotel", meals: "Breakfast" },
+                    { day: "Day 3", title: "Island Hopping", details: "Boat trip to Elaphiti Islands.", accommodation: "Dubrovnik Hotel", meals: "Breakfast" },
+                    { day: "Day 4", title: "Split", details: "Visit Diocletian’s Palace.", accommodation: "Split Hotel", meals: "Breakfast" },
+                    { day: "Day 5", title: "Hvar", details: "Explore beaches & nightlife.", accommodation: "Hvar Hotel", meals: "Breakfast" },
+                    { day: "Day 6", title: "Plitvice Lakes", details: "Day trip to waterfalls.", accommodation: "Split Hotel", meals: "Breakfast" },
+                    { day: "Day 7–8", title: "More Split", details: "Leisure or optional sailing.", accommodation: "Split Hotel", meals: "Breakfast" },
+                    { day: "Day 9", title: "Departure", details: "Airport transfer.", meals: "Breakfast" }
+                ],
+                inclusions: [
+                    "8 nights accommodation",
+                    "Daily breakfast",
+                    "Island hopping tour",
+                    "Dubrovnik tour",
+                    "Transfers"
+                ],
+                exclusions: [
+                    "Flights",
+                    "Meals not listed",
+                    "Optional excursions",
+                    "Insurance"
+                ],
+                pricing: {
+                    startingFrom: "USD 3,050",
+                    options: [
+                        { type: "Double Occupancy", price: "USD 3,050" },
+                        { type: "Single Supplement", price: "USD 770 additional" }
+                    ],
+                    dates: [
+                        { date: "April 18–26, 2024", availability: "Available" },
+                        { date: "May 20–28, 2024", availability: "Almost full" },
+                        { date: "June 24–July 2, 2024", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/croatia1.jpg",
+                    "assets/img/travel/croatia2.jpg",
+                    "assets/img/travel/croatia3.jpg"
+                ]
+            },
+            "greece-classic": {
+                hero: {
+                    name: "Greece Classic Journey",
+                    tagline: "From Athens’ Acropolis to Santorini sunsets.",
+                    image: "assets/img/travel/destination-3.webp",
+                    duration: "10 Days",
+                    destination: "Greece",
+                    rating: "4.9 (310 reviews)"
+                },
+                overview: {
+                    description: "A magical Greek journey combining ancient history, island life, and stunning landscapes. Explore Athens, Mykonos, and Santorini.",
+                    extra: "Perfect balance of culture & relaxation."
+                },
+                highlights: [
+                    "Athens Acropolis & Parthenon",
+                    "Delphi day trip",
+                    "Mykonos beaches",
+                    "Santorini sunset in Oia",
+                    "Wine tasting tour"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Arrival in Athens", details: "Airport pickup & welcome dinner.", accommodation: "Athens Hotel", meals: "Dinner" },
+                    { day: "Day 2", title: "Athens Tour", details: "Visit Acropolis & Plaka district.", accommodation: "Athens Hotel", meals: "Breakfast" },
+                    { day: "Day 3", title: "Delphi", details: "Day trip to ancient ruins.", accommodation: "Athens Hotel", meals: "Breakfast" },
+                    { day: "Day 4", title: "Ferry to Mykonos", details: "Evening free time.", accommodation: "Mykonos Hotel", meals: "Breakfast" },
+                    { day: "Day 5–6", title: "Mykonos Discovery", details: "Beaches & windmills.", accommodation: "Mykonos Hotel", meals: "Breakfast" },
+                    { day: "Day 7", title: "Santorini Arrival", details: "Sunset in Oia.", accommodation: "Santorini Hotel", meals: "Breakfast" },
+                    { day: "Day 8–9", title: "Santorini Highlights", details: "Wine tasting & beach day.", accommodation: "Santorini Hotel", meals: "Breakfast" },
+                    { day: "Day 10", title: "Departure", details: "Airport transfer.", meals: "Breakfast" }
+                ],
+                inclusions: [
+                    "9 nights accommodation",
+                    "Daily breakfast",
+                    "Guided city tours",
+                    "Wine tasting",
+                    "All ferry transfers"
+                ],
+                exclusions: [
+                    "Flights",
+                    "Meals not listed",
+                    "Optional excursions",
+                    "Insurance"
+                ],
+                pricing: {
+                    startingFrom: "USD 3,200",
+                    options: [
+                        { type: "Double Occupancy", price: "USD 3,200" },
+                        { type: "Single Supplement", price: "USD 780 additional" }
+                    ],
+                    dates: [
+                        { date: "April 20–29, 2024", availability: "Available" },
+                        { date: "May 22–31, 2024", availability: "Almost full" },
+                        { date: "June 26–July 5, 2024", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/destination-8.webp",
+                    "assets/img/travel/greece2.jpeg",
+                    "assets/img/travel/greece4.jpeg",
+                    "assets/img/travel/greece5.jpeg",
+                    "assets/img/travel/greece3.jpeg"
+                ]
+            },
+
+            "turkey-highlights": {
+                hero: {
+                    name: "Turkey Highlights",
+                    tagline: "From Istanbul bazaars to Cappadocia skies.",
+                    image: "assets/img/travel/turkey.jpeg",
+                    duration: "9 Days",
+                    destination: "Turkey",
+                    rating: "4.8 (280 reviews)"
+                },
+                overview: {
+                    description: "A fascinating journey across Turkey’s most iconic sites. Explore Istanbul, Cappadocia, Ephesus, and Pamukkale’s white terraces.",
+                    extra: "Rich history & natural wonders."
+                },
+                highlights: [
+                    "Istanbul’s Hagia Sophia & Grand Bazaar",
+                    "Bosphorus cruise",
+                    "Cappadocia hot-air balloon ride",
+                    "Ephesus ancient ruins",
+                    "Pamukkale thermal pools"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Arrival in Istanbul", details: "Welcome dinner & Bosphorus cruise.", accommodation: "Istanbul Hotel", meals: "Dinner" },
+                    { day: "Day 2", title: "Istanbul Highlights", details: "Blue Mosque & Hagia Sophia.", accommodation: "Istanbul Hotel", meals: "Breakfast" },
+                    { day: "Day 3", title: "Flight to Cappadocia", details: "Cave hotel check-in.", accommodation: "Cappadocia Hotel", meals: "Breakfast" },
+                    { day: "Day 4", title: "Cappadocia Balloon Ride", details: "Explore fairy chimneys & valleys.", accommodation: "Cappadocia Hotel", meals: "Breakfast" },
+                    { day: "Day 5", title: "Pamukkale", details: "Thermal pools & Hierapolis ruins.", accommodation: "Pamukkale Hotel", meals: "Breakfast" },
+                    { day: "Day 6", title: "Ephesus", details: "Ancient Roman city tour.", accommodation: "Izmir Hotel", meals: "Breakfast" },
+                    { day: "Day 7–8", title: "Return to Istanbul", details: "Shopping & leisure.", accommodation: "Istanbul Hotel", meals: "Breakfast" },
+                    { day: "Day 9", title: "Departure", details: "Airport transfer.", meals: "Breakfast" }
+                ],
+                inclusions: [
+                    "8 nights accommodation",
+                    "Daily breakfast",
+                    "Hot-air balloon ride",
+                    "Domestic flights",
+                    "Guided tours"
+                ],
+                exclusions: [
+                    "International flights",
+                    "Meals not listed",
+                    "Personal expenses",
+                    "Insurance"
+                ],
+                pricing: {
+                    startingFrom: "USD 3,100",
+                    options: [
+                        { type: "Double Occupancy", price: "USD 3,100" },
+                        { type: "Single Supplement", price: "USD 760 additional" }
+                    ],
+                    dates: [
+                        { date: "April 15–23, 2024", availability: "Available" },
+                        { date: "May 19–27, 2024", availability: "Almost full" },
+                        { date: "June 23–July 1, 2024", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/turkey.jpeg",
+                    "assets/img/travel/turkey2.jpg",
+                    "assets/img/travel/turkey5.jpeg",
+                    "assets/img/travel/turkey4.jpeg",
+                    "assets/img/travel/turkey3.jpg"
+                ]
+            },
+            "jordan-petra-deadsea": {
+                hero: {
+                    name: "Jordan Petra & Dead Sea",
+                    tagline: "Lost city of Petra & the healing Dead Sea.",
+                    image: "assets/img/travel/jordanpetra3.webp",
+                    duration: "7 Days",
+                    destination: "Jordan",
+                    rating: "4.9 (185 reviews)"
+                },
+                overview: {
+                    description: "Uncover Jordan’s treasures – from the ancient wonder of Petra to floating in the mineral-rich waters of the Dead Sea.",
+                    extra: "Short but powerful trip."
+                },
+                highlights: [
+                    "Petra archaeological site",
+                    "Wadi Rum desert jeep safari",
+                    "Dead Sea floating experience",
+                    "Amman city tour",
+                    "Jerash Roman ruins"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Arrival in Amman", details: "Welcome dinner.", accommodation: "Amman Hotel", meals: "Dinner" },
+                    { day: "Day 2", title: "Jerash", details: "Explore Roman ruins.", accommodation: "Amman Hotel", meals: "Breakfast" },
+                    { day: "Day 3", title: "Petra", details: "Guided tour of the lost city.", accommodation: "Petra Hotel", meals: "Breakfast" },
+                    { day: "Day 4", title: "Wadi Rum", details: "Jeep safari & Bedouin camp.", accommodation: "Desert Camp", meals: "Breakfast, Dinner" },
+                    { day: "Day 5", title: "Dead Sea", details: "Float in healing waters.", accommodation: "Dead Sea Resort", meals: "Breakfast" },
+                    { day: "Day 6", title: "Amman", details: "City tour & leisure.", accommodation: "Amman Hotel", meals: "Breakfast" },
+                    { day: "Day 7", title: "Departure", details: "Airport transfer.", meals: "Breakfast" }
+                ],
+                inclusions: [
+                    "6 nights accommodation",
+                    "Daily breakfast",
+                    "Jeep safari",
+                    "Guided tours",
+                    "Private transfers"
+                ],
+                exclusions: [
+                    "Flights",
+                    "Meals not listed",
+                    "Optional excursions",
+                    "Insurance"
+                ],
+                pricing: {
+                    startingFrom: "USD 2,750",
+                    options: [
+                        { type: "Double Occupancy", price: "USD 2,750" },
+                        { type: "Single Supplement", price: "USD 680 additional" }
+                    ],
+                    dates: [
+                        { date: "April 7–13, 2024", availability: "Available" },
+                        { date: "May 11–17, 2024", availability: "Almost full" },
+                        { date: "June 15–21, 2024", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/jordanpetra.webp",
+                    "assets/img/travel/jordanpetra2.webp",
+                    "assets/img/travel/jordanpetra3.webp",
+                    "assets/img/travel/jordanpetra4.webp",
+                    "assets/img/travel/jordanpetra5.webp"
+                ]
+            },
+            "dubai-desert-luxury": {
+                hero: {
+                    name: "Dubai Desert Luxury Escape",
+                    tagline: "Skyscrapers, souks, and desert adventures.",
+                    image: "assets/img/travel/Burjkhalifa.jpeg",
+                    duration: "6 Days",
+                    destination: "Dubai, UAE",
+                    rating: "4.8 (240 reviews)"
+                },
+                overview: {
+                    description: "Experience Dubai’s dazzling mix of modern marvels and desert traditions. From luxury shopping to thrilling desert safaris, this trip combines glamour and adventure.",
+                    extra: "Perfect for a short, luxurious getaway."
+                },
+                highlights: [
+                    "Burj Khalifa Sky Deck",
+                    "Dubai Marina dhow cruise",
+                    "Desert safari & camel ride",
+                    "Traditional souks & gold market",
+                    "Palm Jumeirah & Atlantis visit"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Arrival in Dubai", details: "Check into 5-star hotel, evening marina cruise.", accommodation: "Atlantis The Palm", meals: "Dinner" },
+                    { day: "Day 2", title: "Modern Dubai", details: "Burj Khalifa, Dubai Mall, Dubai Fountain.", accommodation: "Atlantis The Palm", meals: "Breakfast" },
+                    { day: "Day 3", title: "Heritage Tour", details: "Visit Al Fahidi district & spice souk.", accommodation: "Atlantis The Palm", meals: "Breakfast" },
+                    { day: "Day 4", title: "Desert Safari", details: "Dune bashing, camel ride, desert BBQ dinner.", accommodation: "Atlantis The Palm", meals: "Breakfast, Dinner" },
+                    { day: "Day 5", title: "Palm Jumeirah", details: "Aquaventure waterpark & leisure day.", accommodation: "Atlantis The Palm", meals: "Breakfast" },
+                    { day: "Day 6", title: "Departure", details: "Airport transfer.", meals: "Breakfast" }
+                ],
+                inclusions: [
+                    "5 nights at luxury 5-star hotel",
+                    "Daily breakfast",
+                    "Desert safari with BBQ",
+                    "Dhow dinner cruise",
+                    "All transfers"
+                ],
+                exclusions: [
+                    "International flights",
+                    "Lunches & dinners (except specified)",
+                    "Personal expenses",
+                    "Insurance"
+                ],
+                pricing: {
+                    startingFrom: "USD 2,950",
+                    options: [
+                        { type: "Double Occupancy", price: "USD 2,950" },
+                        { type: "Single Supplement", price: "USD 680 additional" }
+                    ],
+                    dates: [
+                        { date: "April 5–10, 2024", availability: "Available" },
+                        { date: "May 10–15, 2024", availability: "Almost full" },
+                        { date: "June 14–19, 2024", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/dubai.webp",
+                    "assets/img/travel/dubai2.webp",
+                    "assets/img/travel/Dubaimall.jpeg"
+                ]
+            },
+            "bali-retreat": {
+                hero: {
+                    name: "Bali Wellness & Culture Retreat",
+                    tagline: "Temples, rice terraces, and tropical tranquility.",
+                    image: "assets/img/travel/Bali.jpeg",
+                    duration: "8 Days",
+                    destination: "Bali, Indonesia",
+                    rating: "4.9 (310 reviews)"
+                },
+                overview: {
+                    description: "Immerse yourself in the spiritual and cultural beauty of Bali. Enjoy yoga sessions, rice terrace hikes, traditional ceremonies, and luxurious beachside relaxation.",
+                    extra: "Perfect for rejuvenation & discovery."
+                },
+                highlights: [
+                    "Ubud rice terraces",
+                    "Sacred Monkey Forest",
+                    "Balinese temple ceremonies",
+                    "Traditional cooking class",
+                    "Beach yoga & spa day"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Arrival in Bali", details: "Transfer to Ubud hotel & welcome dinner.", accommodation: "Ubud Resort", meals: "Dinner" },
+                    { day: "Day 2", title: "Ubud Exploration", details: "Monkey Forest, art market, Balinese dance show.", accommodation: "Ubud Resort", meals: "Breakfast" },
+                    { day: "Day 3", title: "Rice Terraces", details: "Hike through Tegallalang, cooking class.", accommodation: "Ubud Resort", meals: "Breakfast, Lunch" },
+                    { day: "Day 4", title: "Temple Day", details: "Tirta Empul & Besakih temple.", accommodation: "Ubud Resort", meals: "Breakfast" },
+                    { day: "Day 5", title: "Beach Resort Move", details: "Transfer to Seminyak, sunset yoga.", accommodation: "Seminyak Villa", meals: "Breakfast" },
+                    { day: "Day 6", title: "Relaxation", details: "Spa treatment & free beach time.", accommodation: "Seminyak Villa", meals: "Breakfast" },
+                    { day: "Day 7", title: "Nusa Penida Day Trip", details: "Boat trip to crystal beaches.", accommodation: "Seminyak Villa", meals: "Breakfast, Lunch" },
+                    { day: "Day 8", title: "Departure", details: "Airport transfer.", meals: "Breakfast" }
+                ],
+                inclusions: [
+                    "7 nights boutique accommodation",
+                    "Daily breakfast",
+                    "Yoga sessions",
+                    "Cooking class",
+                    "Day trip to Nusa Penida"
+                ],
+                exclusions: [
+                    "Flights",
+                    "Meals not listed",
+                    "Optional excursions",
+                    "Insurance"
+                ],
+                pricing: {
+                    startingFrom: "USD 3,050",
+                    options: [
+                        { type: "Double Occupancy", price: "USD 3,050" },
+                        { type: "Single Supplement", price: "USD 720 additional" }
+                    ],
+                    dates: [
+                        { date: "April 8–15, 2024", availability: "Available" },
+                        { date: "May 12–19, 2024", availability: "Almost full" },
+                        { date: "June 16–23, 2024", availability: "Available" }
+                    ]
+                },
+                gallery: [
+                    "assets/img/travel/TanahLotTemple.jpeg",
+                    "assets/img/travel/TegallalangRiceTerraces.jpeg",
+                    "assets/img/travel/monkeyforest.jpeg",
+                    "assets/img/travel/ubudculture.jpeg",
+                    "assets/img/travel/bali1.jpg",
+                    "assets/img/travel/bali2.jpg",
+                    "assets/img/travel/bali3.jpg"
+                ]
+            }
+        };
+
+        // Function to get URL parameter
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            const results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Gallery slider functionality
+        function initGallerySlider(galleryImages) {
+            const mainSlider = document.getElementById('main-slider');
+            const thumbnailsContainer = document.getElementById('thumbnails-container');
+            const prevBtn = document.querySelector('.slider-btn.prev');
+            const nextBtn = document.querySelector('.slider-btn.next');
+            const autoPlayBtn = document.querySelector('.auto-play-btn');
+
+            // Clear existing content
+            mainSlider.innerHTML = '';
+            thumbnailsContainer.innerHTML = '';
+
+            // Variables for slider functionality
+            let currentSlide = 0;
+            let autoPlayInterval;
+            let isAutoPlaying = false;
+
+            // Create slides and thumbnails
+            galleryImages.forEach((img, index) => {
+                // Create main slide
+                const slide = document.createElement('div');
+                slide.className = `slide ${index === 0 ? 'active' : ''}`;
+                slide.style.backgroundImage = `url(${img})`;
+                slide.innerHTML = `<div class="slide-caption">Image ${index + 1}</div>`;
+                mainSlider.appendChild(slide);
+
+                // Create thumbnail
+                const thumbnail = document.createElement('div');
+                thumbnail.className = `thumbnail ${index === 0 ? 'active' : ''}`;
+                thumbnail.style.backgroundImage = `url(${img})`;
+                thumbnail.setAttribute('data-index', index);
+                thumbnailsContainer.appendChild(thumbnail);
+
+                // Add click event to thumbnail
+                thumbnail.addEventListener('click', function () {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    showSlide(index);
+
+                    // If autoplay is running, reset the interval
+                    if (isAutoPlaying) {
+                        clearInterval(autoPlayInterval);
+                        autoPlayInterval = setInterval(nextSlide, 3000);
+                    }
+                });
+            });
+
+            // Function to show a specific slide
+            function showSlide(index) {
+                const slides = document.querySelectorAll('.slide');
+                const thumbnails = document.querySelectorAll('.thumbnail');
+
+                // Hide all slides
+                slides.forEach(slide => slide.classList.remove('active'));
+                thumbnails.forEach(thumb => thumb.classList.remove('active'));
+
+                // Show the selected slide
+                slides[index].classList.add('active');
+                thumbnails[index].classList.add('active');
+
+                currentSlide = index;
+            }
+
+            // Function to show next slide
+            function nextSlide() {
+                const slides = document.querySelectorAll('.slide');
+                let nextIndex = (currentSlide + 1) % slides.length;
+                showSlide(nextIndex);
+            }
+
+            // Function to show previous slide
+            function prevSlide() {
+                const slides = document.querySelectorAll('.slide');
+                let prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(prevIndex);
+            }
+
+            // Function to toggle auto play
+            function toggleAutoPlay() {
+                if (isAutoPlaying) {
+                    clearInterval(autoPlayInterval);
+                    autoPlayBtn.textContent = 'Start Auto Play';
+                    isAutoPlaying = false;
+                } else {
+                    autoPlayInterval = setInterval(nextSlide, 3000);
+                    autoPlayBtn.textContent = 'Stop Auto Play';
+                    isAutoPlaying = true;
+                }
+            }
+
+            // Add event listeners
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+            autoPlayBtn.addEventListener('click', toggleAutoPlay);
+
+            // Keyboard navigation
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'ArrowRight') {
+                    nextSlide();
+                } else if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                } else if (e.key === ' ') {
+                    toggleAutoPlay();
+                }
+            });
+
+            // Start auto play by default
+            toggleAutoPlay();
+        }
+
+        // Function to load tour data
+        function loadTour() {
+            const tourId = getUrlParameter('id') || 'cape-town';
+            const tour = tours[tourId];
+
+            if (!tour) {
+                // Redirect to tours page if tour not found
+                window.location.href = 'tours.html';
+                return;
+            }
+
+            // Update page title
+            document.title = `${tour.hero.name} - DM Luxe Voyages`;
+
+            // Update hero section
+            const heroSection = document.getElementById('tour-hero');
+            heroSection.style.backgroundImage = `url(${tour.hero.image})`;
+
+            document.getElementById('tour-name').textContent = tour.hero.name;
+            document.getElementById('tour-tagline').textContent = tour.hero.tagline;
+            document.getElementById('breadcrumb-tour').textContent = tour.hero.name;
+
+            // Update hero content
+            document.getElementById('tour-hero-image').src = tour.hero.image;
+            document.getElementById('tour-duration').textContent = tour.hero.duration;
+            document.getElementById('tour-destination').textContent = tour.hero.destination;
+            document.getElementById('tour-rating').textContent = tour.hero.rating;
+
+            // Update overview
+            document.getElementById('overview-description').textContent = tour.overview.description;
+            document.getElementById('overview-extra').textContent = tour.overview.extra;
+
+            // Load highlights
+            const highlightsContainer = document.getElementById('highlights-container');
+            highlightsContainer.innerHTML = '';
+            tour.highlights.forEach(item => {
+                highlightsContainer.innerHTML += `<li><i class="bi bi-check-circle"></i> ${item}</li>`;
+            });
+
+            // Load itinerary
+            const itineraryContainer = document.getElementById('itinerary-container');
+            itineraryContainer.innerHTML = '';
+            tour.itinerary.forEach((day, index) => {
+                itineraryContainer.innerHTML += `
+                      <div class="itinerary-item" data-aos="fade-up" data-aos-delay="${100 + (index * 100)}">
+                        <div class="day-number">${day.day}</div>
+                        <div class="day-content">
+                          <h4>${day.title}</h4>
+                          <p>${day.details}</p>
+                          <small><strong>Accommodation:</strong> ${day.accommodation || 'N/A'} | <strong>Meals:</strong> ${day.meals}</small>
+                        </div>
+                      </div>
+                    `;
+            });
+
+            // Load inclusions
+            const inclusionsContainer = document.getElementById('inclusions-container');
+            inclusionsContainer.innerHTML = '';
+            tour.inclusions.forEach(item => {
+                inclusionsContainer.innerHTML += `<li><i class="bi bi-check-circle-fill"></i> ${item}</li>`;
+            });
+
+            // Load exclusions
+            const exclusionsContainer = document.getElementById('exclusions-container');
+            exclusionsContainer.innerHTML = '';
+            tour.exclusions.forEach(item => {
+                exclusionsContainer.innerHTML += `<li><i class="bi bi-x-circle-fill"></i> ${item}</li>`;
+            });
+
+            // Load pricing
+            document.getElementById('starting-price').textContent = tour.pricing.startingFrom;
+            const pricingOptions = document.getElementById('pricing-options');
+            pricingOptions.innerHTML = '';
+            tour.pricing.options.forEach(option => {
+                pricingOptions.innerHTML += `<li>${option.type}: ${option.price}</li>`;
+            });
+
+            const pricingDates = document.getElementById('pricing-dates');
+            pricingDates.innerHTML = '';
+            tour.pricing.dates.forEach(date => {
+                pricingDates.innerHTML += `<li>${date.date} - <em>${date.availability}</em></li>`;
+            });
+
+            // Initialize the gallery slider
+            initGallerySlider(tour.gallery);
+
+            // Initialize GLightbox if available
+            if (typeof GLightbox !== 'undefined') {
+                const lightbox = GLightbox({
+                    selector: '.gallery-item'
+                });
+            }
+        }
+
+        // Load tour when page is ready
+        document.addEventListener('DOMContentLoaded', loadTour);
+    </script>
 
 </body>
 
