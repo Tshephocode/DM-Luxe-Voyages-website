@@ -1024,47 +1024,78 @@
     <!-- Main JS File -->
     <script src="assets/js/main.js"></script>
     <script>
-        // Wait for the document to be fully loaded
         document.addEventListener('DOMContentLoaded', function () {
-            // Get the form by its ID
             const form = document.getElementById('newsletter-form');
+            const loading = document.querySelector('.loading');
+            const errorMessage = document.querySelector('.error-message');
+            const errorText = document.querySelector('.error-text');
+            const sentMessage = document.querySelector('.sent-message');
 
-            // Add a 'submit' event listener
-            form.addEventListener('submit', function (e) {
-                // Prevent the default form submission which causes a page reload
-                e.preventDefault();
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
 
-                // Show the loading indicator
-                form.querySelector('.loading').style.display = 'block';
-                form.querySelector('.error-message').style.display = 'none';
-                form.querySelector('.sent-message').style.display = 'none';
+                // Hide all messages
+                loading.style.display = 'none';
+                errorMessage.style.display = 'none';
+                sentMessage.style.display = 'none';
 
-                // Use the Fetch API to submit the form data asynchronously
+                // Validate email
+                const emailInput = form.querySelector('input[type="email"]');
+                const email = emailInput.value.trim();
+
+                if (!isValidEmail(email)) {
+                    showError('Please enter a valid email address.');
+                    return;
+                }
+
+                // Show loading state
+                loading.style.display = 'block';
+
+                // Prepare form data
+                const formData = new FormData();
+                formData.append('email', email);
+
+                // Submit to Google Apps Script
                 fetch(form.action, {
                     method: 'POST',
-                    body: new URLSearchParams(new FormData(form)) // Encode the form data
+                    body: formData
                 })
-                    .then(response => response.json()) // Parse the JSON response
+                    .then(response => {
+                        if (response.ok) {
+                            return response.text();
+                        }
+                        throw new Error('Network response was not ok.');
+                    })
                     .then(data => {
-                        // Hide the loading indicator
-                        form.querySelector('.loading').style.display = 'none';
+                        loading.style.display = 'none';
 
-                        if (data.result === 'success') {
-                            // If successful, show the success message and reset the form
-                            form.querySelector('.sent-message').style.display = 'block';
-                            form.reset(); // Clear the input fields
+                        // Check if the response contains success indicator
+                        if (data.includes('success') || data.trim() === 'OK') {
+                            showSuccess();
+                            form.reset();
                         } else {
-                            // If not successful, throw an error to be caught below
-                            throw new Error(data.message || 'Form submission failed');
+                            showError('Subscription failed. Please try again later.');
                         }
                     })
                     .catch(error => {
-                        // Hide loading indicator and show error message
-                        form.querySelector('.loading').style.display = 'none';
-                        form.querySelector('.error-message').innerHTML = error.message;
-                        form.querySelector('.error-message').style.display = 'block';
+                        loading.style.display = 'none';
+                        showError('There was a problem with your subscription. Please try again.');
                     });
             });
+
+            function isValidEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+
+            function showError(message) {
+                errorText.textContent = message;
+                errorMessage.style.display = 'block';
+            }
+
+            function showSuccess() {
+                sentMessage.style.display = 'block';
+            }
         });
     </script>
 
