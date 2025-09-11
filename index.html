@@ -935,8 +935,7 @@
                     <div class="col-lg-6">
                         <h4>Luxury Travel Insights</h4>
                         <p>Subscribe for exclusive access to Tour and flight specials, destination guides, and VIP travel tips.</p>
-                        <!-- Changed the form action to your Google Script URL and added a name field -->
-                        <form action="https://script.google.com/macros/s/AKfycbwlZcu8XOWXvNJ0oQsH-s51FF2wHS9v5taEJpaTUDEny3O1V6Gny3UQwTbUREzpv2d36g/exec" method="POST" class="php-email-form" id="newsletter-form">
+                        <form action="https://script.google.com/macros/s/AKfycbwlZcu8XOWXvNJ0oQsH-s51FF2wHS9v5taEJpaTUDEny3O1V6Gny3UQwTbUREzpv2d36g/exec" method="POST" class="php-email-form" id="newsletter-form" name="submit-to-google-sheet">
                             <div class="newsletter-form">
                                 <input type="email" name="email" placeholder="Enter your email" required>
                                 <input type="submit" value="Subscribe">
@@ -950,61 +949,121 @@
             </div>
         </div>
 
-    <div class="container footer-top">
-        <div class="row gy-4">
-            <div class="col-lg-4 col-md-6 footer-about">
-                <a href="index.html" class="d-flex align-items-center">
-                    <span class="sitename">DM Luxe Voyages</span>
-                </a>
-                <div class="footer-contact pt-3">
-                    <p>Pretoria, Gauteng 1807</p>
-                    <p class="mt-3"><strong>Phone:</strong> <span>+27 72 369 9937</span></p>
-                    <p><strong>Email:</strong> <span>info@dmluxevoyages.com</span></p>
+        <div class="container footer-top">
+            <div class="row gy-4">
+                <div class="col-lg-4 col-md-6 footer-about">
+                    <a href="index.html" class="d-flex align-items-center">
+                        <span class="sitename">DM Luxe Voyages</span>
+                    </a>
+                    <div class="footer-contact pt-3">
+                        <p>Pretoria, Gauteng 1807</p>
+                        <p class="mt-3"><strong>Phone:</strong> <span>+27 72 369 9937</span></p>
+                        <p><strong>Email:</strong> <span>info@dmluxevoyages.com</span></p>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><i class="bi bi-chevron-right"></i> <a href="index.html">Home</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="about.html">About Us</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="destinations.html">Destinations</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="tours.html">Tours & Cruises</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="booking.html">Book Now</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-md-3 footer-links">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><i class="bi bi-chevron-right"></i> <a href="booking.html">Flight Reservations</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="booking.html">Visa Assistance</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="booking.html">Cruise Bookings</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="booking.html">Group Travel</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="booking.html">Hotel & Transportation Reservations</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-12">
+                    <h4>Connect With Us</h4>
+                    <p>Indulge in the extraordinary. Experience our world of curated luxury.</p>
+                    <div class="social-links d-flex">
+                        <a href=""><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.instagram.com/dmluxevoyages/"><i class="bi bi-instagram"></i></a>
+                        <a href=""><i class="bi bi-linkedin"></i></a>
+                        <a href=""><i class="bi bi-pinterest"></i></a>
+                    </div>
                 </div>
             </div>
-
-            <div class="col-lg-2 col-md-3 footer-links">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><i class="bi bi-chevron-right"></i> <a href="index.html">Home</a></li>
-                    <li><i class="bi bi-chevron-right"></i> <a href="about.html">About Us</a></li>
-                    <li><i class="bi bi-chevron-right"></i> <a href="destinations.html">Destinations</a></li>
-                    <li><i class="bi bi-chevron-right"></i> <a href="tours.html">Tours & Cruises</a></li>
-                    <li><i class="bi bi-chevron-right"></i> <a href="booking.html">Book Now</a></li>
-                </ul>
-            </div>
-
-            <div class="col-lg-2 col-md-3 footer-links">
-                <h4>Our Services</h4>
-                <ul>
-                    <li><i class="bi bi-chevron-right"></i> <a href="booking.html">Flight Reservations</a></li>
-                    <li><i class="bi bi-chevron-right"></i> <a href="booking.html">Visa Assistance</a></li>
-                    <li><i class="bi bi-chevron-right"></i> <a href="booking.html">Cruise Bookings</a></li>
-                    <li><i class="bi bi-chevron-right"></i> <a href="booking.html">Group Travel</a></li>
-                    <li><i class="bi bi-chevron-right"></i> <a href="booking.html">Hotel & Transportation Reservations</a></li>
-                </ul>
-            </div>
-
-            <div class="col-lg-4 col-md-12">
-                <h4>Connect With Us</h4>
-                <p>Indulge in the extraordinary. Experience our world of curated luxury.</p>
-                <div class="social-links d-flex">
-                    <a href=""><i class="bi bi-facebook"></i></a>
-                    <a href="https://www.instagram.com/dmluxevoyages/"><i class="bi bi-instagram"></i></a>
-                    <a href=""><i class="bi bi-linkedin"></i></a>
-                    <a href=""><i class="bi bi-pinterest"></i></a>
-                </div>
-            </div>
-
         </div>
-    </div>
 
-    <div class="container copyright text-center mt-4">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">DM Luxe Voyages</strong> <span>All Rights Reserved</span></p>
-    </div>
-
+        <div class="container copyright text-center mt-4">
+            <p>© <span>Copyright</span> <strong class="px-1 sitename">DM Luxe Voyages</strong> <span>All Rights Reserved</span></p>
+        </div>
     </footer>
 
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwlZcu8XOWXvNJ0oQsH-s51FF2wHS9v5taEJpaTUDEny3O1V6Gny3UQwTbUREzpv2d36g/exec';
+        const form = document.forms['submit-to-google-sheet'];
+        const loading = document.querySelector('.loading');
+        const errorMessage = document.querySelector('.error-message');
+        const sentMessage = document.querySelector('.sent-message');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+
+            // Hide all messages
+            loading.style.display = 'none';
+            errorMessage.style.display = 'none';
+            sentMessage.style.display = 'none';
+
+            // Validate email
+            const emailInput = form.querySelector('input[type="email"]');
+            const email = emailInput.value.trim();
+
+            if (!isValidEmail(email)) {
+                showError('Please enter a valid email address.');
+                return;
+            }
+
+            // Show loading state
+            loading.style.display = 'block';
+
+            fetch(scriptURL, {
+                method: 'POST',
+                body: new FormData(form)
+            })
+                .then(response => {
+                    loading.style.display = 'none';
+                    if (response.ok) {
+                        showSuccess();
+                        form.reset();
+                    } else {
+                        showError('Subscription failed. Please try again later.');
+                    }
+                })
+                .catch(error => {
+                    loading.style.display = 'none';
+                    showError('There was a problem with your subscription. Please try again.');
+                });
+        });
+
+        function isValidEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function showError(message) {
+            errorMessage.textContent = message;
+            errorMessage.style.display = 'block';
+        }
+
+        function showSuccess() {
+            sentMessage.style.display = 'block';
+        }
+    </script>
+
+   
     <!-- Scroll Top -->
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
@@ -1098,7 +1157,17 @@
             }
         });
     </script>
+    <script>
+        const scriptURL = '<https://script.google.com/macros/s/AKfycbwDaHlWXzePBgPdnVL5b3-I39o8QXYmlDf-Is8Q03CAg0BQWnwk-KrLnPU6ohU-SCVW1g/exec>'
+        const form = document.forms['submit-to-google-sheet']
 
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => console.log('Success!', response))
+                .catch(error => console.error('Error!', error.message))
+        })
+    </script>
 </body>
 
 </html>
