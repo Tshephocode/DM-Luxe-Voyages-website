@@ -1,57 +1,37 @@
-// validate.js
+
 (function () {
     "use strict";
+    let form = document.querySelector('#newsletter-form');
 
-    let forms = document.querySelectorAll('.php-email-form');
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        let thisForm = this;
 
-    forms.forEach(function (form) {
-        form.addEventListener('submit', function (event) {
-            event.preventDefault();
-            let thisForm = this;
+        thisForm.querySelector('.loading').classList.add('d-block');
+        thisForm.querySelector('.error-message').classList.remove('d-block');
+        thisForm.querySelector('.sent-message').classList.remove('d-block');
 
-            // Use the URL you got from deploying your Google Apps Script
-            let action = thisForm.getAttribute('action') || 'https://script.google.com/macros/s/YOUR_DEPLOYMENT_URL/exec';
+        let formData = new FormData(thisForm);
 
-            thisForm.querySelector('.loading').classList.add('d-block');
-            thisForm.querySelector('.error-message').classList.remove('d-block');
-            thisForm.querySelector('.sent-message').classList.remove('d-block');
-
-            // Prepare form data for JSON submission
-            let formData = new FormData(thisForm);
-            let formObject = {};
-            for (let [key, value] of formData.entries()) {
-                formObject[key] = value;
-            }
-
-            // Send the data to Google Apps Script
-            fetch(action, {
-                method: 'POST',
-                body: JSON.stringify(formObject),
-                headers: {
-                    'Content-Type': 'application/json'
+        fetch(thisForm.action, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.text())
+            .then(data => {
+                thisForm.querySelector('.loading').classList.remove('d-block');
+                if (data.trim() === 'OK') {
+                    thisForm.querySelector('.sent-message').classList.add('d-block');
+                    thisForm.reset();
+                } else {
+                    thisForm.querySelector('.error-message').innerHTML = data;
+                    thisForm.querySelector('.error-message').classList.add('d-block');
                 }
             })
-                .then(response => response.json()) // Parse the JSON response
-                .then(data => {
-                    thisForm.querySelector('.loading').classList.remove('d-block');
-                    if (data.result === "success") {
-                        thisForm.querySelector('.sent-message').textContent = data.message;
-                        thisForm.querySelector('.sent-message').classList.add('d-block');
-                        thisForm.reset();
-                    } else {
-                        throw new Error(data.message);
-                    }
-                })
-                .catch((error) => {
-                    displayError(thisForm, error);
-                });
-        });
+            .catch(err => {
+                thisForm.querySelector('.loading').classList.remove('d-block');
+                thisForm.querySelector('.error-message').innerHTML = err;
+                thisForm.querySelector('.error-message').classList.add('d-block');
+            });
     });
-
-    function displayError(thisForm, error) {
-        thisForm.querySelector('.loading').classList.remove('d-block');
-        thisForm.querySelector('.error-message').innerHTML = error.message || error;
-        thisForm.querySelector('.error-message').classList.add('d-block');
-    }
-
 })();
