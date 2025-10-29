@@ -4720,6 +4720,22 @@ section,
 /*--------------------------------------------------------------
 # Travel Booking Section
 --------------------------------------------------------------*/
+/* Form validation styles */
+.is-invalid {
+    border-color: #dc3545 !important;
+}
+
+.invalid-feedback {
+    display: none;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    color: #dc3545;
+}
+
+.is-invalid ~ .invalid-feedback {
+    display: block;
+}
 .travel-booking .booking-form-container {
   background-color: var(--surface-color);
   border-radius: 15px;
@@ -8470,10 +8486,54 @@ section,
     justify-content: center;
   }
 }
+/* Newsletter form styles */
+.newsletter-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
 
+    .newsletter-form input[type="email"] {
+        flex: 1;
+        padding: 12px 15px;
+        border: 2px solid #e9ecef;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .newsletter-form input[type="submit"] {
+        padding: 12px 25px;
+        background: #0d6efd;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background 0.3s ease;
+    }
+
+        .newsletter-form input[type="submit"]:hover {
+            background: #0b5ed7;
+        }
+
+    .newsletter-form input.is-invalid {
+        border-color: #dc3545 !important;
+    }
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .newsletter-form {
+        flex-direction: column;
+    }
+
+        .newsletter-form input[type="email"],
+        .newsletter-form input[type="submit"] {
+            width: 100%;
+        }
+}
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
 .starter-section {
-  /* Add your styles here */
+ 
 }

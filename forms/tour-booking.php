@@ -1,44 +1,171 @@
-<?php
-  /**
-  * Requires the "PHP Email Form" library
-  * The "PHP Email Form" library is available only in the pro version of the template
-  * The library should be uploaded to: vendor/php-email-form/php-email-form.php
-  * For more info and help: https://bootstrapmade.com/php-email-form/
-  */
-
-  // Replace contact@example.com with your real receiving email address
-  $receiving_email_address = 'contact@example.com';
-
-  if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
-    include( $php_email_form );
-  } else {
-    die( 'Unable to load the "PHP Email Form" Library!');
-  }
-
-  $book_a_table = new PHP_Email_Form;
-  $book_a_table->ajax = true;
-  
-  $book_a_table->to = $receiving_email_address;
-  $book_a_table->from_name = $_POST['name'];
-  $book_a_table->from_email = $_POST['email'];
-  $book_a_table->subject = "New tour booking request from the website";
-
-  // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
-  /*
-  $book_a_table->smtp = array(
-    'host' => 'example.com',
-    'username' => 'example',
-    'password' => 'pass',
-    'port' => '587'
-  );
-  */
-
-  $book_a_table->add_message( $_POST['name'], 'Name');
-  $book_a_table->add_message( $_POST['date'], 'Preferred Travel Date');
-  $book_a_table->add_message( $_POST['travelers'], 'Number of Travelers');
-  $book_a_table->add_message( $_POST['email'], 'Email');
-  $book_a_table->add_message( $_POST['phone'], 'Phone', 4);
-  $book_a_table->add_message( $_POST['message'], 'Message');
-
-  echo $book_a_table->send();
+﻿<?php
+// tour-booking.php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Collect and sanitize form data
+    $services = isset($_POST['services']) ? implode(", ", $_POST['services']) : 'None selected';
+    $price_range = isset($_POST['price_range']) ? htmlspecialchars($_POST['price_range']) : 'Not specified';
+    $from_location = isset($_POST['from_location']) ? htmlspecialchars($_POST['from_location']) : 'Not specified';
+    $to_location = isset($_POST['to_location']) ? htmlspecialchars($_POST['to_location']) : 'Not specified';
+    $departure_date = isset($_POST['departure_date']) ? htmlspecialchars($_POST['departure_date']) : 'Not specified';
+    $return_date = isset($_POST['return_date']) ? htmlspecialchars($_POST['return_date']) : 'Not specified';
+    $adults = isset($_POST['adults']) ? htmlspecialchars($_POST['adults']) : 'Not specified';
+    $children = isset($_POST['children']) ? htmlspecialchars($_POST['children']) : 'Not specified';
+    $infants = isset($_POST['infants']) ? htmlspecialchars($_POST['infants']) : 'Not specified';
+    $first_name = isset($_POST['first_name']) ? htmlspecialchars($_POST['first_name']) : 'Not specified';
+    $last_name = isset($_POST['last_name']) ? htmlspecialchars($_POST['last_name']) : 'Not specified';
+    $email = isset($_POST['email']) ? htmlspecialchars($_POST['email']) : 'Not specified';
+    $phone = isset($_POST['phone']) ? htmlspecialchars($_POST['phone']) : 'Not specified';
+    $nationality = isset($_POST['nationality']) ? htmlspecialchars($_POST['nationality']) : 'Not specified';
+    $passport = isset($_POST['passport']) ? htmlspecialchars($_POST['passport']) : 'Not specified';
+    $dietary = isset($_POST['dietary']) ? htmlspecialchars($_POST['dietary']) : 'None';
+    $special_requests = isset($_POST['special_requests']) ? htmlspecialchars($_POST['special_requests']) : 'None';
+    $travel_purpose = isset($_POST['travel_purpose']) ? htmlspecialchars($_POST['travel_purpose']) : 'Not specified';
+    
+    // Email configuration
+    $to = "bookings@dmluxe.co.za, dimpho@dmluxe.co.za";
+    $subject = "New Luxury Travel Booking Request - DM Luxe Voyages";
+    
+    // Email headers
+    $headers = "From: bookings@dmluxe.co.za\r\n";
+    $headers .= "Reply-To: $email\r\n";
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+    
+    // Email body
+    $message = "
+    <html>
+    <head>
+        <style>
+            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+            .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+            .header { background: #0d6efd; color: white; padding: 20px; text-align: center; }
+            .section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+            .section-title { color: #0d6efd; border-bottom: 2px solid #0d6efd; padding-bottom: 10px; }
+            .footer { background: #f8f9fa; padding: 15px; text-align: center; font-size: 12px; color: #666; }
+        </style>
+    </head>
+    <body>
+        <div class='container'>
+            <div class='header'>
+                <h1>New Luxury Travel Booking Request</h1>
+                <p>DM Luxe Voyages</p>
+            </div>
+            
+            <div class='section'>
+                <h2 class='section-title'>Client Information</h2>
+                <p><strong>Name:</strong> $first_name $last_name</p>
+                <p><strong>Email:</strong> $email</p>
+                <p><strong>Phone:</strong> $phone</p>
+                <p><strong>Nationality:</strong> $nationality</p>
+                <p><strong>Passport Number:</strong> $passport</p>
+            </div>
+            
+            <div class='section'>
+                <h2 class='section-title'>Travel Details</h2>
+                <p><strong>From:</strong> $from_location</p>
+                <p><strong>To:</strong> $to_location</p>
+                <p><strong>Departure Date:</strong> $departure_date</p>
+                <p><strong>Return Date:</strong> $return_date</p>
+                <p><strong>Purpose of Travel:</strong> $travel_purpose</p>
+            </div>
+            
+            <div class='section'>
+                <h2 class='section-title'>Travelers</h2>
+                <p><strong>Adults:</strong> $adults</p>
+                <p><strong>Children:</strong> $children</p>
+                <p><strong>Infants:</strong> $infants</p>
+            </div>
+            
+            <div class='section'>
+                <h2 class='section-title'>Services Requested</h2>
+                <p>$services</p>
+                <p><strong>Budget Range:</strong> R$price_range</p>
+            </div>
+            
+            <div class='section'>
+                <h2 class='section-title'>Additional Information</h2>
+                <p><strong>Dietary Restrictions:</strong> $dietary</p>
+                <p><strong>Special Requests:</strong> $special_requests</p>
+            </div>
+            
+            <div class='footer'>
+                <p>This booking request was submitted through the DM Luxe Voyages website.</p>
+                <p>Please contact the client within 24 hours to confirm booking details.</p>
+            </div>
+        </div>
+    </body>
+    </html>
+    ";
+    
+    // Send email
+    if (mail($to, $subject, $message, $headers)) {
+        // Send confirmation email to client
+        $client_subject = "Thank You for Your Booking Request - DM Luxe Voyages";
+        $client_message = "
+        <html>
+        <head>
+            <style>
+                body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+                .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+                .header { background: #0d6efd; color: white; padding: 20px; text-align: center; }
+                .content { margin: 20px 0; padding: 15px; }
+                .footer { background: #f8f9fa; padding: 15px; text-align: center; font-size: 12px; color: #666; }
+            </style>
+        </head>
+        <body>
+            <div class='container'>
+                <div class='header'>
+                    <h1>Thank You for Your Booking Request</h1>
+                </div>
+                
+                <div class='content'>
+                    <p>Dear $first_name $last_name,</p>
+                    
+                    <p>Thank you for choosing DM Luxe Voyages for your luxury travel experience. We have received your booking request with the following details:</p>
+                    
+                    <p><strong>Destination:</strong> $to_location<br>
+                    <strong>Travel Dates:</strong> $departure_date to $return_date<br>
+                    <strong>Travelers:</strong> $adults Adults, $children Children, $infants Infants</p>
+                    
+                    <p>Our luxury travel consultant will review your request and contact you within 24 hours to discuss your itinerary and provide you with a personalized quote.</p>
+                    
+                    <p>If you have any immediate questions, please don't hesitate to contact us:</p>
+                    <p>Phone: +27 72 369 9937<br>
+                    Email: bookings@dmluxe.co.za</p>
+                    
+                    <p>We look forward to crafting your perfect journey!</p>
+                    
+                    <p>Warm regards,<br>
+                    The DM Luxe Voyages Team</p>
+                </div>
+                
+                <div class='footer'>
+                    <p>DM Luxe Voyages | Luxury Travel Experiences</p>
+                    <p>South Africa | +27 72 369 9937 | bookings@dmluxe.co.za</p>
+                </div>
+            </div>
+        </body>
+        </html>
+        ";
+        
+        $client_headers = "From: bookings@dmluxe.co.za\r\n";
+        $client_headers .= "Reply-To: bookings@dmluxe.co.za\r\n";
+        $client_headers .= "MIME-Version: 1.0\r\n";
+        $client_headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+        
+        mail($email, $client_subject, $client_message, $client_headers);
+        
+        // Redirect to success page
+        header("Location: booking-success.html");
+        exit();
+    } else {
+        // Redirect to error page
+        header("Location: booking-error.html");
+        exit();
+    }
+} else {
+    // If not POST request, redirect back to form
+    header("Location: booking.html");
+    exit();
+}
 ?>

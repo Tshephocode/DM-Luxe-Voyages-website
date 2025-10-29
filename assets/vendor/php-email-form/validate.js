@@ -1,37 +1,36 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("newsletter-form");
 
-(function () {
-    "use strict";
-    let form = document.querySelector('#newsletter-form');
-
-    form.addEventListener('submit', function (e) {
+    form.addEventListener("submit", function (e) {
         e.preventDefault();
-        let thisForm = this;
+        const loading = form.querySelector(".loading");
+        const error = form.querySelector(".error-message");
+        const success = form.querySelector(".sent-message");
 
-        thisForm.querySelector('.loading').classList.add('d-block');
-        thisForm.querySelector('.error-message').classList.remove('d-block');
-        thisForm.querySelector('.sent-message').classList.remove('d-block');
+        loading.classList.add("d-block");
+        error.classList.remove("d-block");
+        success.classList.remove("d-block");
 
-        let formData = new FormData(thisForm);
-
-        fetch(thisForm.action, {
-            method: 'POST',
-            body: formData
+        fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
         })
-            .then(res => res.text())
-            .then(data => {
-                thisForm.querySelector('.loading').classList.remove('d-block');
-                if (data.trim() === 'OK') {
-                    thisForm.querySelector('.sent-message').classList.add('d-block');
-                    thisForm.reset();
+            .then((res) => res.json())
+            .then((data) => {
+                loading.classList.remove("d-block");
+                if (data.status === "success") {
+                    success.classList.add("d-block");
+                    form.reset();
                 } else {
-                    thisForm.querySelector('.error-message').innerHTML = data;
-                    thisForm.querySelector('.error-message').classList.add('d-block');
+                    error.innerHTML = data.message;
+                    error.classList.add("d-block");
                 }
             })
-            .catch(err => {
-                thisForm.querySelector('.loading').classList.remove('d-block');
-                thisForm.querySelector('.error-message').innerHTML = err;
-                thisForm.querySelector('.error-message').classList.add('d-block');
+            .catch(() => {
+                loading.classList.remove("d-block");
+                error.innerHTML = "Something went wrong. Please try again.";
+                error.classList.add("d-block");
             });
     });
-})();
+});
+
