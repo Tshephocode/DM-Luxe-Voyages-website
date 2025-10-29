@@ -1125,15 +1125,32 @@
                     <div class="col-lg-6">
                         <h4>Luxury Travel Insights</h4>
                         <p>Subscribe for exclusive access to Tour and flight specials, destination guides, and VIP travel tips.</p>
-                        <!-- Changed the form action to your Google Script URL and added a name field -->
-                        <form action="https://script.google.com/macros/s/AKfycby4YUS3RIbq1X-3syf8WsmBQaSftrfx3KgD_bS9d7DBNi6jnoUlajDMGAUDT4ceE4bjvg/exec" method="POST" class="php-email-form" id="newsletter-form">
-                            <div class="newsletter-form">
-                                <input type="email" name="email" placeholder="Enter your email" required>
-                                <input type="submit" value="Subscribe">
+
+                        <!-- Updated form with PHP functionality -->
+                        <form action="newsletter.php" method="POST" class="php-email-form" id="newsletter-form">
+                            <!-- Honeypot field for spam protection -->
+                            <div style="display: none;">
+                                <input type="text" name="website" id="website">
                             </div>
-                            <div class="loading">Loading</div>
-                            <div class="error-message"></div>
-                            <div class="sent-message">Thank you for joining our luxury travel community! A confirmation has been sent to our team.</div>
+
+                            <div class="newsletter-form">
+                                <input type="email" name="email" id="newsletter-email" placeholder="Enter your email" required>
+                                <input type="submit" value="Subscribe" id="newsletter-submit">
+                            </div>
+
+                            <div class="loading" style="display: none;">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                Processing your subscription...
+                            </div>
+
+                            <div class="error-message" style="display: none;"></div>
+                            <div class="sent-message" style="display: none;">
+                                <div class="alert alert-success">
+                                    <i class="bi bi-check-circle-fill"></i> Thank you for joining our luxury travel community! A welcome email has been sent to you.
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -1215,147 +1232,181 @@
     <script src="assets/js/main.js"></script>
 
     <script>
-        // Wait for the document to be fully loaded
+
+        // Newsletter form handling
         document.addEventListener('DOMContentLoaded', function () {
-            // Newsletter form submission
-            const form = document.getElementById('newsletter-form');
-            if (form) {
-                form.addEventListener('submit', function (e) {
-                    e.preventDefault();
+            const newsletterForm = document.getElementById('newsletter-form');
+            const loadingElement = newsletterForm.querySelector('.loading');
+            const errorElement = newsletterForm.querySelector('.error-message');
+            const successElement = newsletterForm.querySelector('.sent-message');
 
-                    // Show the loading indicator
-                    form.querySelector('.loading').style.display = 'block';
-                    form.querySelector('.error-message').style.display = 'none';
-                    form.querySelector('.sent-message').style.display = 'none';
+            newsletterForm.addEventListener('submit', function (e) {
+                e.preventDefault();
 
-                    // Use the Fetch API to submit the form data asynchronously
-                    fetch(form.action, {
-                        method: 'POST',
-                        body: new URLSearchParams(new FormData(form)) // Encode the form data
+                // Reset messages
+                errorElement.style.display = 'none';
+                successElement.style.display = 'none';
+                loadingElement.style.display = 'block';
+
+                // Validate honeypot
+                const honeypot = document.getElementById('website');
+                if (honeypot.value !== '') {
+                    showError('Spam detection triggered. Please try again.');
+                    return;
+                }
+
+                // Get form data
+                const formData = new FormData(newsletterForm);
+
+                // Submit via AJAX
+                fetch('newsletter.php', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        loadingElement.style.display = 'none';
+
+                        if (data.status === 'success') {
+                            successElement.style.display = 'block';
+                            newsletterForm.reset();
+                            // Scroll to show success message
+                            successElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        } else {
+                            showError(data.message);
+                        }
                     })
-                        .then(response => response.json()) // Parse the JSON response
-                        .then(data => {
-                            // Hide the loading indicator
-                            form.querySelector('.loading').style.display = 'none';
+                    .catch(error => {
+                        loadingElement.style.display = 'none';
+                        showError('Network error. Please try again.');
+                    });
+            });
 
-                            if (data.result === 'success') {
-                                // If successful, show the success message and reset the form
-                                form.querySelector('.sent-message').style.display = 'block';
-                                form.reset(); // Clear the input fields
-                            } else {
-                                // If not successful, throw an error to be caught below
-                                throw new Error(data.message || 'Form submission failed');
-                            }
-                        })
-                        .catch(error => {
-                            // Hide loading indicator and show error message
-                            form.querySelector('.loading').style.display = 'none';
-                            form.querySelector('.error-message').innerHTML = error.message;
-                            form.querySelector('.error-message').style.display = 'block';
-                        });
-                });
+            function showError(message) {
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+                errorElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }
 
-            // Filter functionality
-            let activeFilters = {
+            // Real-time email validation
+            const emailInput = document.getElementById('newsletter-email');
+            emailInput.addEventListener('blur', function () {
+                const email = this.value.trim();
+                if (email && !isValidEmail(email)) {
+                    this.classList.add('is-invalid');
+                } else {
+                    this.classList.remove('is-invalid');
+                }
+            });
+
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+        });
+        // Filter functionality
+        let activeFilters = {
+            destination: '*',
+            style: '*',
+            duration: '*',
+            price: '*'
+        };
+
+        // Dropdown filter functionality
+        document.querySelectorAll('.filter-dropdown .dropdown-item').forEach(item => {
+            item.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const dropdown = this.closest('.filter-dropdown');
+                const filterType = dropdown.querySelector('button').id.replace('Dropdown', '').toLowerCase();
+                const filterValue = this.getAttribute('data-filter');
+                const filterText = this.textContent;
+
+                // Update button text
+                dropdown.querySelector('span').textContent = filterText;
+
+                // Update active class
+                dropdown.querySelectorAll('.dropdown-item').forEach(li => {
+                    li.classList.remove('active');
+                });
+                this.classList.add('active');
+
+                // Update active filters
+                activeFilters[filterType] = filterValue;
+
+                // Apply filters
+                applyFilters();
+            });
+        });
+
+        // Reset filters
+        document.getElementById('reset-filters').addEventListener('click', resetFilters);
+        document.getElementById('reset-filters-btn').addEventListener('click', resetFilters);
+
+        function resetFilters() {
+            // Reset all dropdowns
+            document.querySelectorAll('.filter-dropdown').forEach(dropdown => {
+                const filterType = dropdown.querySelector('button').id.replace('Dropdown', '').toLowerCase();
+                const allItem = dropdown.querySelector('.dropdown-item[data-filter="*"]');
+
+                if (allItem) {
+                    dropdown.querySelector('span').textContent = allItem.textContent;
+                    dropdown.querySelectorAll('.dropdown-item').forEach(li => {
+                        li.classList.remove('active');
+                    });
+                    allItem.classList.add('active');
+                }
+            });
+
+            // Reset active filters
+            activeFilters = {
                 destination: '*',
                 style: '*',
                 duration: '*',
                 price: '*'
             };
 
-            // Dropdown filter functionality
-            document.querySelectorAll('.filter-dropdown .dropdown-item').forEach(item => {
-                item.addEventListener('click', function (e) {
-                    e.preventDefault();
+            // Apply filters (which will show all tours)
+            applyFilters();
+        }
 
-                    const dropdown = this.closest('.filter-dropdown');
-                    const filterType = dropdown.querySelector('button').id.replace('Dropdown', '').toLowerCase();
-                    const filterValue = this.getAttribute('data-filter');
-                    const filterText = this.textContent;
+        function applyFilters() {
+            const tours = document.querySelectorAll('.tour-item');
+            let visibleCount = 0;
 
-                    // Update button text
-                    dropdown.querySelector('span').textContent = filterText;
+            tours.forEach(tour => {
+                // Check if tour matches all active filters
+                const matchesDestination = activeFilters.destination === '*' || tour.classList.contains(activeFilters.destination.replace('.', ''));
+                const matchesStyle = activeFilters.style === '*' || tour.classList.contains(activeFilters.style.replace('.', ''));
+                const matchesDuration = activeFilters.duration === '*' || tour.classList.contains(activeFilters.duration.replace('.', ''));
+                const matchesPrice = activeFilters.price === '*' || tour.classList.contains(activeFilters.price.replace('.', ''));
 
-                    // Update active class
-                    dropdown.querySelectorAll('.dropdown-item').forEach(li => {
-                        li.classList.remove('active');
-                    });
-                    this.classList.add('active');
-
-                    // Update active filters
-                    activeFilters[filterType] = filterValue;
-
-                    // Apply filters
-                    applyFilters();
-                });
+                if (matchesDestination && matchesStyle && matchesDuration && matchesPrice) {
+                    tour.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    tour.style.display = 'none';
+                }
             });
 
-            // Reset filters
-            document.getElementById('reset-filters').addEventListener('click', resetFilters);
-            document.getElementById('reset-filters-btn').addEventListener('click', resetFilters);
+            // Update results count
+            document.getElementById('results-count').textContent = `Showing ${visibleCount} of ${tours.length} tours`;
 
-            function resetFilters() {
-                // Reset all dropdowns
-                document.querySelectorAll('.filter-dropdown').forEach(dropdown => {
-                    const filterType = dropdown.querySelector('button').id.replace('Dropdown', '').toLowerCase();
-                    const allItem = dropdown.querySelector('.dropdown-item[data-filter="*"]');
-
-                    if (allItem) {
-                        dropdown.querySelector('span').textContent = allItem.textContent;
-                        dropdown.querySelectorAll('.dropdown-item').forEach(li => {
-                            li.classList.remove('active');
-                        });
-                        allItem.classList.add('active');
-                    }
-                });
-
-                // Reset active filters
-                activeFilters = {
-                    destination: '*',
-                    style: '*',
-                    duration: '*',
-                    price: '*'
-                };
-
-                // Apply filters (which will show all tours)
-                applyFilters();
+            // Show/hide no results message
+            const noResults = document.getElementById('no-results');
+            if (visibleCount === 0) {
+                noResults.classList.add('show');
+            } else {
+                noResults.classList.remove('show');
             }
+        }
 
-            function applyFilters() {
-                const tours = document.querySelectorAll('.tour-item');
-                let visibleCount = 0;
-
-                tours.forEach(tour => {
-                    // Check if tour matches all active filters
-                    const matchesDestination = activeFilters.destination === '*' || tour.classList.contains(activeFilters.destination.replace('.', ''));
-                    const matchesStyle = activeFilters.style === '*' || tour.classList.contains(activeFilters.style.replace('.', ''));
-                    const matchesDuration = activeFilters.duration === '*' || tour.classList.contains(activeFilters.duration.replace('.', ''));
-                    const matchesPrice = activeFilters.price === '*' || tour.classList.contains(activeFilters.price.replace('.', ''));
-
-                    if (matchesDestination && matchesStyle && matchesDuration && matchesPrice) {
-                        tour.style.display = 'block';
-                        visibleCount++;
-                    } else {
-                        tour.style.display = 'none';
-                    }
-                });
-
-                // Update results count
-                document.getElementById('results-count').textContent = `Showing ${visibleCount} of ${tours.length} tours`;
-
-                // Show/hide no results message
-                const noResults = document.getElementById('no-results');
-                if (visibleCount === 0) {
-                    noResults.classList.add('show');
-                } else {
-                    noResults.classList.remove('show');
-                }
-            }
-
-            // Initialize filters
-            applyFilters();
-        });
+        // Initialize filters
+        applyFilters();
+           
     </script>
 
 </body>

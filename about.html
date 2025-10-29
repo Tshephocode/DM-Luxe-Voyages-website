@@ -587,48 +587,7 @@
                 return emailRegex.test(email);
             }
         });
-        // Wait for the document to be fully loaded
-        document.addEventListener('DOMContentLoaded', function () {
-            // Get the form by its ID
-            const form = document.getElementById('newsletter-form');
-
-            // Add a 'submit' event listener
-            form.addEventListener('submit', function (e) {
-                // Prevent the default form submission which causes a page reload
-                e.preventDefault();
-
-                // Show the loading indicator
-                form.querySelector('.loading').style.display = 'block';
-                form.querySelector('.error-message').style.display = 'none';
-                form.querySelector('.sent-message').style.display = 'none';
-
-                // Use the Fetch API to submit the form data asynchronously
-                fetch(form.action, {
-                    method: 'POST',
-                    body: new URLSearchParams(new FormData(form)) // Encode the form data
-                })
-                    .then(response => response.json()) // Parse the JSON response
-                    .then(data => {
-                        // Hide the loading indicator
-                        form.querySelector('.loading').style.display = 'none';
-
-                        if (data.result === 'success') {
-                            // If successful, show the success message and reset the form
-                            form.querySelector('.sent-message').style.display = 'block';
-                            form.reset(); // Clear the input fields
-                        } else {
-                            // If not successful, throw an error to be caught below
-                            throw new Error(data.message || 'Form submission failed');
-                        }
-                    })
-                    .catch(error => {
-                        // Hide loading indicator and show error message
-                        form.querySelector('.loading').style.display = 'none';
-                        form.querySelector('.error-message').innerHTML = error.message;
-                        form.querySelector('.error-message').style.display = 'block';
-                    });
-            });
-        });
+        
     </script>
 
 </body>

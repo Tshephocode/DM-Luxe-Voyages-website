@@ -201,7 +201,7 @@
                             <div class="hero-buttons">
                                 <a href="destinations.html" class="btn btn-outline">Explore Destinations</a>
                                 <a href="tours.html" class="btn btn-outline">View Tours & Cruises</a>
-                                <a href="booking.html" class="btn btn-outline">Book Our Services Now</a>
+                                <a href="booking.html" class="btn btn-outline">Book Now</a>
                             </div>
                         </div>
                     </div>
@@ -929,21 +929,45 @@
     </main>
 
     <footer id="footer" class="footer position-relative dark-background">
+
         <div class="footer-newsletter">
-            <div class="container text-center">
-                <h4>Luxury Travel Insights</h4>
-                <p>Subscribe for exclusive access to tours, flights, and VIP travel tips.</p>
-                <form action="newsletter.php" method="POST" id="newsletter-form" class="php-email-form">
-                    <div class="newsletter-form">
-                        <input type="email" name="email" placeholder="Enter your email" required>
-                        <input type="submit" value="Subscribe">
+            <div class="container">
+                <div class="row justify-content-center text-center">
+                    <div class="col-lg-6">
+                        <h4>Luxury Travel Insights</h4>
+                        <p>Subscribe for exclusive access to Tour and flight specials, destination guides, and VIP travel tips.</p>
+
+                        <!-- Updated form with PHP functionality -->
+                        <form action="newsletter.php" method="POST" class="php-email-form" id="newsletter-form">
+                            <!-- Honeypot field for spam protection -->
+                            <div style="display: none;">
+                                <input type="text" name="website" id="website">
+                            </div>
+
+                            <div class="newsletter-form">
+                                <input type="email" name="email" id="newsletter-email" placeholder="Enter your email" required>
+                                <input type="submit" value="Subscribe" id="newsletter-submit">
+                            </div>
+
+                            <div class="loading" style="display: none;">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                Processing your subscription...
+                            </div>
+
+                            <div class="error-message" style="display: none;"></div>
+                            <div class="sent-message" style="display: none;">
+                                <div class="alert alert-success">
+                                    <i class="bi bi-check-circle-fill"></i> Thank you for joining our luxury travel community! A welcome email has been sent to you.
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Please check your inbox to confirm your subscription.</div>
-                </form>
+                </div>
             </div>
         </div>
+
 
 
         <div class="container footer-top">
@@ -955,7 +979,7 @@
                     <div class="footer-contact pt-3">
                         <p>Pretoria, Gauteng 1807</p>
                         <p class="mt-3"><strong>Phone:</strong> <span>+27 72 369 9937</span></p>
-                        <p><strong>Email:</strong> <span>info@dmluxevoyages.com</span></p>
+                        <p><strong>Email:</strong> <span>bookings@dmluxe.co.za</span></p>
                     </div>
                 </div>
 
@@ -999,67 +1023,7 @@
         </div>
     </footer>
 
-    <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbwlZcu8XOWXvNJ0oQsH-s51FF2wHS9v5taEJpaTUDEny3O1V6Gny3UQwTbUREzpv2d36g/exec';
-        const form = document.forms['submit-to-google-sheet'];
-        const loading = document.querySelector('.loading');
-        const errorMessage = document.querySelector('.error-message');
-        const sentMessage = document.querySelector('.sent-message');
-
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-
-            // Hide all messages
-            loading.style.display = 'none';
-            errorMessage.style.display = 'none';
-            sentMessage.style.display = 'none';
-
-            // Validate email
-            const emailInput = form.querySelector('input[type="email"]');
-            const email = emailInput.value.trim();
-
-            if (!isValidEmail(email)) {
-                showError('Please enter a valid email address.');
-                return;
-            }
-
-            // Show loading state
-            loading.style.display = 'block';
-
-            fetch(scriptURL, {
-                method: 'POST',
-                body: new FormData(form)
-            })
-                .then(response => {
-                    loading.style.display = 'none';
-                    if (response.ok) {
-                        showSuccess();
-                        form.reset();
-                    } else {
-                        showError('Subscription failed. Please try again later.');
-                    }
-                })
-                .catch(error => {
-                    loading.style.display = 'none';
-                    showError('There was a problem with your subscription. Please try again.');
-                });
-        });
-
-        function isValidEmail(email) {
-            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(email);
-        }
-
-        function showError(message) {
-            errorMessage.textContent = message;
-            errorMessage.style.display = 'block';
-        }
-
-        function showSuccess() {
-            sentMessage.style.display = 'block';
-        }
-    </script>
-
+       
 
     <!-- Scroll Top -->
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -1080,93 +1044,80 @@
     <!-- Main JS File -->
     <script src="assets/js/main.js"></script>
     <script>
+        // Newsletter form handling
         document.addEventListener('DOMContentLoaded', function () {
-            const form = document.getElementById('newsletter-form');
-            const loading = document.querySelector('.loading');
-            const errorMessage = document.querySelector('.error-message');
-            const errorText = document.querySelector('.error-text');
-            const sentMessage = document.querySelector('.sent-message');
+            const newsletterForm = document.getElementById('newsletter-form');
+            const loadingElement = newsletterForm.querySelector('.loading');
+            const errorElement = newsletterForm.querySelector('.error-message');
+            const successElement = newsletterForm.querySelector('.sent-message');
 
-            form.addEventListener('submit', function (event) {
-                event.preventDefault();
+            newsletterForm.addEventListener('submit', function (e) {
+                e.preventDefault();
 
-                // Hide all messages
-                loading.style.display = 'none';
-                errorMessage.style.display = 'none';
-                sentMessage.style.display = 'none';
+                // Reset messages
+                errorElement.style.display = 'none';
+                successElement.style.display = 'none';
+                loadingElement.style.display = 'block';
 
-                // Validate email
-                const emailInput = form.querySelector('input[type="email"]');
-                const email = emailInput.value.trim();
-
-                if (!isValidEmail(email)) {
-                    showError('Please enter a valid email address.');
+                // Validate honeypot
+                const honeypot = document.getElementById('website');
+                if (honeypot.value !== '') {
+                    showError('Spam detection triggered. Please try again.');
                     return;
                 }
 
-                // Show loading state
-                loading.style.display = 'block';
+                // Get form data
+                const formData = new FormData(newsletterForm);
 
-                // Prepare form data
-                const formData = new FormData();
-                formData.append('email', email);
-
-                // Submit to Google Apps Script
-                fetch(form.action, {
+                // Submit via AJAX
+                fetch('newsletter.php', {
                     method: 'POST',
-                    body: formData
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
                 })
-                    .then(response => {
-                        if (response.ok) {
-                            return response.text();
-                        }
-                        throw new Error('Network response was not ok.');
-                    })
+                    .then(response => response.json())
                     .then(data => {
-                        loading.style.display = 'none';
+                        loadingElement.style.display = 'none';
 
-                        // Check if the response contains success indicator
-                        if (data.includes('success') || data.trim() === 'OK') {
-                            showSuccess();
-                            form.reset();
+                        if (data.status === 'success') {
+                            successElement.style.display = 'block';
+                            newsletterForm.reset();
+                            // Scroll to show success message
+                            successElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                         } else {
-                            showError('Subscription failed. Please try again later.');
+                            showError(data.message);
                         }
                     })
                     .catch(error => {
-                        loading.style.display = 'none';
-                        showError('There was a problem with your subscription. Please try again.');
+                        loadingElement.style.display = 'none';
+                        showError('Network error. Please try again.');
                     });
             });
 
-            function isValidEmail(email) {
-                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                return re.test(email);
-            }
-
             function showError(message) {
-                errorText.textContent = message;
-                errorMessage.style.display = 'block';
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+                errorElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }
 
-            function showSuccess() {
-                sentMessage.style.display = 'block';
+            // Real-time email validation
+            const emailInput = document.getElementById('newsletter-email');
+            emailInput.addEventListener('blur', function () {
+                const email = this.value.trim();
+                if (email && !isValidEmail(email)) {
+                    this.classList.add('is-invalid');
+                } else {
+                    this.classList.remove('is-invalid');
+                }
+            });
+
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
             }
         });
-    </script>
-    <script src="https://wzrd.in/standalone/formdata-polyfill"></script>
-    <script src="https://wzrd.in/standalone/promise-polyfill@latest"></script>
-    <script src="https://wzrd.in/standalone/whatwg-fetch@latest"></script>
-    <script>
-        const scriptURL = '<https://script.google.com/macros/s/AKfycbwDaHlWXzePBgPdnVL5b3-I39o8QXYmlDf-Is8Q03CAg0BQWnwk-KrLnPU6ohU-SCVW1g/exec>'
-        const form = document.forms['submit-to-google-sheet']
-
-        form.addEventListener('submit', e => {
-            e.preventDefault()
-            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-                .then(response => console.log('Success!', response))
-                .catch(error => console.error('Error!', error.message))
-        })
     </script>
 </body>
 
