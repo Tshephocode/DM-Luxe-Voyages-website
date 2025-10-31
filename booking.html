@@ -618,6 +618,28 @@
     <!-- Custom Booking Script -->
 
     <script>
+        // Step navigation functionality
+        document.querySelectorAll('.next-step').forEach(button => {
+            button.addEventListener('click', function () {
+                const nextStep = this.getAttribute('data-next');
+                const nextTab = document.querySelector(`[data-bs-target="#${nextStep}"]`);
+                if (nextTab) {
+                    const tab = new bootstrap.Tab(nextTab);
+                    tab.show();
+                }
+            });
+        });
+
+        document.querySelectorAll('.prev-step').forEach(button => {
+            button.addEventListener('click', function () {
+                const prevStep = this.getAttribute('data-prev');
+                const prevTab = document.querySelector(`[data-bs-target="#${prevStep}"]`);
+                if (prevTab) {
+                    const tab = new bootstrap.Tab(prevTab);
+                    tab.show();
+                }
+            });
+        });
         // Price Range Slider
         const priceRange = document.getElementById('price-range');
         const priceRangeValue = document.getElementById('price-range-value');
@@ -823,28 +845,7 @@
                     this.classList.remove('is-invalid');
                 }
             });
-        // Step navigation functionality
-        document.querySelectorAll('.next-step').forEach(button => {
-            button.addEventListener('click', function () {
-                const nextStep = this.getAttribute('data-next');
-                const nextTab = document.querySelector(`[data-bs-target="#${nextStep}"]`);
-                if (nextTab) {
-                    const tab = new bootstrap.Tab(nextTab);
-                    tab.show();
-                }
-            });
-        });
-
-        document.querySelectorAll('.prev-step').forEach(button => {
-            button.addEventListener('click', function () {
-                const prevStep = this.getAttribute('data-prev');
-                const prevTab = document.querySelector(`[data-bs-target="#${prevStep}"]`);
-                if (prevTab) {
-                    const tab = new bootstrap.Tab(prevTab);
-                    tab.show();
-                }
-            });
-        });
+        
         // Newsletter form handling
         document.addEventListener('DOMContentLoaded', function () {
             const newsletterForm = document.getElementById('newsletter-form');
